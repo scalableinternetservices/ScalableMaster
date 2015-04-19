@@ -1,0 +1,11 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @participant.name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @participant.activities[0].name %>
+</p>
