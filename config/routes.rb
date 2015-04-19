@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :participants
   get "/activities/:id" => 'activities#show'
 
-  post "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
+  delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
 
   get "/participants/:id" => 'participants#show'
 

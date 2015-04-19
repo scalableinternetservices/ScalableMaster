@@ -25,7 +25,7 @@
   <%= submit_tag 'delete_participant_activity'%>
 <% end %> -->
 
-<%= form_tag("/participants/delete_participant_activity", method: "post") do %>
+<%= form_tag("/participants/delete_participant_activity", method: "delete") do %>
   <%= label_tag(:id, "Your id:") %>
   <%= text_field_tag(:id) %>
   <%= label_tag(:a_id, "unparticipate which:") %>
