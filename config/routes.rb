@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   patch '/organizers/:id' => 'organizers#update'
   put '/organizers/:id' => 'organizers#update'
 
+  get "/participant_activities/:id" => 'participant_activities#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

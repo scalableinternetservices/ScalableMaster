@@ -1,0 +1,23 @@
+<!-- <h1>ParticipantActivities#show</h1>
+<p>Find me in app/views/participant_activities/show.html.erb</p> -->
+
+<!-- showing the details of a participant -->
+<p>
+  <strong>Participant Name:</strong>
+  <%= @participant.name %>
+</p>
+
+
+<!-- showing the activities of a participant -->
+<div class="container">
+<div class="row">
+<% @participant.activities.each do |each_a| %>
+	<div class="col-md-4">
+	  <p>
+	  	<strong> Activity Name: </strong>
+	    <%= each_a.name%>
+	  </p>    
+	</div>
+<% end %>
+</div>
+</div>
