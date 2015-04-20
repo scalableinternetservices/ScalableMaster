@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :organizers
   devise_for :participants
   get "/activities/:id" => 'activities#show'
+  get "/participant_activities/:id" => 'participant_activities#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
