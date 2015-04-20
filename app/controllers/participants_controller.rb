@@ -11,7 +11,7 @@ class ParticipantsController < ApplicationController
         # format.js
       else
         format.html { render :show }
-        # format.js
+        # format.j
       end
     end
   end
