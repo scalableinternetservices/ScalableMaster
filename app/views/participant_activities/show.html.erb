@@ -2,22 +2,43 @@
 <p>Find me in app/views/participant_activities/show.html.erb</p> -->
 
 <!-- showing the details of a participant -->
-<p>
-  <strong>Participant Name:</strong>
-  <%= @participant.name %>
-</p>
+
+<span id="name">
+  <!-- <strong>Participant Name:</strong>  -->
+  <%= @participant.name.capitalize! %>
+</span>
+
+<div id="wrap">
+<div class="page-header">
+	<div id="navi">
+	<ul class="nav nav-pills">
+	  <li role="presentation"><a href="#">Summary</a></li>
+	  <li role="presentation"><a href="#">Profile</a></li>
+	  <li role="presentation" class="activeo"><a href="#">Organized Activity</a></li>
+	  <li role="presentation"><a href="#">Related Ideas</a></li>
+	</ul>
+	</div>
+	<div class="headpic"><%= image_tag(@participant.activities.find(1).img_url, class: 'headpotrait') %></div>
+</div>
+
+
+<br>
 
 
 <!-- showing the activities of a participant -->
 <div class="container">
 <div class="row">
 <% @participant.activities.each do |each_a| %>
-	<div class="col-md-4">
+	<div class="col-md-3">
+	  <a class="thumbnail">
+	  	  <%= image_tag(each_a.img_url) %>
+	  </a>  
 	  <p>
 	  	<strong> Activity Name: </strong>
 	    <%= each_a.name%>
-	  </p>    
+	  </p>  
 	</div>
 <% end %>
+</div>
 </div>
 </div>
