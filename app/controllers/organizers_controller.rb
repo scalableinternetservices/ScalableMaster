@@ -1,7 +1,10 @@
 class OrganizersController < ApplicationController
-  before_action :set_organizer, only: [:show, :update]
+  before_action :set_organizer, only: [:show, :update, :activities_index]
 
   def show 
+  end
+
+  def activities_index
   end
 
   def update

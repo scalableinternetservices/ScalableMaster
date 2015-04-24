@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   put '/organizers/:id' => 'organizers#update'
 
 
-  get '/organizer_activities/:id' => 'organizer_activities#show'
+  get '/organizers/:id/activities' => 'organizers#activities_index'
 
   get "/participants/:id/activities" => 'participants#activities_index'
 
