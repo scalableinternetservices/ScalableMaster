@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   patch '/organizers/:id' => 'organizers#update'
   put '/organizers/:id' => 'organizers#update'
 
+
+  get '/organizer_activities/:id' => 'organizer_activities#show'
+
   get "/participant_activities/:id" => 'participant_activities#show'
+
 
 
 
