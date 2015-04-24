@@ -11,5 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
-
+*~
+*.swp
+*.swo
+*.DS*
 # Ignore config file
