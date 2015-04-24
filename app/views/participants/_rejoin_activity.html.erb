@@ -1,0 +1,4 @@
+<li id="activity-<%= @activity.id %>">
+  Name: <%= @activity.name %>
+  <%= link_to "Rejoin", [:rejoin_activity, activity_id: @activity.id], method: :put, remote: true %>
+</li>

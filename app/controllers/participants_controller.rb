@@ -1,18 +1,30 @@
 class ParticipantsController < ApplicationController
 
-	before_action :set_participant, only: [:show, :delete_participant_activity]
+	before_action :set_participant, only: [:show, :cancel_activity, :rejoin_activity]
 
 	def show
 	end
 
-	def delete_participant_activity
-		@activity = Activity.find(params[:a_id])
-		@activity.participants.delete(@participant)
-		@activity.save
+  def cancel_activity
+    @activity = Activity.find(params[:activity_id])
+    @activity.participants.delete(@participant)
 
-		@participant.activities.delete(@activity)
-		@participant.save
-	end
+    respond_to do |format|
+      format.html { redirect_to action: :show }
+      format.js
+    end
+  end
+
+  def rejoin_activity
+    @activity = Activity.find(params[:activity_id])
+    @activity.participants << @participant
+
+    respond_to do |format|
+      format.html { redirect_to action: :show }
+      format.js
+    end
+  end
+
 
   def update
     respond_to do |format|
@@ -21,7 +33,7 @@ class ParticipantsController < ApplicationController
         # format.js
       else
         format.html { render :show }
-        # format.j
+        # format.js
       end
     end
   end

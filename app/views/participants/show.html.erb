@@ -1,23 +1,27 @@
+<!-- showing the details of a participant -->
+<p>
+  <strong>Participant Name:</strong>
+  <%= @participant.name %>
+</p>
 
 
 <!-- showing the activities of a participant -->
 
-
-<% @participant.activities.each do |each_a| %>
-  <p>
-  	<strong> Activity Name: </strong>
-    <%= each_a.name%>
-  </p>    
-<% end %>
-
+<div id="show_activities">
+  <ul>
+    <h4>Activities</h4>
+    <% @participant.activities.each do |activity| %>
+        <li id="activity-<%= activity.id %>">
+          Name: <%= activity.name %>
+          <%= link_to "Cancel", [:cancel_activity, activity_id: activity], 
+                                method: :delete, remote: true %>
+        </li>
+    <% end %>
+  </ul>
+</div>
 
 <!-- cancel the participation of an activity -->
-<!-- 
-<%= form_for @participant, url: {action: "delete_participant_activity"} do |f| %>
-  <%= f.text_field :id%>
-  <%= f.text_field :name%>
-  <%= submit_tag 'delete_participant_activity'%>
-<% end %> -->
+
 
 <%= form_tag("/participants/delete_participant_activity", method: "delete") do %>
   <%= label_tag(:id, "Your id:") %>
@@ -26,48 +30,3 @@
   <%= text_field_tag(:a_id) %>
   <%= submit_tag("Confirm") %>
 <% end %>
-
-<div>
-  <strong>Participant:</strong>
-  <%= form_for @participant, method: :patch do |f| %>
-    <div class="form-group">
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :nickname, "Nickname" %>
-      <%= f.text_field :nickname, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :gender, "Gender" %>
-      <%= f.text_field :gender, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :age, "Age" %>
-      <%= f.text_field :age, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :phone, "Phone" %>
-      <%= f.text_field :phone, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :address, "Address" %>
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :img_url, "Img_url" %>
-      <%= f.text_field :img_url, class: "form-control" %>
-    </div>
-
-    <%= f.submit "Submit", { class: 'btn btn-default', disable_with: 'Submiting...' } %>
-
-  <% end %>
-</div>
-
-

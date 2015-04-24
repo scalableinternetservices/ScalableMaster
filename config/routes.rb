@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   devise_for :organizers
   devise_for :participants
 
-  delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
+
+
+  #delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
+  delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
+  put "/participants/:id/activities/:activity_id" => 'participants#rejoin_activity', as: :rejoin_activity 
 
 
   get '/activities/:id' => 'activities#show'
