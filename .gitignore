@@ -14,4 +14,5 @@
 *~
 *.swp
 *.swo
+*.DS*
 # Ignore config file
