@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
+  get 'organizers/show'
+
+  get 'organizers/update'
+
   devise_for :organizers
   devise_for :participants
-  get "/activities/:id" => 'activities#show'
 
   delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
 
-  get "/participants/:id" => 'participants#show'
+
+  get '/activities/:id' => 'activities#show'
+
+  get '/participants/:id' => 'participants#show', as: :participant
+  patch '/participants/:id' => 'participants#update'
+  put '/participants/:id' => 'participants#update'
+
+  get '/organizers/:id' => 'organizers#show', as: :organizer
+  patch '/organizers/:id' => 'organizers#update'
+  put '/organizers/:id' => 'organizers#update'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
