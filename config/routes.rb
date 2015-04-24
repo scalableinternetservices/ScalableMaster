@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get '/organizers/:id/activities' => 'organizers#activities_index'
 
-  get "/participant_activities/:id" => 'participant_activities#show'
+  get "/participants/:id/activities" => 'participants#activities_index'
 
 
 
