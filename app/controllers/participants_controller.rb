@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
 
-	before_action :set_participant, only: [:show, :delete_participant_activity]
+	before_action :set_participant, only: [:show, :delete_participant_activity, :activities_index]
 
 	def show
 	end
@@ -26,6 +26,8 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def activities_index
+  end
 
   private
     def set_participant
