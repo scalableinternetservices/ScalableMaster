@@ -7,7 +7,7 @@ class OrganizersController < ApplicationController
   def profile_show 
   end
 
-  def profile_show
+  def profile_update
     respond_to do |format|
       if @organizer.update(organizer_params)
         format.html { redirect_to @organizer, notice: 'Organizer was successfully updated.' }
