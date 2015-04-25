@@ -16,9 +16,22 @@ Rails.application.routes.draw do
   get '/organizers/:id/activities' => 'organizers#activities_index'
 
   get '/participants/:id/activities' => 'participants#activities_index'
-  delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
-  put "/participants/:id/activities/:activity_id" => 'participants#rejoin_activity', as: :rejoin_activity 
+  delete '/participants/:id/activities/:activity_id' => 'participants#cancel_activity', as: :cancel_activity  
+  put '/participants/:id/activities/:activity_id' => 'participants#rejoin_activity', as: :rejoin_activity 
 
+
+  get '/ideas' => 'ideas#index', as: :ideas
+  get '/ideas/:id' => 'ideas#show', as: :idea
+  put '/ideas/:id' => 'ideas#update'
+  patch '/ideas/:id' => 'ideas#update'
+  delete '/ideas/:id' => 'ideas#destroy'
+  get '/ideas/:id/edit' => 'ideas#edit', as: :edit_idea
+
+  get '/participants/:participant_id/ideas' => 'participants#ideas_index', as: :participant_ideas
+  post '/participants/:participant_id/ideas' => 'ideas#create'
+  get '/participants/:participant_id/ideas/new' => 'ideas#new', as: :new_participant_ideas
+  
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
