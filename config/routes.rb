@@ -1,36 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'organizers/show'
-
-  get 'organizers/update'
-
   devise_for :organizers
   devise_for :participants
 
-
-
-  #delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
-  delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
-  put "/participants/:id/activities/:activity_id" => 'participants#rejoin_activity', as: :rejoin_activity 
-
-
   get '/activities/:id' => 'activities#show'
 
-  get '/participants/:id' => 'participants#show', as: :participant
-  patch '/participants/:id' => 'participants#update'
-  put '/participants/:id' => 'participants#update'
+  get '/participants/:id/profile' => 'participants#profile_show', as: :participant_profile
+  patch '/participants/:id/profile' => 'participants#profile_update'
+  put '/participants/:id/profile' => 'participants#profile_update'
 
-  get '/organizers/:id' => 'organizers#show', as: :organizer
-  patch '/organizers/:id' => 'organizers#update'
-  put '/organizers/:id' => 'organizers#update'
-
+  get '/organizers/:id/profile' => 'organizers#profile_show', as: :organizer_profile
+  patch '/organizers/:id/profile' => 'organizers#profile_update'
+  put '/organizers/:id/profile' => 'organizers#profile_update'
 
   get '/organizers/:id/activities' => 'organizers#activities_index'
 
-  get "/participants/:id/activities" => 'participants#activities_index'
-
-
-
+  get '/participants/:id/activities' => 'participants#activities_index'
+  delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
+  put "/participants/:id/activities/:activity_id" => 'participants#rejoin_activity', as: :rejoin_activity 
 
 
   # The priority is based upon order of creation: first created -> highest priority.

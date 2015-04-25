@@ -1,13 +1,13 @@
 class OrganizersController < ApplicationController
-  before_action :set_organizer, only: [:show, :update, :activities_index]
+  before_action :set_organizer, only: [
+    :profile_show, :profile_update, 
+    :activities_index
+  ]
 
-  def show 
+  def profile_show 
   end
 
-  def activities_index
-  end
-
-  def update
+  def profile_update
     respond_to do |format|
       if @organizer.update(organizer_params)
         format.html { redirect_to @organizer, notice: 'Organizer was successfully updated.' }
@@ -17,6 +17,9 @@ class OrganizersController < ApplicationController
         # format.js
       end
     end
+  end
+
+  def activities_index
   end
 
 
