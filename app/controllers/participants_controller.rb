@@ -47,19 +47,7 @@ class ParticipantsController < ApplicationController
   def ideas_index
 
   end
-
-  def ideas_new
-
-  end
-
-  def idea_show
-
-  end
-
-  def idea_edit
-
-  end
-
+  
 
   private
     def set_participant
