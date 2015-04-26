@@ -1,6 +1,6 @@
 <div>
   <h4>Edit Idea:</h4>
-  <%= form_for @idea, url: idea_path(@idea), method: :patch do |f| %>
+  <%= form_for @idea, url: participant_idea_path(@participant, @idea), method: :patch do |f| %>
     <div class="form-group">
       <%= f.label :title, "Title" %>
       <%= f.text_field :title, class: "form-control" %>

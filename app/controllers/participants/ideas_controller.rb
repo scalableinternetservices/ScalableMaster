@@ -23,7 +23,7 @@ class Participants::IdeasController < ApplicationController
     @idea = @participant.ideas.create(idea_params)
     respond_to do |format|
       if @idea
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully created.' }
         format.js
       else
         format.html { render :new }
@@ -36,7 +36,7 @@ class Participants::IdeasController < ApplicationController
   def update
     respond_to do |format|
       if @idea.update(idea_params)
-        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully updated.' }
         format.js
       else
         format.html { render :edit }
@@ -48,7 +48,7 @@ class Participants::IdeasController < ApplicationController
   def destroy
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to participant_ideas_url, notice: 'Idea was successfully destroyed.' }
       format.js
     end
   end
