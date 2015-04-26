@@ -1,12 +1,12 @@
-<p>
-	<strong>Organizer: </strong>
-	<%= @organizer.name %>
-</p>
-
-<ul>
-	<% @organizer.activities.each do |activity| %>
-	<li>
-		<%= activity.name %>
-	</li>
-	<% end %>
-</ul>
+<div class="container">
+<div class="row">
+<% @organizer.activities.each do |activity| %>
+	<div class="col-md-3">
+	  <a class="thumbnail">
+	  	  <%= image_tag(activity.img_url) %>
+	  </a>  
+	  <p>
+	    <%= activity.name%>
+	  </p>
+	</div>
+<% end %>
