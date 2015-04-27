@@ -1,6 +1,6 @@
 class Participants::ActivitiesController < ApplicationController
 
-  before_action :set_participant, only: [ :index ]
+  before_action :set_participant
   before_action :set_activity, only: [ :cancel, :rejoin, :show ]
 
   def index

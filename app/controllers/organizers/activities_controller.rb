@@ -1,6 +1,6 @@
 class Organizers::ActivitiesController < ApplicationController
 
-  before_action :set_organizer, only: [ :index ]
+  before_action :set_organizer
 
   def index
   end

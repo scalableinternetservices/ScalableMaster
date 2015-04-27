@@ -1,7 +1,7 @@
 <div class="col-md-3">
   <a class="thumbnail"><%= image_tag(@activity.img_url) %></a>
   <div>
-    <strong> Activity Name: </strong> <%= activity.name %>
+    <strong> Activity Name: </strong> <%= @activity.name %>
     <%= link_to "Rejoin", participant_activity_path(@participant, @activity), 
                     method: :put, remote: true %>
   </div>
