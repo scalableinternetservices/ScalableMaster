@@ -48,7 +48,7 @@ class Participants::IdeasController < ApplicationController
   def destroy
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to participant_ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to participant_ideas_path(@participant), notice: 'Idea was successfully destroyed.' }
       format.js
     end
   end
