@@ -1,0 +1,2 @@
+module Participants::ProfileHelper
+end

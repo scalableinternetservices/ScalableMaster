@@ -3,34 +3,43 @@ Rails.application.routes.draw do
   devise_for :organizers
   devise_for :participants
 
+  # ---------- activities ----------
+
   get '/activities/:id' => 'activities#show'
 
-  get '/participants/:id/profile' => 'participants#profile_show', as: :participant_profile
-  patch '/participants/:id/profile' => 'participants#profile_update'
-  put '/participants/:id/profile' => 'participants#profile_update'
+  # ---------- participants ----------
 
-  get '/organizers/:id/profile' => 'organizers#profile_show', as: :organizer_profile
-  patch '/organizers/:id/profile' => 'organizers#profile_update'
-  put '/organizers/:id/profile' => 'organizers#profile_update'
+  get '/participants/:participant_id/profile' => 'participants/profile#show', as: :participant_profile
+  patch '/participants/:participant_id/profile' => 'participants/profile#update'
+  put '/participants/:participant_id/profile' => 'participants/profile#update'
 
-  get '/organizers/:id/activities' => 'organizers#activities_index'
-
-  get '/participants/:id/activities' => 'participants#activities_index'
-  delete '/participants/:id/activities/:activity_id' => 'participants#cancel_activity', as: :cancel_activity  
-  put '/participants/:id/activities/:activity_id' => 'participants#rejoin_activity', as: :rejoin_activity 
-
-
-  get '/ideas' => 'ideas#index', as: :ideas
-  get '/ideas/:id' => 'ideas#show', as: :idea
+  get '/participants/:participant_id/activities' => 'participants/activities#index', as: :participant_activities
+  delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel', as: :participant_activity
+  put '/participants/:participant_id/activities/:id' => 'participants/activities#rejoin'
 
   get '/participants/:participant_id/ideas' => 'participants/ideas#index', as: :participant_ideas
-  get '/participants/:participant_id/ideas/new' => 'participants/ideas#new', as: :new_participant_ideas
   post '/participants/:participant_id/ideas' => 'participants/ideas#create'
+  get '/participants/:participant_id/ideas/new' => 'participants/ideas#new', as: :new_participant_ideas
   get '/participants/:participant_id/ideas/:id' => 'participants/ideas#show', as: :participant_idea
   put '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
   patch '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
   delete '/participants/:participant_id/ideas/:id' => 'participants/ideas#destroy'
   get '/participants/:participant_id/ideas/:id/edit' => 'participants/ideas#edit', as: :edit_participant_idea
+
+  # ---------- organizers ----------
+
+  get '/organizers/:organizer_id/profile' => 'organizers/profile#show', as: :organizer_profile
+  patch '/organizers/:organizer_id/profile' => 'organizers/profile#update'
+  put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
+
+  get '/organizers/:organizer_id/activities' => 'organizers/activities#index'
+
+  # ---------- ideas ----------
+
+  get '/ideas' => 'ideas#index', as: :ideas
+  get '/ideas/:id' => 'ideas#show', as: :idea
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
