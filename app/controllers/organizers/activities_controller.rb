@@ -1,15 +1,14 @@
 class Organizers::ActivitiesController < ApplicationController
-  before_action :set_activity, only: [
-    :activity_edit, :activity_update
-  ]
+  before_action :set_organizer, only: [ :index ]
+  before_action :set_activity, only: [ :edit, :update ]
   
-  def activities_index
+  def index
   end
 
-  def activity_edit
+  def edit
   end
 
-  def activity_update
+  def update
     respond_to do |format|
       if @activity.update(activity_params)
           format.html { redirect_to :organizer_activity, notice: 'Activity was successfully updated.' }
@@ -21,6 +20,10 @@ class Organizers::ActivitiesController < ApplicationController
 
 
   private
+    def set_organizer
+      @organizer = Organizer.find(params[:organizer_id])
+    end
+
     def set_activity
       @activity = Activity.find(params[:activity_id])
     end
@@ -28,4 +31,5 @@ class Organizers::ActivitiesController < ApplicationController
     def activity_params
       params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar)
     end
+
 end
