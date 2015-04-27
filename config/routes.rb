@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'organizers/update'
 
+
   devise_for :organizers
   devise_for :participants
 
@@ -29,9 +30,7 @@ Rails.application.routes.draw do
 
   get "/participants/:id/activities" => 'participants#activities_index'
 
-
-
-
+  get '/participants/:id/summary' => 'participants#summary'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

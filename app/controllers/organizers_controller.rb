@@ -7,6 +7,7 @@ class OrganizersController < ApplicationController
   def activities_index
   end
 
+
   def update
     respond_to do |format|
       if @organizer.update(organizer_params)

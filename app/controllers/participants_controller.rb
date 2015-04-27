@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController
 
 
-	before_action :set_participant, only: [:show, :cancel_activity, :rejoin_activity,:activities_index]
+	before_action :set_participant, only: [:show, :cancel_activity, :rejoin_activity, :activities_index, :summary]
 
 
 	def show
@@ -41,6 +41,18 @@ class ParticipantsController < ApplicationController
   end
 
   def activities_index
+  end
+
+  def summary
+    count = @participant.activities.count
+    if(count > 8) 
+      @activities = @participant.activities[0..7]
+    else
+      @activities = @participant.activities
+    end
+    
+    @ideas = Idea.where(:participant_id => params[:id])
+
   end
 
   private
