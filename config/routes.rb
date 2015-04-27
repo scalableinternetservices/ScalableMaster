@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
   get '/organizers/:id/activities' => 'organizers#activities_index'
 
-  get '/organizers/:id/activities/:activity_id' => 'organizers#activity_edit', as: :organizer_activity
-  patch '/organizers/:id/activities/:activity_id' => 'organizers#activity_update'
-  put '/organizers/:id/activities/:activity_id' => 'organizers#activity_update'
+  get '/organizers/:id/activities/:activity_id' => 'organizers/activities#activity_edit', as: :organizer_activity
+  patch '/organizers/:id/activities/:activity_id' => 'organizers/activities#activity_update'
+  put '/organizers/:id/activities/:activity_id' => 'organizers/activities#activity_update'
 
   get '/participants/:id/activities' => 'participants#activities_index'
   delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
