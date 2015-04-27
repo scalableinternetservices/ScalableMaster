@@ -33,7 +33,7 @@ class OrganizersController < ApplicationController
       if @activity.update(activity_params)
           format.html { redirect_to :organizer_activity, notice: 'Activity was successfully updated.' }
       else
-          format.html { render :show }
+          format.html { redirect_to :organizer_activity, notice: 'Failed!' }
       end
     end
   end
@@ -53,6 +53,6 @@ class OrganizersController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description)
+      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar)
     end
 end

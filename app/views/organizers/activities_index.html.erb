@@ -1,12 +1,37 @@
+<span id="name">
+  <%= @organizer.name.capitalize! %>
+</span>
+
+
+<div id="wrap">
+<div class="page-header">
+	<div id="navi">
+	<ul class="nav nav-pills">
+	  <li role="presentation"><a href="#">Summary</a></li>
+	  <li role="presentation"><a href="#">Profile</a></li>
+	  <li role="presentation" class="activeo"><a href="#">Organized Activity</a></li>
+	  <li role="presentation"><a href="#">Related Ideas</a></li>
+	</ul>
+	</div>
+</div>
+
+
+<br>
+
+
+<!-- showing the activities of an organizer -->
 <div class="container">
 <div class="row">
 <% @organizer.activities.each do |activity| %>
 	<div class="col-md-3">
 	  <a class="thumbnail">
-	  	  <%= image_tag(activity.img_url) %>
+	  	  <%= image_tag(activity.avatar_url) if activity.avatar? %>
 	  </a>  
-	  <p>
+	  <p class="text-center">
 	    <%= activity.name%>
 	  </p>
 	</div>
 <% end %>
+</div>
+</div>
+</div>
