@@ -13,13 +13,13 @@ class ParticipantsController < ApplicationController
       @activities = @participant.activities
     end
     
-    @ideas = Idea.where(:participant_id => params[:id])
+    @ideas = Idea.where(:participant_id => params[:participant_id])
 
   end
 
   private
     def set_participant
-      @participant = Participant.find(params[:id])
+      @participant = Participant.find(params[:participant_id])
     end
 
     def participant_params

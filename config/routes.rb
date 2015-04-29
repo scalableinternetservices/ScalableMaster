@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   patch '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
   delete '/participants/:participant_id/ideas/:id' => 'participants/ideas#destroy'
   get '/participants/:participant_id/ideas/:id/edit' => 'participants/ideas#edit', as: :edit_participant_idea
-
+  get '/participants/:participant_id/summary' => 'participants#summary'
   # ---------- organizers ----------
 
   get '/organizers/:organizer_id/profile' => 'organizers/profile#show', as: :organizer_profile
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
 
 
-  get '/participants/:id/summary' => 'participants#summary'
 
   get '/organizers/:organizer_id/activities' => 'organizers/activities#index'
 
