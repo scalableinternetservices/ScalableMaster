@@ -1,0 +1,2 @@
+module Participants::IdeasHelper
+end

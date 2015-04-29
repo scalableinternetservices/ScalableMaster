@@ -1,6 +1,6 @@
 <div>
   <strong>Organizer:</strong>
-  <%= form_for @organizer, method: :patch do |f| %>
+  <%= form_for @organizer, url: organizer_profile_path(@organizer), method: :patch do |f| %>
     <div class="form-group">
       <%= f.label :name, "Name" %>
       <%= f.text_field :name, class: "form-control" %>
