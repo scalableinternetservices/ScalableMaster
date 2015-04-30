@@ -1,11 +1,29 @@
 class Organizers::ActivitiesController < ApplicationController
-  before_action :set_organizer, only: [ :index ]
+  before_action :set_organizer
   before_action :set_activity, only: [ :edit, :update ]
   
   def index
   end
 
   def edit
+  end
+
+  def new
+    @activity = @organizer.activities.new
+  end
+
+
+  def create
+    @activity = @organizer.activities.create(activity_params)
+    respond_to do |format|
+      if @activity
+        format.html { redirect_to organizer_activity_path(@organizer, @activity), notice: 'Activity was successfully created.' }
+        #format.js
+      else
+        format.html { render :new }
+        #format.js
+      end
+    end
   end
 
   def update
