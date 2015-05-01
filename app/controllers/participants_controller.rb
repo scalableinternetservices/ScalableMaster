@@ -13,7 +13,7 @@ class ParticipantsController < ApplicationController
       @activities = @participant.activities
     end
     
-    @ideas = Idea.where(:participant_id => params[:participant_id])
+    @ideas = @participant.ideas
 
   end
 
