@@ -32,9 +32,13 @@ Rails.application.routes.draw do
   patch '/organizers/:organizer_id/profile' => 'organizers/profile#update'
   put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
 
+  get '/organizers/:organizer_id/activities' => 'organizers/activities#index', as: :organizer_activities
+  post '/organizers/:organizer_id/activities' => 'organizers/activities#create'
+  get '/organizers/:organizer_id/activities/new' => 'organizers/activities#new', as: :new_organizer_activities
 
-
-  get '/organizers/:organizer_id/activities' => 'organizers/activities#index'
+  get '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#edit', as: :organizer_activity
+  patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
+  put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
 
   # ---------- ideas ----------
 
