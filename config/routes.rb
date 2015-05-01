@@ -25,12 +25,14 @@ Rails.application.routes.draw do
   patch '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
   delete '/participants/:participant_id/ideas/:id' => 'participants/ideas#destroy'
   get '/participants/:participant_id/ideas/:id/edit' => 'participants/ideas#edit', as: :edit_participant_idea
-
+  get '/participants/:participant_id/summary' => 'participants#summary'
   # ---------- organizers ----------
 
   get '/organizers/:organizer_id/profile' => 'organizers/profile#show', as: :organizer_profile
   patch '/organizers/:organizer_id/profile' => 'organizers/profile#update'
   put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
+
+
 
   get '/organizers/:organizer_id/activities' => 'organizers/activities#index'
 
@@ -39,7 +41,6 @@ Rails.application.routes.draw do
   get '/ideas' => 'ideas#index', as: :ideas
   get '/ideas/:id' => 'ideas#show', as: :idea
 
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

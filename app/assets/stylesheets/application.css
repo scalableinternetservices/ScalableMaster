@@ -31,6 +31,8 @@
 
  footer {
  	background-color: rgba(255,255,255,0.6);
+ 	border-top: 1px solid;
+	border-color:rgba(0,0,0,0.09);	
  }
 
  footer p {
