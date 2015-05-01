@@ -1,10 +1,11 @@
 class ParticipantsController < ApplicationController
 
-
+  before_action :authenticate_participant!
 	before_action :set_participant, only: [:show, :cancel_activity, :rejoin_activity,:activities_index]
 
 
 	def show
+    # byebug
 	end
 
   def cancel_activity
@@ -45,7 +46,7 @@ class ParticipantsController < ApplicationController
 
   private
     def set_participant
-      @participant = Participant.find(params[:id])
+      @participant = Participant.find(current_participant[:id])
     end
 
     def participant_params
