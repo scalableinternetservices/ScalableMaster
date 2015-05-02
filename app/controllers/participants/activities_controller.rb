@@ -28,7 +28,9 @@ class Participants::ActivitiesController < ApplicationController
 
   private
     def set_participant
-      @participant = Participant.find(params[:participant_id])
+      # byebug
+      # @participant = Participant.find(params[:participant_id])
+      @participant = Participant.find(current_participant[:id])
     end
 
     def set_activity

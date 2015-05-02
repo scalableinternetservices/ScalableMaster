@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :organizers
-  devise_for :participants
+  devise_for :organizers, controllers: { sessions: "organizers/sessions", registrations: "organizers/registrations" }
+  devise_for :participants, controllers: { sessions: "participants/sessions", registrations: "participants/registrations" }
+  root 'homepage#index'
 
   # ---------- activities ----------
 

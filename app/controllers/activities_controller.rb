@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
     #   params.require(:activity).permit(:name, :time, :creator_id, :place_id, :address, :avg_price, :visibility, :pay_type, :scale, :latitude, :longitude)
     # end
     def get_identity
-    	byebug
+    	# byebug
     	if participant_signed_in?
     		@identity = 1
     	elsif organizer_signed_in?
