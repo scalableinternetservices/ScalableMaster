@@ -1,8 +1,19 @@
 class Participants::ProfileController < ApplicationController
 
-  before_action :set_participant, only: [ :show, :update ]
+  before_action :set_participant, only: [ :show, :edit, :update ]
 
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update

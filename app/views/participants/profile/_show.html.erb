@@ -1,0 +1,36 @@
+<div>
+  <ul>
+    <li>
+      <header>Name</header>
+      <div><%= @participant.name %></div>
+    </li>
+    <li>
+      <header>Nickname</header>
+      <div><%= @participant.nickname %></div>
+    </li>
+    <li>
+      <header>Gender</header>
+      <div><%= @participant.gender %></div>
+    </li>
+    <li>
+      <header>Age</header>
+      <div><%= @participant.age %></div>
+    </li>
+    <li>
+      <header>Phone</header>
+      <div><%= @participant.phone %></div>
+    </li>
+    <li>
+      <header>Address</header>
+      <div><%= @participant.address %></div>
+    </li>
+    <li>
+      <header>Img_url</header>
+      <div><%= @participant.img_url %></diqv>
+    </li>
+  </ul>
+  <%= link_to "Edit", edit_participant_profile_path(@participant), 
+      class: "btn btn-primary", remote: true %>
+</div>
+
+
