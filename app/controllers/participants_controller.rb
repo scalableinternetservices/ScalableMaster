@@ -1,6 +1,7 @@
 class ParticipantsController < ApplicationController
-
+  before_action :authenticate_participant!
 	before_action :set_participant, only: [:summary]
+
 
 
 
@@ -19,6 +20,7 @@ class ParticipantsController < ApplicationController
 
   private
     def set_participant
+      # @participant = Participant.find(current_participant[:id])
       @participant = Participant.find(params[:participant_id])
     end
 
