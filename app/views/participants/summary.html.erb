@@ -1,0 +1,57 @@
+<span id="name">
+  <!-- <strong>Participant Name:</strong>  -->
+  <%= @participant.name.capitalize! %>
+</span>
+
+<div id="wrap">
+<div class="page-header">
+	<div id="navi">
+	<ul class="nav nav-pills">
+	  <li role="presentation" class="activeo"><a href="#">Summary</a></li>
+	  <li role="presentation"><a href="#">Profile</a></li>
+	  <li role="presentation"><a href="#">My Activity</a></li>
+	  <li role="presentation"><a href="#">My Ideas</a></li>
+	</ul>
+	</div>
+	<div class="headpic"><%= image_tag(@participant.activities.find(1).img_url, class: 'headpotrait') %></div>
+</div>
+
+
+
+<!-- showing the summary of a participant -->
+<div class="container">
+<div class="row">
+	<div class="summary-profile">
+		<h3><%= @participant.name%></h3>
+		<h4><span class="glyphicon glyphicon-map-marker"></span>&nbsp
+			Los Angeles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<span class="glyphicon glyphicon-grain"></span>
+			<%= @participant.email%>
+		</h4>
+	</div>
+	
+	<div class="summary-activity">
+		<h4>My Activity</h4>
+		<% @activities.each do |activity|%>
+			<div class="col-md-3">
+			  <a class="thumbnail">
+			  	  <%= image_tag(activity.img_url) %>
+			  </a>  
+			  <p>
+			  	<strong> Activity Name: </strong>
+			    <%= activity.name%>
+			  </p>  
+			</div>
+		<% end %>
+		<h4>&nbsp</h4>
+	</div>
+    
+
+	<div class="summary-idea">
+		<h4>My Ideas</h4>
+		<% @ideas.each do |idea| %>
+			<p><%= idea.title %></p>
+		<% end %>
+	</div>
+</div>
+</div>

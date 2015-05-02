@@ -1,36 +1,49 @@
 Rails.application.routes.draw do
 
-  get 'organizers/show'
-
-  get 'organizers/update'
-
   devise_for :organizers
   devise_for :participants
 
-
-
-  #delete "/participants/delete_participant_activity" => 'participants#delete_participant_activity'
-  delete "/participants/:id/activities/:activity_id" => 'participants#cancel_activity', as: :cancel_activity  
-  put "/participants/:id/activities/:activity_id" => 'participants#rejoin_activity', as: :rejoin_activity 
-
+  # ---------- activities ----------
 
   get '/activities/:id' => 'activities#show'
 
-  get '/participants/:id' => 'participants#show', as: :participant
-  patch '/participants/:id' => 'participants#update'
-  put '/participants/:id' => 'participants#update'
+  # ---------- participants ----------
 
-  get '/organizers/:id' => 'organizers#show', as: :organizer
-  patch '/organizers/:id' => 'organizers#update'
-  put '/organizers/:id' => 'organizers#update'
+  get '/participants/:participant_id/profile' => 'participants/profile#show', as: :participant_profile
+  patch '/participants/:participant_id/profile' => 'participants/profile#update'
+  put '/participants/:participant_id/profile' => 'participants/profile#update'
 
+  get '/participants/:participant_id/activities' => 'participants/activities#index', as: :participant_activities
+  delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel', as: :participant_activity
+  put '/participants/:participant_id/activities/:id' => 'participants/activities#rejoin'
 
-  get '/organizers/:id/activities' => 'organizers#activities_index'
+  get '/participants/:participant_id/ideas' => 'participants/ideas#index', as: :participant_ideas
+  post '/participants/:participant_id/ideas' => 'participants/ideas#create'
+  get '/participants/:participant_id/ideas/new' => 'participants/ideas#new', as: :new_participant_ideas
+  get '/participants/:participant_id/ideas/:id' => 'participants/ideas#show', as: :participant_idea
+  put '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
+  patch '/participants/:participant_id/ideas/:id' => 'participants/ideas#update'
+  delete '/participants/:participant_id/ideas/:id' => 'participants/ideas#destroy'
+  get '/participants/:participant_id/ideas/:id/edit' => 'participants/ideas#edit', as: :edit_participant_idea
+  get '/participants/:participant_id/summary' => 'participants#summary'
+  # ---------- organizers ----------
 
-  get "/participants/:id/activities" => 'participants#activities_index'
+  get '/organizers/:organizer_id/profile' => 'organizers/profile#show', as: :organizer_profile
+  patch '/organizers/:organizer_id/profile' => 'organizers/profile#update'
+  put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
 
+  get '/organizers/:organizer_id/activities' => 'organizers/activities#index', as: :organizer_activities
+  post '/organizers/:organizer_id/activities' => 'organizers/activities#create'
+  get '/organizers/:organizer_id/activities/new' => 'organizers/activities#new', as: :new_organizer_activities
 
+  get '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#edit', as: :organizer_activity
+  patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
+  put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
 
+  # ---------- ideas ----------
+
+  get '/ideas' => 'ideas#index', as: :ideas
+  get '/ideas/:id' => 'ideas#show', as: :idea
 
 
   # The priority is based upon order of creation: first created -> highest priority.
