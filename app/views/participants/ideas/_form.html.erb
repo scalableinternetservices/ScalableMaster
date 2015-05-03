@@ -1,0 +1,15 @@
+<%= form_for @idea, url: participant_ideas_or_idea_path(@participant, @idea) do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Submit", { class: 'btn btn-primary', disable_with: 'Submiting...' } %>
+  <%= link_to "Cancel", participant_ideas_or_idea_path(@participant, @idea), 
+      class: 'btn btn-default', remote: true %>
+<% end %>

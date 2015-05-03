@@ -1,9 +1,8 @@
 <div>
-  <h4>Ideas:</h4>
   <ul>
     <% @ideas.each do |idea| %>
       <li id="idea-<%= idea.id %>">
-        <div><%= idea.title %></div>
+        <%= link_to idea.title, edit_participant_idea_path(@participant, idea) %>
         <div><%= idea.description %></div>
       </li>
     <% end %>
