@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   get '/ideas' => 'ideas#index', as: :ideas
   get '/ideas/:id' => 'ideas#show', as: :idea
+  patch '/ideas/:id' => 'ideas#update'
+  put '/ideas/:id' => 'ideas#update'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
