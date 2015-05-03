@@ -1,0 +1,14 @@
+<div class="container">
+<div class="row">
+<% @activities.each do |activity| %>
+    <div class="col-md-3">
+      <a class="thumbnail">
+          <%= image_tag(activity.avatar_url) if activity.avatar? %>
+      </a>  
+      <p class="text-center">
+        <%= activity.name%>
+      </p>
+    </div>
+<% end %>
+</div>
+</div>

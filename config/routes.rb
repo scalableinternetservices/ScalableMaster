@@ -46,6 +46,11 @@ Rails.application.routes.draw do
   get '/ideas/:id' => 'ideas#show', as: :idea
 
 
+  # ---------- Home page -----------
+  get '/homepage' => 'homepage#homepage_index'
+  post '/homepage' => 'homepage#homepage_activity'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

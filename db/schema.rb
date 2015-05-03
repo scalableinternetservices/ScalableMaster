@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150426203615) do
     t.datetime "updated_at",                 null: false
     t.integer  "organizer_id", limit: 4
     t.string   "avatar",       limit: 255
+    t.string   "city_name",    limit: 255
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
