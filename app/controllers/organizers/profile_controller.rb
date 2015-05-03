@@ -1,8 +1,19 @@
 class Organizers::ProfileController < ApplicationController
 
-  before_action :set_organizer, only: [ :show, :update ]
+  before_action :set_organizer, only: [ :show, :edit, :update ]
 
   def show 
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
