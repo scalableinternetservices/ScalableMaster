@@ -35,7 +35,7 @@ class Participants::ProfileController < ApplicationController
     end
 
     def participant_params
-      params.require(:participant).permit(:name, :nickname, :gender, :age, :phone, :address, :img_url)
+      params.require(:participant).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar)
     end
 
 end

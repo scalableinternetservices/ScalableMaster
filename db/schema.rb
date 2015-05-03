@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426203615) do
+ActiveRecord::Schema.define(version: 20150503051754) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150426203615) do
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
     t.text     "intro",                  limit: 65535
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "organizers", ["email"], name: "index_organizers_on_email", unique: true, using: :btree
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 20150426203615) do
     t.string   "phone",                  limit: 255
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

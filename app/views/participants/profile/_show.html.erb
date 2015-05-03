@@ -25,8 +25,8 @@
       <div><%= @participant.address %></div>
     </li>
     <li>
-      <header>Img_url</header>
-      <div><%= @participant.img_url %></diqv>
+      <header>Image</header>
+      <div><%= image_tag @participant.avatar_url(:big) if @participant.avatar? %></diqv>
     </li>
   </ul>
   <%= link_to "Edit", edit_participant_profile_path(@participant), 

@@ -34,7 +34,7 @@ class Organizers::ProfileController < ApplicationController
     end
 
     def organizer_params
-      params.require(:organizer).permit(:name, :nickname, :gender, :age, :phone, :address, :img_url)
+      params.require(:organizer).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar)
     end
 
 end

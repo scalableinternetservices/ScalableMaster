@@ -6,4 +6,6 @@ class Participant < ActiveRecord::Base
   has_and_belongs_to_many :activities
   has_and_belongs_to_many :tags
   has_many :ideas
+
+  mount_uploader :avatar, AvatarUploader
 end

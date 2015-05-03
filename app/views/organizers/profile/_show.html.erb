@@ -25,8 +25,8 @@
       <div><%= @organizer.address %></div>
     </li>
     <li>
-      <header>Img_url</header>
-      <div><%= @organizer.img_url %></diqv>
+      <header>Image</header>
+      <div><%= image_tag @organizer.avatar_url(:big) if @organizer.avatar? %></div>
     </li>
   </ul>
   <%= link_to "Edit", edit_organizer_profile_path(@organizer), 

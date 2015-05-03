@@ -1,4 +1,5 @@
-<%= form_for @participant, url: participant_profile_path(@participant), method: :patch do |f| %>
+<%= form_for @participant, url: participant_profile_path(@participant), 
+                          multipart: true, method: :patch do |f| %>
   <div class="form-group">
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -30,8 +31,10 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :img_url, "Img_url" %>
-    <%= f.text_field :img_url, class: "form-control" %>
+    <%= f.label :avatar, "Image" %>
+    <%= image_tag(@participant.avatar_url(:normal)) if @participant.avatar? %>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
   </div>
 
   <%= f.submit "Submit", { class: 'btn btn-primary', disable_with: 'Submiting...' } %>

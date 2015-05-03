@@ -5,4 +5,6 @@ class Organizer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_and_belongs_to_many :tags
   has_many :activities
+
+  mount_uploader :avatar, AvatarUploader
 end
