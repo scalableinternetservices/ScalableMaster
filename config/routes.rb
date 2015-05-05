@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :organizers
-  devise_for :participants
+  devise_for :organizers, controllers: { sessions: "organizers/sessions", registrations: "organizers/registrations" }
+  devise_for :participants, controllers: { sessions: "participants/sessions", registrations: "participants/registrations" }
+  # root 'homepage#index'
 
   # ---------- activities ----------
 
@@ -43,12 +44,40 @@ Rails.application.routes.draw do
   patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
   put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
 
+  get '/organizers/:organizer_id/summary' => 'organizers#summary', as: :organizer_summary
+
   # ---------- ideas ----------
 
   get '/ideas' => 'ideas#index', as: :ideas
   get '/ideas/:id' => 'ideas#show', as: :idea
   patch '/ideas/:id' => 'ideas#update'
   put '/ideas/:id' => 'ideas#update'
+
+
+  # ---------- Home page -----------
+  # get '/homepage/:participant_id' => 'homepage#homepage_index'
+  get '/homepage' => 'homepage#homepage_index', as: :homepage
+  post '/homepage' => 'homepage#homepage_activity'
+
+  devise_scope :participant do
+    authenticated :participant do
+      root to: 'homepage#homepage_index', as: :participant_homepage
+    end
+
+    unauthenticated do
+      root to: 'homepage#index', as: :home
+    end
+  end
+
+  devise_scope :organizer do
+    authenticated :organizer do
+      root to: 'organizers#home', as: :organizer_homepage
+    end
+
+    unauthenticated do
+      root to: 'homepage#index'
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
