@@ -1,10 +1,11 @@
 <div>
-  <h4>Ideas:</h4>
   <ul>
     <% @ideas.each do |idea| %>
       <li id="idea-<%= idea.id %>">
         <div><%= idea.title %></div>
         <div><%= idea.description %></div>
+        <%= link_to "", idea_path(idea, like: true), method: :patch,
+          class: "glyphicon glyphicon-heart-empty", remote: true %>
       </li>
     <% end %>
   </ul>

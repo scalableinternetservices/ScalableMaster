@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20150505204304) do
   create_table "ideas", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.text     "description",    limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "participant_id", limit: 4
+    t.integer  "stars",          limit: 4,     default: 0
   end
 
   add_index "ideas", ["participant_id"], name: "index_ideas_on_participant_id", using: :btree
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150505204304) do
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
     t.text     "intro",                  limit: 65535
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "organizers", ["email"], name: "index_organizers_on_email", unique: true, using: :btree
@@ -122,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150505204304) do
     t.string   "phone",                  limit: 255
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

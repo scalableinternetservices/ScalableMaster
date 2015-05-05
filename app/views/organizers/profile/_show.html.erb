@@ -1,0 +1,36 @@
+<div>
+  <ul>
+    <li>
+      <header>Name</header>
+      <div><%= @organizer.name %></div>
+    </li>
+    <li>
+      <header>Nickname</header>
+      <div><%= @organizer.nickname %></div>
+    </li>
+    <li>
+      <header>Gender</header>
+      <div><%= @organizer.gender %></div>
+    </li>
+    <li>
+      <header>Age</header>
+      <div><%= @organizer.age %></div>
+    </li>
+    <li>
+      <header>Phone</header>
+      <div><%= @organizer.phone %></div>
+    </li>
+    <li>
+      <header>Address</header>
+      <div><%= @organizer.address %></div>
+    </li>
+    <li>
+      <header>Image</header>
+      <div><%= image_tag @organizer.avatar_url(:big) if @organizer.avatar? %></div>
+    </li>
+  </ul>
+  <%= link_to "Edit", edit_organizer_profile_path(@organizer), 
+      class: "btn btn-primary", remote: true %>
+</div>
+
+

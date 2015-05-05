@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <li>
+      <div>Idea</div>
+      <div><%= @idea.title %></div>
+    </li>
+    <li>
+      <div>Description:</div>
+      <div><%= @idea.description %></div>
+    </li>
+  </ul>
+  <%= link_to "Edit", edit_participant_idea_path(@participant, @idea), 
+      class: "btn btn-primary", remote: true %>
+</div>

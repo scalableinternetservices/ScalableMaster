@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/participants/:participant_id/profile' => 'participants/profile#show', as: :participant_profile
   patch '/participants/:participant_id/profile' => 'participants/profile#update'
   put '/participants/:participant_id/profile' => 'participants/profile#update'
+  get '/participants/:participant_id/profile/edit' => 'participants/profile#edit', as: :edit_participant_profile
 
   get '/participants/:participant_id/activities' => 'participants/activities#index', as: :participant_activities
   delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel', as: :participant_activity
@@ -27,11 +28,13 @@ Rails.application.routes.draw do
   delete '/participants/:participant_id/ideas/:id' => 'participants/ideas#destroy'
   get '/participants/:participant_id/ideas/:id/edit' => 'participants/ideas#edit', as: :edit_participant_idea
   get '/participants/:participant_id/summary' => 'participants#summary'
+
   # ---------- organizers ----------
 
   get '/organizers/:organizer_id/profile' => 'organizers/profile#show', as: :organizer_profile
   patch '/organizers/:organizer_id/profile' => 'organizers/profile#update'
   put '/organizers/:organizer_id/profile' => 'organizers/profile#update'
+  get '/organizers/:organizer_id/profile/edit' => 'organizers/profile#edit', as: :edit_organizer_profile
 
   get '/organizers/:organizer_id/activities' => 'organizers/activities#index', as: :organizer_activities
   post '/organizers/:organizer_id/activities' => 'organizers/activities#create'
@@ -47,6 +50,8 @@ Rails.application.routes.draw do
 
   get '/ideas' => 'ideas#index', as: :ideas
   get '/ideas/:id' => 'ideas#show', as: :idea
+  patch '/ideas/:id' => 'ideas#update'
+  put '/ideas/:id' => 'ideas#update'
 
 
   # ---------- Home page -----------

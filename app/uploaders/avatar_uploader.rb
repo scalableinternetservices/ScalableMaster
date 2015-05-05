@@ -25,9 +25,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "avatar/default.png"
   end
 
-  # version :normal do
-  #   process :resize_to_fit => [48, 48]
-  # end
+  version :normal do
+    process :resize_to_fit => [48, 48]
+  end
 
   # version :small do
   #   process :resize_to_fill => [16, 16]
@@ -37,9 +37,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fill => [64, 64]
   # end
 
-  # version :big do
-  #   process :resize_to_fill => [120, 120]
-  # end
+  version :big do
+    process :resize_to_fill => [120, 120]
+  end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   #指定上传文件的格式
