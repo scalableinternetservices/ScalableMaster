@@ -2,10 +2,6 @@ class ParticipantsController < ApplicationController
   before_action :authenticate_participant!
 	before_action :set_participant, only: [:summary]
 
-
-
-
-
   def summary
     count = @participant.activities.count
     if(count > 8) 

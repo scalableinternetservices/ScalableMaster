@@ -2,6 +2,10 @@ class OrganizersController < ApplicationController
   
   before_action :set_organizer, only: [:summary]
 
+  def home
+    redirect_to organizer_summary_path(current_organizer[:id])
+  end
+
   def summary
     count = @organizer.activities.count
     if(count > 8) 
@@ -9,7 +13,6 @@ class OrganizersController < ApplicationController
     else
       @activities = @organizer.activities
     end
-    
 
   end
 

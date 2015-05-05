@@ -18,6 +18,8 @@
 <body class="<%= controller.controller_name%>">
   <div class="page-header" id="header">
     <h1>Gatheracty</h1>
+    <%= link_to 'Participant log in', new_participant_session_path, method: :get %>
+    <%= link_to 'Organizer log in', new_organizer_session_path, method: :get %>
     <% if participant_signed_in? %>
     <%= link_to 'Sign out', destroy_participant_session_path, method: :delete %>
     <% elsif organizer_signed_in? %>

@@ -2,8 +2,12 @@ class HomepageController < ApplicationController
   protect_from_forgery with: :null_session
   skip_before_filter :verify_authenticity_token
 
+  def index
+  end
+
   def homepage_index
-    @participant = Participant.find(params[:participant_id])
+    # @participant = Participant.find(params[:participant_id])
+    @participant = Participant.find(current_participant[:id])
   end
 
 
@@ -13,7 +17,7 @@ class HomepageController < ApplicationController
     puts lat.nil?
     puts lng.nil?
 
-    @participant = Participant.find(params[:participant_id])
+    @participant = Participant.find(current_participant[:id])
 
     if true
 		  puts "You get into the loop"

@@ -1,12 +1,4 @@
 class Participants::RegistrationsController < Devise::RegistrationsController
-  before_filter :if_signed_in, except: [:destroy]
-
-  private 
-    def if_signed_in
-      if participant_signed_in? || organizer_signed_in?
-        redirect_to root_path
-      end
-    end
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
