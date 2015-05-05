@@ -1,3 +1,18 @@
+<div class="page-header">
+<div id="navi">
+<ul class="nav nav-pills">
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/profile"%>>Profile</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/activities"%>>My Activity</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/ideas"%>>My Ideas</a></li>
+</ul>
+</div>
+</div>
+
+<a href=<%= "/participants/#{@participant.id}/ideas/new"%>>Create Idea</a>
+<br>
+<a href=<%= "/ideas" %>>Ideas</a>
+
 <div class="container">
 <div class="row">
 <% @activities.each do |activity| %>
@@ -11,4 +26,21 @@
     </div>
 <% end %>
 </div>
+
+<div class="row">
+<% @ideas.each do |idea| %>
+    <div class="col-md-3">
+      <p class="text-center">
+      	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%= idea.description%>"><%= idea.title %></button>
+      </p>
+    </div>
+<% end %>
 </div>
+
+</div>
+
+<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+</script>

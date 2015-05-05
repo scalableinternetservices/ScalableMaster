@@ -1,10 +1,10 @@
 <div class="page-header">
 <div id="navi">
 <ul class="nav nav-pills">
-  <li role="presentation" class="activeo"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/profile"%>>Profile</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/activities"%>>My Activity</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/ideas"%>>My Ideas</a></li>
+  <li role="presentation" class="activeo"><a href=<%= "/organizers/#{@organizer.id}/summary"%> >Summary</a></li>
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/profile" %> >Profile</a></li>
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/activities"%> >My Activity</a></li>
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/ideas" %> >My Ideas</a></li>
 </ul>
 </div>
 </div>
@@ -15,11 +15,11 @@
 <div class="container">
 <div class="row">
 	<div class="summary-profile">
-		<h3><%= @participant.name%></h3>
+		<h3><%= @organizer.name%></h3>
 		<h4><span class="glyphicon glyphicon-map-marker"></span>&nbsp
 			Los Angeles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<span class="glyphicon glyphicon-grain"></span>
-			<%= @participant.email%>
+			<%= @organizer.email%>
 		</h4>
 	</div>
 	
@@ -27,7 +27,7 @@
 		<h4>My Activity</h4>
 		<% @activities.each do |activity|%>
 			<div class="col-md-3">
-			  <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
+			  <a class="thumbnail" href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
 			  	  <%= image_tag(activity.img_url) %>
 			  </a>  
 			  <p>
@@ -37,16 +37,13 @@
 			</div>
 		<% end %>
 		<div class= "clear"></div>
-
 	</div>
-    
-    <div class= "clear"></div>
+
+	<div class= "clear"></div>
 
 	<div class="summary-idea">
 		<h4>My Ideas</h4>
-		<% @ideas.each do |idea| %>
-			<p><%= idea.title %></p>
-		<% end %>
-	</div>
+	</div>    
+	<div class= "clear"></div>
 </div>
 </div>

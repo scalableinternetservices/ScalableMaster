@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
   put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
 
+  get '/organizers/:organizer_id/summary' => 'organizers#summary'
+
   # ---------- ideas ----------
 
   get '/ideas' => 'ideas#index', as: :ideas
@@ -47,8 +49,8 @@ Rails.application.routes.draw do
 
 
   # ---------- Home page -----------
-  get '/homepage' => 'homepage#homepage_index'
-  post '/homepage' => 'homepage#homepage_activity'
+  get '/homepage/:participant_id' => 'homepage#homepage_index'
+  post '/homepage/:participant_id' => 'homepage#homepage_activity'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

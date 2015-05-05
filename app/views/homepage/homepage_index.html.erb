@@ -2,9 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+<div class="container">
 <p>
+<%= "#{@participant.id}" %>
 Demo of geolocation using HTML5 API
 </p>
+</div>
 
 <script type="text/javascript">
 
@@ -23,7 +26,8 @@ Demo of geolocation using HTML5 API
   {
     user_lat = position.coords.latitude;
     user_lng = position.coords.longitude;
-    myRedirect("http://localhost:3000/homepage", "lat", user_lat,"lng",user_lng);
+    temp = "<%= "http://localhost:3000/homepage/#{@participant.id}" %>";
+    myRedirect(temp, "lat", user_lat,"lng",user_lng);
   }
 </script>
 

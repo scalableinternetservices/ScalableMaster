@@ -1,8 +1,11 @@
 class HomepageController < ApplicationController
 
-  protect_from_forgery with: :null_session
-  def homepage_index
 
+  protect_from_forgery with: :null_session
+  skip_before_filter :verify_authenticity_token
+
+  def homepage_index
+    @participant = Participant.find(params[:participant_id])
   end
 
 
@@ -11,6 +14,9 @@ class HomepageController < ApplicationController
     lng = params["lng"]
     puts lat.nil?
     puts lng.nil?
+
+    @participant = Participant.find(params[:participant_id])
+
     if true
 		  puts "You get into the loop"
       string_geocode = lat.to_s + "," + lng.to_s
@@ -32,14 +38,13 @@ class HomepageController < ApplicationController
       @activities = Activity.all
     end
 
+    @ideas = Idea.all
+
     #respond_to do |format|
     #  format.html { redirect_to action: :homepage_index }
     #  format.js
     #end
-
-  end
-    
- 
-
+  
+end
 
 end
