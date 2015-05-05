@@ -7,10 +7,10 @@
 <div class="page-header">
 	<div id="navi">
 	<ul class="nav nav-pills">
-	  <li role="presentation"><a href="#">Summary</a></li>
-	  <li role="presentation"><a href="#">Profile</a></li>
-	  <li role="presentation" class="activeo"><a href="#">Organized Activity</a></li>
-	  <li role="presentation"><a href="#">Related Ideas</a></li>
+	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/summary"%>>Summary</a></li>
+	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/profile" %>>Profile</a></li>
+	  <li role="presentation" class="activeo"><a href=<%= "/organizers/#{@organizer.id}/activities"%>>My Activity</a></li>
+	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/ideas" %>>Related Ideas</a></li>
 	</ul>
 	</div>
 </div>
@@ -24,7 +24,7 @@
 <div class="row">
 <% @organizer.activities.each do |activity| %>
 	<div class="col-md-3">
-	  <a class="thumbnail">
+	  <a class="thumbnail" href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
 	  	  <%= image_tag(activity.avatar_url) if activity.avatar? %>
 	  </a>  
 	  <p class="text-center">

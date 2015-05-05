@@ -1,14 +1,11 @@
 class ParticipantsController < ApplicationController
-
+  before_action :authenticate_participant!
 	before_action :set_participant, only: [:summary]
-
-
-
 
   def summary
     count = @participant.activities.count
     if(count > 8) 
-      @activities = @participant.activities[0..7]
+      @activities = @participant.activities[0..9]
     else
       @activities = @participant.activities
     end
@@ -19,6 +16,7 @@ class ParticipantsController < ApplicationController
 
   private
     def set_participant
+      # @participant = Participant.find(current_participant[:id])
       @participant = Participant.find(params[:participant_id])
     end
 
