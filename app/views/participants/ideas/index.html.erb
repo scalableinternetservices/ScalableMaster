@@ -1,4 +1,15 @@
-<div>
+<div class="page-header">
+<div id="navi">
+<ul class="nav nav-pills">
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/profile"%>>Profile</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/activities"%>>My Activity</a></li>
+  <li role="presentation" class="activeo"><a href=<%= "/participants/#{@participant.id}/ideas"%>>My Ideas</a></li>
+</ul>
+</div>
+</div>
+
+<div class="container">
   <h4>Ideas:</h4>
   <ul>
     <% @ideas.each do |idea| %>

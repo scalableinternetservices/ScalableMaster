@@ -1,3 +1,14 @@
+<div class="page-header">
+<div id="navi">
+<ul class="nav nav-pills">
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/summary"%> >Summary</a></li>
+  <li role="presentation" class="activeo"><a href=<%= "/participants/#{@participant.id}/profile" %> >Profile</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/activities"%> >My Activity</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/ideas" %> >My Ideas</a></li>
+</ul>
+</div>
+</div>
+
 <div>
   <strong>Participant:</strong>
   <%= form_for @participant, url: participant_profile_path(@participant), method: :patch do |f| %>
@@ -39,5 +50,5 @@
     <%= f.submit "Submit", { class: 'btn btn-default', disable_with: 'Submiting...' } %>
 
   <% end %>
-</div>
 
+</div>
