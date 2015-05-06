@@ -1,4 +1,5 @@
 class Participants::ActivitiesController < Participants::BaseController
+  before_action :set_activity, only: [ :cancel, :rejoin, :show ]
 
   def index
   end
@@ -23,4 +24,11 @@ class Participants::ActivitiesController < Participants::BaseController
     end
   end
 
+  private
+
+    def set_activity
+      @activity = Activity.find(params[:id])
+    end
+
+    
 end

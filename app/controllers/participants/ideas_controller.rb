@@ -1,4 +1,5 @@
 class Participants::IdeasController < Participants::BaseController
+  before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   def index
     @ideas = @participant.ideas.all
@@ -55,6 +56,17 @@ class Participants::IdeasController < Participants::BaseController
       format.js
     end
   end
+
+  private 
+    def set_idea
+      @idea = Idea.find(params[:id])
+    end
+
+ 
+
+    def idea_params
+      params.require(:idea).permit(:title, :description)
+    end
 
 
 end
