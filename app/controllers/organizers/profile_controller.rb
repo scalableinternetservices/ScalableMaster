@@ -1,7 +1,4 @@
-class Organizers::ProfileController < ApplicationController
-
-  before_action :set_organizer, only: [ :show, :edit, :update ]
-
+class Organizers::ProfileController < Organizers::BaseController
   def show 
     respond_to do |format|
       format.html
@@ -27,14 +24,4 @@ class Organizers::ProfileController < ApplicationController
       end
     end
   end
-
-  private
-    def set_organizer
-      @organizer = Organizer.find(params[:organizer_id])
-    end
-
-    def organizer_params
-      params.require(:organizer).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar)
-    end
-
 end

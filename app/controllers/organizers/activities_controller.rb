@@ -1,7 +1,5 @@
-class Organizers::ActivitiesController < ApplicationController
-  before_action :set_organizer
-  before_action :set_activity, only: [ :edit, :update ]
-  
+class Organizers::ActivitiesController < Organizers::BaseController
+
   def index
   end
 
@@ -37,17 +35,6 @@ class Organizers::ActivitiesController < ApplicationController
   end
 
 
-  private
-    def set_organizer
-      @organizer = Organizer.find(params[:organizer_id])
-    end
-
-    def set_activity
-      @activity = Activity.find(params[:activity_id])
-    end
-
-    def activity_params
-      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar)
-    end
+  
 
 end

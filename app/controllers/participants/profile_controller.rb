@@ -1,6 +1,4 @@
-class Participants::ProfileController < ApplicationController
-
-  before_action :set_participant, only: [ :show, :edit, :update ]
+class Participants::ProfileController < Participants::BaseController
 
   def show
     respond_to do |format|
@@ -28,14 +26,5 @@ class Participants::ProfileController < ApplicationController
       end
     end
   end
-
-  private
-    def set_participant
-      @participant = Participant.find(params[:participant_id])
-    end
-
-    def participant_params
-      params.require(:participant).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar)
-    end
 
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :organizers, controllers: { sessions: "organizers/sessions", registrations: "organizers/registrations" }
   devise_for :participants, controllers: { sessions: "participants/sessions", registrations: "participants/registrations" }
-  # root 'homepage#index'
+  root 'homepage#index'
 
   # ---------- activities ----------
 
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
 
   get '/organizers/:organizer_id/summary' => 'organizers#summary', as: :organizer_summary
+  get '/organizers' => 'organizers#index', as: :organizer_root
 
   # ---------- ideas ----------
 
@@ -56,28 +57,28 @@ Rails.application.routes.draw do
 
   # ---------- Home page -----------
   # get '/homepage/:participant_id' => 'homepage#homepage_index'
-  get '/homepage' => 'homepage#homepage_index', as: :homepage
+  get '/homepage' => 'homepage#homepage_index', as: :participant_root
   post '/homepage' => 'homepage#homepage_activity'
 
-  devise_scope :participant do
-    authenticated :participant do
-      root to: 'homepage#homepage_index', as: :participant_homepage
-    end
+  # devise_scope :participants do
+  #   authenticated :participants do
+  #     root to: 'homepage#homepage_index', as: :participant_homepage
+  #   end
 
-    unauthenticated do
-      root to: 'homepage#index', as: :home
-    end
-  end
+  #   unauthenticated do
+  #     root to: 'homepage#index', as: :home
+  #   end
+  # end
 
-  devise_scope :organizer do
-    authenticated :organizer do
-      root to: 'organizers#home', as: :organizer_homepage
-    end
+  # devise_scope :organizers do
+  #   authenticated :organizers do
+  #     root to: 'organizers#summary', as: :organizer_homepage
+  #   end
 
-    unauthenticated do
-      root to: 'homepage#index'
-    end
-  end
+  #   unauthenticated do
+  #     root to: 'homepage#index'
+  #   end
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

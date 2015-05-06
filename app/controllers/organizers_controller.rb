@@ -1,8 +1,10 @@
-class OrganizersController < ApplicationController
-  
-  before_action :set_organizer, only: [:summary]
+class OrganizersController < Organizers::BaseController
 
   def home
+    redirect_to organizer_summary_path(current_organizer[:id])
+  end
+
+  def index
     redirect_to organizer_summary_path(current_organizer[:id])
   end
 
@@ -15,14 +17,5 @@ class OrganizersController < ApplicationController
     end
 
   end
-
-  private
-    def set_organizer
-      @organizer = Organizer.find(params[:organizer_id])
-    end
-
-    def organizer_params
-      params.require(:organizer).permit(:name, :nickname, :gender, :age, :phone, :address, :img_url)
-    end
 
 end

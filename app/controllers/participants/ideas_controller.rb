@@ -1,7 +1,4 @@
-class Participants::IdeasController < ApplicationController
-
-  before_action :set_participant
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+class Participants::IdeasController < Participants::BaseController
 
   def index
     @ideas = @participant.ideas.all
@@ -59,17 +56,5 @@ class Participants::IdeasController < ApplicationController
     end
   end
 
-  private
-    def set_idea
-      @idea = Idea.find(params[:id])
-    end
-
-    def set_participant
-      @participant = Participant.find(params[:participant_id])
-    end
-
-    def idea_params
-      params.require(:idea).permit(:title, :description)
-    end
 
 end
