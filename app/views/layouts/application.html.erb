@@ -18,13 +18,38 @@
 <body class="<%= controller.controller_name%>">
   <div class="page-header" id="header">
     <h1>Gatheracty</h1>
-    <%= link_to 'Participant log in', new_participant_session_path, method: :get %>
-    <%= link_to 'Organizer log in', new_organizer_session_path, method: :get %>
-    <% if participant_signed_in? %>
-    <%= link_to 'Sign out', destroy_participant_session_path, method: :delete %>
-    <% elsif organizer_signed_in? %>
-    <%= link_to 'Sign out', destroy_organizer_session_path, method: :delete %>
-    <% end %>
+    <div class="row bar">
+      <div class="col-xs-3"></div>   
+
+      <div class="col-xs-3">
+        <a class="log" href=<%= "/ideas" %>>Ideas</a>
+      </div>
+
+      <% if !participant_signed_in? && !organizer_signed_in?%>
+        <div class="col-xs-3">
+          <%= link_to 'Participant log in', new_participant_session_path, method: :get, :class=>"log" %>
+        </div>
+        <div class="col-xs-3">
+          <%= link_to 'Organizer log in', new_organizer_session_path, method: :get, :class=>"log" %>
+        </div>
+      <% end %>
+
+      <% if participant_signed_in? %>
+        <div class="col-xs-3">
+          <a class="log" href=<%= "/participants/#{current_participant[:id]}/ideas/new"%>>Create Idea</a>
+        </div>
+        <div class="col-xs-3">
+          <%= link_to 'Sign out', destroy_participant_session_path, method: :delete, :class=>"log" %>
+        </div>
+      <% elsif organizer_signed_in? %>
+        <div class="col-xs-3">
+          <a class="log" href=<%= "/organizers/#{current_organizer[:id]}/activities/new"%>>Create Activity</a>
+        </div>
+        <div class="col-xs-3">
+          <%= link_to 'Sign out', destroy_organizer_session_path, method: :delete, :class=>"log" %>
+        </div>
+      <% end %>
+  </div>
   </div>
   <div id="main">
 <!--  When we invoke yield on page 44 yield, Rails automatically substitutes in the page-specific content—the stuff

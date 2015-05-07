@@ -3,18 +3,14 @@
 
 <!-- showing the details of a participant -->
 
-<span id="name">
-  <!-- <strong>Participant Name:</strong>  -->
-  <%= @participant.name.capitalize! %>
-</span>
 
   <div class="page-header">
     <div id="navi">
     <ul class="nav nav-pills">
-      <li role="presentation"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
-      <li role="presentation"><a href=<%= "/participants/#{@participant.id}/profile"%>>Profile</a></li>
-      <li role="presentation" class="activeo"><a href=<%= "/participants/#{@participant.id}/activities"%>>My Activity</a></li>
-      <li role="presentation"><a href=<%= "/participants/#{@participant.id}/ideas"%>>My Ideas</a></li>
+      <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
+      <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/profile"%>>Profile</a></li>
+      <li role="presentation" class="activeo"><a href=<%= "/participants/#{current_participant[:id]}/activities"%>>My Activity</a></li>
+      <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
     </ul>
     </div>
     <div class="headpic"><%= image_tag(@participant.activities.find(1).img_url, class: 'headpotrait') %></div>
@@ -29,7 +25,7 @@
         <% @participant.activities.each do |activity| %>
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <a class="thumbnail"><%= image_tag(activity.img_url) %></a>
+              <a class="thumbnail" href=<%= "/activities/#{activity.id}"%>><%= image_tag(activity.img_url) %></a>
               <div>
                 <strong> Activity Name: </strong> <%= activity.name %>
                 <%= link_to "Cancel", participant_activity_path(@participant, activity), 
