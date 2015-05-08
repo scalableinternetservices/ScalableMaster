@@ -49,5 +49,6 @@ test:
 production:
   <<: *default
   database: Gatheracty_production
-  username: Gatheracty
-  password: <%= ENV['GATHERACTY_DATABASE_PASSWORD'] %>
+  # username: Gatheracty
+  # password: <%= ENV['GATHERACTY_DATABASE_PASSWORD'] %>
+
