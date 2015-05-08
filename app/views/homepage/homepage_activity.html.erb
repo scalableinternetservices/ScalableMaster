@@ -1,23 +1,25 @@
+<% if participant_signed_in? %>
 <div class="page-header">
 <div id="navi">
 <ul class="nav nav-pills">
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/profile"%>>Profile</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/activities"%>>My Activity</a></li>
-  <li role="presentation"><a href=<%= "/participants/#{@participant.id}/ideas"%>>My Ideas</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/profile"%>>Profile</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/activities"%>>My Activity</a></li>
+  <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
 </ul>
 </div>
 </div>
 
-<a href=<%= "/participants/#{@participant.id}/ideas/new"%>>Create Idea</a>
-<br>
-<a href=<%= "/ideas" %>>Ideas</a>
+<% end %>
 
 <div class="container">
+
+<h4 style="margin-top:-20px;text-align:center;"><span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
+<br>
 <div class="row">
 <% @activities.each do |activity| %>
     <div class="col-md-3">
-      <a class="thumbnail">
+      <a class="thumbnail" href=<%= "/activities/#{activity.id}"%>>
           <%= image_tag(activity.avatar_url) if activity.avatar? %>
       </a>  
       <p class="text-center">
