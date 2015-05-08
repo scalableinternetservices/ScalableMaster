@@ -40,13 +40,14 @@ end
 10.times do |xx|
 	x = xx + 1
 	Activity.create!(name: "act#{x}",
-									 description: "description",
-									 img_url: "act_img_url#{x}.jpg",
-									 phone: "1111",
-									 address: "2222",
-									 scale: 10,
-									 email: "service@example.com",
-									 organizer_id: x)
+					 description: "description",
+					 img_url: "act_img_url#{x}.jpg",
+					 phone: "1111",
+					 address: "2222",
+					 scale: 10,
+					 email: "service@example.com",
+					 organizer_id: x,
+					 city_name: "Los Angeles")
 end
 
 10.times do |xx|

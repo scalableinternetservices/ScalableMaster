@@ -19,28 +19,31 @@ class HomepageController < ApplicationController
 
     @participant = Participant.find(current_participant[:id])
 
-    if true
-		  puts "You get into the loop"
-      string_geocode = lat.to_s + "," + lng.to_s
-      location = Geocoder.search(string_geocode)
-      tmp_hash_array = location[0].data["address_components"]
+    
+	  puts "You get into the loop"
+    string_geocode = lat.to_s + "," + lng.to_s
+    location = Geocoder.search(string_geocode)
+    tmp_hash_array = location[0].data["address_components"]
 
-      puts tmp_hash_array
-      user_city_name = ""
-      tmp_hash_array.each do |x|
-	      if x["types"][0] == "locality"
-		      user_city_name = x["long_name"]
-        end
+    puts tmp_hash_array
+    user_city_name = ""
+    tmp_hash_array.each do |x|
+      if x["types"][0] == "locality"
+	      user_city_name = x["long_name"]
       end
-      puts user_city_name
-      @activities = Activity.where(:city_name => user_city_name)
+    end
+    puts user_city_name
+    @activities = Activity.where(:city_name => user_city_name)
       #@activities = []
       #@activities << Activity.all[0]
-    else
+    if @activities.nil? || @activities.length==0
       @activities = Activity.all
     end
 
+
     @ideas = Idea.all
+
+
 
     #respond_to do |format|
     #  format.html { redirect_to action: :homepage_index }

@@ -27,7 +27,7 @@ Demo of geolocation using HTML5 API
     user_lat = position.coords.latitude;
     user_lng = position.coords.longitude;
     
-    temp = '<%= participant_root_url %>';
+    temp = '<%= participant_homepage_url %>';
     // alert(temp)
     myRedirect(temp, "lat", user_lat,"lng",user_lng);
   }
