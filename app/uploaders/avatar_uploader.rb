@@ -22,7 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   
     #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    "avatar/default.png"
+    "images/222.jpg"
   end
 
   version :normal do

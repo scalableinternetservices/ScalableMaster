@@ -1,1 +1,31 @@
-<h1> Home Page </h1>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<script type="text/javascript">
+
+  var myRedirect = function(redirectUrl, arg1, value1,arg2,value2) {
+  var form = $('<form action="' + redirectUrl + '" method="post">' +
+  '<input type="hidden" name="'+ arg1 +'" value="' + value1 + '"></input>' + '<input type="hidden" name="'+ arg2 +'" value="' + value2 + '"></input>' + '</form>');
+  $('body').append(form);
+  $(form).submit();
+};
+
+
+  var user_lat;
+  var user_lng;
+  navigator.geolocation.getCurrentPosition(showPosition);
+  function showPosition(position)
+  {
+    user_lat = position.coords.latitude;
+    user_lng = position.coords.longitude;
+    
+    temp = '<%= participant_homepage_url %>';
+    // alert(temp)
+    myRedirect(temp, "lat", user_lat,"lng",user_lng);
+  }
+</script>
+<body>
+<div class="container">
+</div>
+</body>
+</html>
