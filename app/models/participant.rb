@@ -8,4 +8,5 @@ class Participant < ActiveRecord::Base
   has_many :ideas
 
   mount_uploader :avatar, AvatarUploader
+
 end
