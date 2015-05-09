@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+ 
   devise_for :organizers, controllers: { sessions: "organizers/sessions", registrations: "organizers/registrations" }
   devise_for :participants, controllers: { sessions: "participants/sessions", registrations: "participants/registrations" }
   root 'homepage#index'
@@ -16,8 +16,12 @@ Rails.application.routes.draw do
   get '/participants/:participant_id/profile/edit' => 'participants/profile#edit', as: :edit_participant_profile
 
   get '/participants/:participant_id/activities' => 'participants/activities#index', as: :participant_activities
-  delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel', as: :participant_activity
+  get '/participants/:participant_id/activities/:id' => 'participants/activities#show', as: :participant_activity
+  delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel'
   put '/participants/:participant_id/activities/:id' => 'participants/activities#rejoin'
+
+  delete '/participants/:participant_id/activities/:id/detail' => 'participants/activities#canclejoin', as: :participant_activity_detail
+  put '/participants/:participant_id/activities/:id/detail' => 'participants/activities#join'
 
   get '/participants/:participant_id/ideas' => 'participants/ideas#index', as: :participant_ideas
   post '/participants/:participant_id/ideas' => 'participants/ideas#create'
@@ -40,9 +44,11 @@ Rails.application.routes.draw do
   post '/organizers/:organizer_id/activities' => 'organizers/activities#create'
   get '/organizers/:organizer_id/activities/new' => 'organizers/activities#new', as: :new_organizer_activities
 
-  get '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#edit', as: :organizer_activity
+
+  get '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#show', as: :organizer_activity
   patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
   put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
+  get '/organizers/:organizer_id/activities/:activity_id/edit' => 'organizers/activities#edit', as: :edit_organizer_activity
 
   get '/organizers/:organizer_id/summary' => 'organizers#summary', as: :organizer_summary
   get '/organizers' => 'organizers#index', as: :organizer_root
