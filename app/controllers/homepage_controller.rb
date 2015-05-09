@@ -3,11 +3,16 @@ class HomepageController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
+    if participant_signed_in?
+      @participant = Participant.find(current_participant[:id])
+    end
   end
 
   def homepage_index
     # @participant = Participant.find(params[:participant_id])
-    @participant = Participant.find(current_participant[:id])
+    if participant_signed_in?
+      @participant = Participant.find(current_participant[:id])
+    end  
   end
 
 
@@ -17,8 +22,9 @@ class HomepageController < ApplicationController
     puts lat.nil?
     puts lng.nil?
 
-    @participant = Participant.find(current_participant[:id])
-
+    if participant_signed_in?
+      @participant = Participant.find(current_participant[:id])
+    end
     
 	  puts "You get into the loop"
     string_geocode = lat.to_s + "," + lng.to_s
@@ -34,6 +40,7 @@ class HomepageController < ApplicationController
     end
     puts user_city_name
     @activities = Activity.where(:city_name => user_city_name)
+    @city_name = user_city_name
       #@activities = []
       #@activities << Activity.all[0]
     if @activities.nil? || @activities.length==0
