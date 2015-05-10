@@ -3,7 +3,6 @@ class Idea < ActiveRecord::Base
 	belongs_to :participant
 
   def tag_names
-    # Tag.all.map { |o| o.name }.join(",")
     self.tags.map { |o| o.name }.join(",")
   end
 

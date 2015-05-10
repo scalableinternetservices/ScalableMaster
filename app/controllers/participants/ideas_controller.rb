@@ -1,5 +1,6 @@
 class Participants::IdeasController < Participants::BaseController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:edit, :new]
 
   def index
     @ideas = @participant.ideas.all
@@ -61,6 +62,10 @@ class Participants::IdeasController < Participants::BaseController
   private 
     def set_idea
       @idea = Idea.find(params[:id])
+    end
+
+    def set_tags
+      @all_tags = Tag.all
     end
 
     def idea_params
