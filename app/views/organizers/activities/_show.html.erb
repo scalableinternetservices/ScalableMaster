@@ -1,0 +1,26 @@
+<div>
+  <ul>
+    <li>
+      <header>Name</header>
+      <div><%= @activity.name %></div>
+    </li>
+    <li>
+      <header>Description</header>
+      <div><%= @activity.description %></div>
+    </li>
+    <li>
+      <header>Phone</header>
+      <div><%= @activity.phone %></div>
+    </li>
+    <li>
+      <header>Address</header>
+      <div><%= @activity.address %></div>
+    </li>
+    <li>
+      <header>Image</header>
+      <div><%= image_tag @activity.avatar_url(:big) if @activity.avatar? %></div>
+    </li>
+  </ul>
+  <%= link_to "Edit", edit_organizer_activity_path(@organizer, @activity), 
+      class: "btn btn-primary", remote: true %>
+</div>
