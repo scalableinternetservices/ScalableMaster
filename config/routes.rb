@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/participants/:participant_id/profile' => 'participants/profile#show', as: :participant_profile
   patch '/participants/:participant_id/profile' => 'participants/profile#update'
+  post '/participants/:participant_id/profile' => 'participants/profile#update'
   put '/participants/:participant_id/profile' => 'participants/profile#update'
   get '/participants/:participant_id/profile/edit' => 'participants/profile#edit', as: :edit_participant_profile
 

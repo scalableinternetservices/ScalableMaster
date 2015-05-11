@@ -32,9 +32,8 @@
 
   <div class="form-group">
     <%= f.label :avatar, "Image" %>
-    <%= image_tag(@organizer.avatar_url(:normal)) if @organizer.avatar? %>
+    <%= image_tag(@participant.avatar.url(:thumb)) if @participant.avatar? %>
     <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
   </div>
 
   <%= f.submit "Submit", { class: 'btn btn-primary', disable_with: 'Submiting...' } %>

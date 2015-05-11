@@ -26,7 +26,7 @@
     </li>
     <li>
       <header>Image</header>
-      <div><%= image_tag @organizer.avatar_url(:big) if @organizer.avatar? %></div>
+      <div><%= image_tag @participant.avatar.url(:medium) if @participant.avatar? %></diqv>
     </li>
   </ul>
   <%= link_to "Edit", edit_organizer_profile_path(@organizer), 
