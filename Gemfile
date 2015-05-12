@@ -37,7 +37,7 @@ gem 'autoprefixer-rails'
 
 #file-image-upload
 gem "paperclip", "~> 4.2"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'fog'
 # Geocoder is a complete geocoding solution for Ruby. 
 gem 'geocoder'
