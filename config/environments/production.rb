@@ -80,6 +80,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # config.serve_static_files=true
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_credentials => {
+      :use_iam_profile => true,
+      :provider => 'AWS',
+      :region => 'us-west-2'
+    },
+    :fog_directory => 'scalableinternetservices',
+    :path => 'ScalableMaster/'
+  }
 end
 
 
