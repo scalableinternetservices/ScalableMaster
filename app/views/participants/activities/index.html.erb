@@ -25,7 +25,7 @@
         <% @participant.activities.each do |activity| %>
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.img_url) %></a>
+              <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
               <div>
                 <strong> Activity Name: </strong> <%= activity.name %>
                 <%= link_to "Cancel", participant_activity_path(@participant, activity), 

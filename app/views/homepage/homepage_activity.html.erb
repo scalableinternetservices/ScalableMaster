@@ -20,7 +20,7 @@
 <% @activities.each do |activity| %>
     <div class="col-md-3">
       <a class="thumbnail" href=<%= "/activities/#{activity.id}"%>>
-          <%= image_tag(activity.avatar_url) if activity.avatar? %>
+          <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
       </a>  
       <p class="text-center">
         <%= activity.name%>
