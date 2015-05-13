@@ -1,10 +1,14 @@
 class Organizers::ActivitiesController < Organizers::BaseController
-  before_action :set_activity, only: [ :edit, :update ]
   before_action :set_tags, only: [:edit, :create]
+  before_action :set_activity, only: [ :edit, :update, :show ]
   def index
   end
 
   def edit
+  end
+
+  def show
+    @organizer = Organizer.find(params[:organizer_id])
   end
 
   def new

@@ -28,7 +28,7 @@
 		<% @activities.each do |activity|%>
 			<div class="col-md-3">
 			  <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
-			  	  <%= image_tag(activity.img_url) %>
+			  	  <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
 			  </a>  
 			  <p>
 			  	<strong> Activity Name: </strong>

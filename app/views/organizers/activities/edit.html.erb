@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class= "col-sm-6 col-md-4 col-md-offset-4">
+
       <%= form_for @activity, url: organizer_activity_path, :html => {:multipart => true, method: :patch} do |f| %>
         <div class="form-group">
           <%= f.label :name, "Name" %>
@@ -65,4 +66,5 @@
       $('#activity_tag_names').tagsinput('add', new_tag_name);
     });
 </script>
+
 
