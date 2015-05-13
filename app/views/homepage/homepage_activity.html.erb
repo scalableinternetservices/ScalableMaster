@@ -1,5 +1,5 @@
 <% if participant_signed_in? %>
-<div class="page-header">
+<div class="page-header" id="secondheader">
 <div id="navi">
 <ul class="nav nav-pills">
   <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
@@ -19,12 +19,16 @@
 <div class="row">
 <% @activities.each do |activity| %>
     <div class="col-md-3">
-      <a class="thumbnail" href=<%= "/activities/#{activity.id}"%>>
-          <%= image_tag(activity.avatar_url) if activity.avatar? %>
-      </a>  
-      <p class="text-center">
-        <%= activity.name%>
-      </p>
+      <div class="thumbnail">
+        <a href=<%= "/activities/#{activity.id}"%>>
+            <%= image_tag(activity.avatar_url) if activity.avatar? %>
+        </a>  
+        <div class="caption">
+          <p class="text-center">
+            <%= activity.name%>
+          </p>
+        </div>
+      </div>
     </div>
 <% end %>
 </div>

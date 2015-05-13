@@ -1,36 +1,41 @@
-<div>
+<div id="profile">
   <ul>
     <li>
-      <header>Name</header>
-      <div><%= @participant.name %></div>
+      <header class="profile_context"><b>Name</b></header>
+      <p><%= @participant.name %></p>
     </li>
     <li>
-      <header>Nickname</header>
-      <div><%= @participant.nickname %></div>
+      <header class="profile_context"><b>Nickname</b></header>
+      <p><%= @participant.nickname %></p>
     </li>
     <li>
-      <header>Gender</header>
-      <div><%= @participant.gender %></div>
+      <header class="profile_context"><b>Gender</b></header>
+      <p><%= @participant.gender %></p>
     </li>
     <li>
-      <header>Age</header>
-      <div><%= @participant.age %></div>
+      <header class="profile_context"><b>Age</b></header>
+      <p><%= @participant.age %></p>
     </li>
     <li>
-      <header>Phone</header>
-      <div><%= @participant.phone %></div>
+      <header class="profile_context"><b>Phone</b></header>
+      <p><%= @participant.phone %></p>
     </li>
     <li>
-      <header>Address</header>
-      <div><%= @participant.address %></div>
+      <header class="profile_context"><b>Address</b></header>
+      <p><%= @participant.address %></p>
     </li>
     <li>
-      <header>Image</header>
-      <div><%= image_tag @participant.avatar_url(:big) if @participant.avatar? %></diqv>
+      <header class="profile_context"><b>Image</b></header>
+      <p>&nbsp</p>
+      <%= image_tag @participant.avatar_url(:big) if @participant.avatar? %>
     </li>
   </ul>
+
+  <br>
+  <br>
   <%= link_to "Edit", edit_participant_profile_path(@participant), 
-      class: "btn btn-primary", remote: true %>
+      class: "btn btn-primary edit", remote: true %>
+</div>
 </div>
 
 

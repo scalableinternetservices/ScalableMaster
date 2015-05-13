@@ -18,7 +18,7 @@ body {
 	margin: 0;
 	padding: 0;
 	height:100%;
-	background: #f0f0f0 url(https://dribbble.com/assets/noise-f1-ebf1e3aadb4f63bf8ca0f1b032cadb97.gif) repeat -70% 0;
+	background: #ffffff;
 
 }
 #header h1 {
@@ -26,13 +26,14 @@ body {
 	margin-left: 7%;
 	color: #ffffff;
 	font-family: fantasy;
-	font-size: 210%;
+	font-size: 160%;
 }
 
  #header {
  	margin-top: -20px;
- 	background: #333232;
- 	margin-bottom: 50px;
+ 	background: #2f373a;
+ 	margin-bottom: 0px;
+ 	padding-bottom: 0px;
 
  }
 
