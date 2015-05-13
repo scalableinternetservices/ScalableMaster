@@ -18,7 +18,8 @@
                     phone: "1111",
                     address: "2222",
                     img_url: "org_img_url#{x}.jpg",
-                    intro: "3333")
+                    intro: "3333",
+                    avatar_file_name: "1.jpg")
 end
 
 
@@ -33,7 +34,8 @@ end
                       age: 1,
                       phone: "1111",
                       address: "2222",
-                      img_url: "par_img_url#{x}.jpg")
+                      img_url: "par_img_url#{x}.jpg",
+                      avatar_file_name: "1.jpg")
 end
 
 
