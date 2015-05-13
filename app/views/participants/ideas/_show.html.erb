@@ -5,8 +5,12 @@
       <div><%= @idea.title %></div>
     </li>
     <li>
-      <div>Description:</div>
+      <div>Description</div>
       <div><%= @idea.description %></div>
+    </li>
+    <li>
+      <div>Tag</div>
+      <div><%= @idea.tag_names %></div>
     </li>
   </ul>
   <%= link_to "Edit", edit_participant_idea_path(@participant, @idea), 

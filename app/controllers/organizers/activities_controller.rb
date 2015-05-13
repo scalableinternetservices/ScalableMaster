@@ -1,4 +1,5 @@
 class Organizers::ActivitiesController < Organizers::BaseController
+  before_action :set_tags, only: [:edit, :create]
   before_action :set_activity, only: [ :edit, :update, :show ]
   def index
   end
@@ -14,6 +15,9 @@ class Organizers::ActivitiesController < Organizers::BaseController
     @activity = @organizer.activities.new
   end
 
+  def set_tags
+    @all_tags = Tag.all
+  end
 
   def create
     @activity = @organizer.activities.create(activity_params)
@@ -30,7 +34,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
 
   def update
     respond_to do |format|
-      if @activity.update(activity_params)
+      if @activity.update(activity_params) && @activity.update_tags(tags_params)
           format.html { redirect_to :organizer_activity, notice: 'Activity was successfully updated.' }
       else
           format.html { redirect_to :organizer_activity, notice: 'Failed!' }
