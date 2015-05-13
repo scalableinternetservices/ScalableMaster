@@ -34,10 +34,35 @@
           <%= f.hidden_field :avatar_cache %>
         </div>
 
+        <div class="form-group">
+          <%= f.label :tag_names, "Tag" %>
+          <%= f.text_field :tag_names, class: "form-control", 'data-role'=>'tagsinput' %>
+        </div>
+
+        <div class="form-group" id="all_tags">
+          <% for tag in @all_tags do %>
+            <button type="button" class="btn btn-default"><%= tag.name %></button>
+          <% end %>
+        </div>
+
         <%= f.submit "Submit", { class: 'btn btn-default', disable_with: 'Submiting...' } %>
 
       <% end %>
     </div> 
   </div>
 </div>
+
+
+<script type="text/javascript">
+  //$('*[data-role=tagsinput]').tagsinput();
+
+  $('*[data-role=tagsinput]').tagsinput({
+    // freeInput: true,
+    trimValue: true
+    });
+    $('#all_tags button').click(function() {
+      new_tag_name = $(this).text();
+      $('#activity_tag_names').tagsinput('add', new_tag_name);
+    });
+</script>
 
