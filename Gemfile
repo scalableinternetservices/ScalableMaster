@@ -36,8 +36,9 @@ gem 'autoprefixer-rails'
 # gem 'capistrano-rails', group: :development
 
 #file-image-upload
-gem 'carrierwave'
-gem 'mini_magick'
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '< 2.0'
+gem 'fog'
 # Geocoder is a complete geocoding solution for Ruby. 
 gem 'geocoder'
 

@@ -14,6 +14,6 @@ class Participants::BaseController < ApplicationController
     end
 
     def participant_params
-      params.require(:participant).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar, :avatar_cache)
+      params.require(:participant).permit(:name, :nickname, :gender, :age, :phone, :address, :avatar)
     end
 end

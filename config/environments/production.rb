@@ -12,7 +12,7 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false #here
-  config.action_controller.perform_caching = false #here!!!!
+  config.action_controller.perform_caching = true #here!!!!
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -79,7 +79,17 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.serve_static_files=true
+  # config.serve_static_files=true
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_credentials => {
+      :use_iam_profile => true,
+      :provider => 'AWS',
+      :region => 'us-west-2'
+    },
+    :fog_directory => 'scalableinternetservices',
+    :path => 'ScalableMaster/:class/avatars/:id_partition/:style/:filename'
+  }
 end
 
 
