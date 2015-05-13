@@ -14,7 +14,7 @@ class Organizers::ProfileController < Organizers::BaseController
   end
 
   def update
-    byebug
+    # byebug
     respond_to do |format|
       if @organizer.update(organizer_params)
         format.html { redirect_to organizer_profile_path(@organizer), notice: 'Organizer was successfully updated.' }

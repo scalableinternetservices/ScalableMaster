@@ -25,9 +25,11 @@
       <p><%= @participant.address %></p>
     </li>
     <li>
-      <header class="profile_context"><b>Image</b></header>
-      <p>&nbsp</p>
-      <%= image_tag @participant.avatar_url(:big) if @participant.avatar? %>
+
+    <header>Image</header>
+    <p>&nbsp</p>
+    <div><%= image_tag @participant.avatar.url(:medium) if @participant.avatar? %></diqv>
+
     </li>
   </ul>
 

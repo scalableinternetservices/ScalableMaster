@@ -21,7 +21,7 @@
     <div class="col-md-3">
       <div class="thumbnail">
         <a href=<%= "/activities/#{activity.id}"%>>
-            <%= image_tag(activity.avatar_url) if activity.avatar? %>
+            <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
         </a>  
         <div class="caption">
           <p class="text-center">
@@ -29,6 +29,7 @@
           </p>
         </div>
       </div>
+
     </div>
 <% end %>
 </div>

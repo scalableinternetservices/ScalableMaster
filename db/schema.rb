@@ -11,25 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505204304) do
+ActiveRecord::Schema.define(version: 20150510215143) do
 
   create_table "activities", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.text     "description",  limit: 65535
-    t.string   "img_url",      limit: 255
-    t.string   "phone",        limit: 255
-    t.string   "address",      limit: 255
-    t.float    "latitude",     limit: 24
-    t.float    "longitude",    limit: 24
+    t.string   "name",                limit: 255
+    t.text     "description",         limit: 65535
+    t.string   "img_url",             limit: 255
+    t.string   "phone",               limit: 255
+    t.string   "address",             limit: 255
+    t.float    "latitude",            limit: 24
+    t.float    "longitude",           limit: 24
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "scale",        limit: 4
-    t.string   "email",        limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "organizer_id", limit: 4
-    t.string   "avatar",       limit: 255
-    t.string   "city_name",    limit: 255
+    t.integer  "scale",               limit: 4
+    t.string   "email",               limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "organizer_id",        limit: 4
+    t.string   "avatar",              limit: 255
+    t.string   "city_name",           limit: 255
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
@@ -91,6 +95,10 @@ ActiveRecord::Schema.define(version: 20150505204304) do
     t.string   "img_url",                limit: 255
     t.text     "intro",                  limit: 65535
     t.string   "avatar",                 limit: 255
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "organizers", ["email"], name: "index_organizers_on_email", unique: true, using: :btree
@@ -125,6 +133,10 @@ ActiveRecord::Schema.define(version: 20150505204304) do
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
     t.string   "avatar",                 limit: 255
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

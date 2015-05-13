@@ -2,17 +2,17 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.cache_classes = true #here
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
+  config.eager_load = true #here!
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  config.consider_all_requests_local       = false #here
+  config.action_controller.perform_caching = true #here!!!!
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -29,7 +29,9 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # config.assets.compile = false
+  config.assets.compile = true
+  # config.assets.precompile =  ['*.js', '*.css', '*.css.erb'] 
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -76,4 +78,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # config.serve_static_files=true
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_credentials => {
+      :use_iam_profile => true,
+      :provider => 'AWS',
+      :region => 'us-west-2'
+    },
+    :fog_directory => 'scalableinternetservices',
+    :path => 'ScalableMaster/:class/avatars/:id_partition/:style/:filename'
+  }
 end
+
+
