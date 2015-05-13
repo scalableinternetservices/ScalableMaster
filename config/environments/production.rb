@@ -88,7 +88,7 @@ Rails.application.configure do
       :region => 'us-west-2'
     },
     :fog_directory => 'scalableinternetservices',
-    :path => 'ScalableMaster/'
+    :path => 'ScalableMaster/:class/avatars/:id_partition/:style/:filename'
   }
 end
 
