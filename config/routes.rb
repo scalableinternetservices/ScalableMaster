@@ -18,11 +18,8 @@ Rails.application.routes.draw do
 
   get '/participants/:participant_id/activities' => 'participants/activities#index', as: :participant_activities
   get '/participants/:participant_id/activities/:id' => 'participants/activities#show', as: :participant_activity
-  delete '/participants/:participant_id/activities/:id' => 'participants/activities#cancel'
-  put '/participants/:participant_id/activities/:id' => 'participants/activities#rejoin'
-
-  delete '/participants/:participant_id/activities/:id/detail' => 'participants/activities#canclejoin', as: :participant_activity_detail
-  put '/participants/:participant_id/activities/:id/detail' => 'participants/activities#join'
+  delete '/participants/:participant_id/activities/:id' => 'participants/activities#canclejoin'
+  put '/participants/:participant_id/activities/:id' => 'participants/activities#join'
 
   get '/participants/:participant_id/ideas' => 'participants/ideas#index', as: :participant_ideas
   post '/participants/:participant_id/ideas' => 'participants/ideas#create'

@@ -1,4 +1,4 @@
-<div id="activity-detail-<%= @activity.id %>">
-	<%= link_to "Cancle", participant_activity_detail_path(@participant, @activity), method: :delete,
+<div id="activity-<%= @activity.id %>-togglejoin">
+	<%= link_to "Cancle", participant_activity_path(@participant, @activity), method: :delete,
       class: "btn btn-primary", remote: true %>
 </div>
