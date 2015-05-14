@@ -28,9 +28,9 @@
               <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %></a>
               <% @activity = activity %>
               <% if @participant.activities.exists? @activity %>
-                <%= render 'join' %>
-              <% else %>
                 <%= render 'canclejoin' %>
+              <% else %>
+                <%= render 'join' %>
               <% end %>
             </div>
           </li>

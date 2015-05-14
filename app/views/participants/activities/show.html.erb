@@ -23,8 +23,8 @@
   </ul>
 
     <% if @participant.activities.exists? @activity %>
-        <%= render 'join' %>
-    <% else %>
         <%= render 'canclejoin' %>
+    <% else %>
+        <%= render 'join' %>
     <% end %>
 </div>
