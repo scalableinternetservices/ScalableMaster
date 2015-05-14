@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" id="secondheader">
 <div id="navi">
 <ul class="nav nav-pills">
   <li role="presentation" class="activeo"><a href=<%= "/participants/#{@participant.id}/summary"%>>Summary</a></li>
@@ -15,6 +15,10 @@
 <div class="container">
 <div class="row">
 	<div class="summary-profile">
+		<div class="headpic">
+			<%= image_tag(@participant.avatar.url(:medium), :class => "headpotrait") if @participant.avatar? %>
+		</div>
+		<br>
 		<h3><%= @participant.name%></h3>
 		<h4><span class="glyphicon glyphicon-map-marker"></span>&nbsp
 			Los Angeles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

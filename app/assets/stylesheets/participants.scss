@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #secondheader {
-	margin-top:50px;
+	margin-top:57px;
 }
+
 .container {
-	min-height:450px;
+	min-height:528px;
+	width:88%;
 }
 
 #navi {
@@ -20,28 +22,38 @@
 }
 
 #navi a {
-	color:#7c7b7b;
+	color:#707070;
 }
 
 #navi .activeo a{
-	color:#000;
+	color:#3b3b3b;
+}
+
+
+.thumbnail {
+	padding: 0px;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.09);
 }
 
 .headpic{
+	margin-top:-35px;
 	text-align:center;
+}
+
+.headpotrait {
+	width:80px;
+	height:80px;
+	border: 5px solid #f9f7f8;
+	border-radius:40px 40px;
 	margin-top:-35px;
 }
-.headpotrait {
-	width:68px;
-	height:68px;
-	border: 3px solid #000;
-	border-radius:34px 34px;
-}
 .summary-profile {
-	width:90%;
-	margin-left:5%;
+    margin-top:15px;
+	width:120%;
+	margin-left:-10%;
 	border-bottom: 1px solid;
 	border-color:rgba(0,0,0,0.09);
+	background-color:#f9f7f8;
 }
 .summary-profile h3 {
 	text-align:center;
