@@ -1,5 +1,6 @@
 class Participants::IdeasController < Participants::BaseController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:edit, :new]
 
   def index
     @ideas = @participant.ideas.all
@@ -39,7 +40,8 @@ class Participants::IdeasController < Participants::BaseController
 
   def update
     respond_to do |format|
-      if @idea.update(idea_params)
+      # byebug
+      if @idea.update(idea_params) && @idea.update_tags(tags_params)
         format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully updated.' }
         format.js
       else
@@ -62,11 +64,16 @@ class Participants::IdeasController < Participants::BaseController
       @idea = Idea.find(params[:id])
     end
 
- 
+    def set_tags
+      @all_tags = Tag.all
+    end
 
     def idea_params
       params.require(:idea).permit(:title, :description)
     end
 
+    def tags_params
+      params.require(:idea).permit(:tag_names)
+    end
 
 end
