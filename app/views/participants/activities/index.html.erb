@@ -4,7 +4,7 @@
 <!-- showing the details of a participant -->
 
 
-  <div class="page-header">
+  <div class="page-header" id="secondheader">
     <div id="navi">
     <ul class="nav nav-pills">
       <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
@@ -13,12 +13,11 @@
       <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
     </ul>
     </div>
+  </div>
     <!-- <div class="headpic"><%= image_tag(@participant.activities.find(1).img_url, class: 'headpotrait') %></div> -->
-    <div class="headpic"><%= image_tag(@participant.avatar.url(:thumb), class: 'headpotrait') %></div>
-
 
   <br>
-  <br>
+
   <!-- showing the activities of a participant -->
   <div class="container">
     <div class="row">
@@ -26,11 +25,13 @@
         <% @participant.activities.each do |activity| %>
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
-              <div>
-                <strong> Activity Name: </strong> <%= activity.name %>
-                <%= link_to "Cancel", participant_activity_path(@participant, activity), 
-                                method: :delete, remote: true %>
+              <div class="thumbnail">
+                <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %></a>
+                <div class="caption">
+                  <strong><%= activity.name %></strong>
+                  <%= link_to "Cancel", participant_activity_path(@participant, activity), 
+                                  method: :delete, remote: true, :class => "cancel" %>
+                </div>
               </div>
             </div>
           </li>

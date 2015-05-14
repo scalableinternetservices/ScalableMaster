@@ -19,7 +19,7 @@
 <h4 style="margin-top:-20px;text-align:center;"><span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
 <br>
 <br>
-<div class="row" id="row_activty">
+<div class="row" id="row_activity">
 <% @activities.each do |activity| %>
     <div class="col-md-3">
       <div class="thumbnail">
@@ -35,7 +35,9 @@
 
     </div>
 <% end %>
+
 </div>
+<br>
 
 <div class="row" id="row_idea">
 <% @ideas.each do |idea| %>
@@ -48,7 +50,7 @@
 </div>
 
 </div>
-
+<br>
 <script type="text/javascript">
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()

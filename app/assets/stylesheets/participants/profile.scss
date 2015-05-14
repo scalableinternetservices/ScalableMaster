@@ -2,24 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#profile {
-	text-align: center;
-	width:80%;
-	margin-left:8%;
+#profile .headpic {
+	text-align:center;
+	margin-top:-20px;
 }
 
+#profile .headpotrait {
+	width:80px;
+	height:80px;
+	border: 5px solid #f9f7f8;
+	border-radius:40px 40px;
 
-#profile li {
-    padding-top:10px;
-    padding-left:20px;
-	border-bottom: 1px solid rgba(0,0,0,0.1);
-	background-color: rgba(256,256,256,0.8);
-	border-radius: 2px;
-}
-.profile_context {
-	float:left;
 }
 
-#profile .edit {
-float:right;
+.edit {
+	margin-left:50%;
+	background-color:#e8515a;
+	border-color:#e8515a;
+
 }
