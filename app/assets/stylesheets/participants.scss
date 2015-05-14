@@ -23,6 +23,7 @@
 
 #navi a {
 	color:#707070;
+	font:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #navi .activeo a{
@@ -59,9 +60,10 @@
 	text-align:center;
 	margin-top:-12px;
 	color:rgba(0,0,0,0.72);
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.summary-profile h4 {
+.summary-profile h5 {
     color:rgba(0,0,0,0.51);
     background-color:(0,0,0,0.51);
 	text-align:center;
@@ -78,6 +80,10 @@
 .summary-idea {
 	width:90%;
 	margin-left:5%;
+}
+
+.cancel {
+	float:right;
 }
 
 .clear {

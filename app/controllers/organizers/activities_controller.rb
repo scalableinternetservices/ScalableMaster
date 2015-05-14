@@ -8,7 +8,8 @@ class Organizers::ActivitiesController < Organizers::BaseController
   end
 
   def show
-    @organizer = Organizer.find(params[:organizer_id])
+    # @organizer = Organizer.find(params[:organizer_id])
+    # organizer already set in BaseController
   end
 
   def new

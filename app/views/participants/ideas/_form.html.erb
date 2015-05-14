@@ -1,4 +1,4 @@
-<%= form_for @idea, url: participant_ideas_or_idea_path(@participant, @idea) do |f| %>
+<%= form_for @idea, url: @idea.new_record? ? participant_ideas_path(@participant) : participant_idea_path(@participant, @idea) do |f| %>
   <div class="form-group">
     <%= f.label :title, "Title" %>
     <%= f.text_field :title, class: "form-control" %>
@@ -21,8 +21,12 @@
   </div>
 
   <%= f.submit "Submit", { class: 'btn btn-primary', disable_with: 'Submiting...' } %>
-  <%= link_to "Cancel", participant_ideas_or_idea_path(@participant, @idea), 
-      class: 'btn btn-default', remote: true %>
+  <% if @idea.new_record? %>
+    <%= link_to "Cancel", :back, class: 'btn btn-default' %>
+  <% else %>
+    <%= link_to "Cancel", participant_idea_path(@participant, @idea), 
+        class: 'btn btn-default', remote: true %>
+  <% end %>
 <% end %>
 
 <script type="text/javascript">
