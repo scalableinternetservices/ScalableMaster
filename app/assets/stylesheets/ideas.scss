@@ -1,3 +1,82 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.idea-body {
+	background: rgba(0, 0, 0, 0.09);
+	margin-top: -20px;
+}
+
+.ideas-entry {
+	min-height: 200px;
+ 	position: relative;
+  	padding: 20px;
+  	margin-top: 8px;
+  	border-radius: 8px 8px;
+  	border-bottom: 1px solid;
+	border-color: rgba(0, 0, 0, 0.09);
+	background-color: #f9f7f8;
+}
+.ideas-participant {
+	float: left;
+	width: 90px;
+}
+.ideas-paricipant-name {
+	margin-top: 10px;
+	text-align:center;
+}
+.ideas-participant-pic img {
+	width: 90px;	 
+	height: 90px;
+  	border: 1px solid #eee;
+  	border-radius: 45px 45px;
+}
+.ideas-participant-body {
+	margin-left: 150px;
+}
+.ideas-title {
+	font-family: 'FrancoisOneRegular',arial,serif;
+	font-weight: bold;
+  	font-size: 16px;
+  	text-transform: uppercase;
+  	color: #008f5d;
+  	margin-top: 5px;
+}
+
+.ideas-time {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 15px;
+  color: rgba(115, 78, 78, 0.24);
+  font-weight: 500;
+}
+
+.ideas-entry .glyphicon {
+	color: #008f5d;
+	position: absolute;
+	right: 15px; 
+	bottom: 15px;
+	font-size: 30px;
+	top: inherit;
+	text-decoration: none;
+}
+
+.idea-text {
+	margin-top: 10px;
+  	word-wrap: break-word;
+}
