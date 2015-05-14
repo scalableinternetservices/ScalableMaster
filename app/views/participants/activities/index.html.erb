@@ -4,7 +4,7 @@
 <!-- showing the details of a participant -->
 
 
-  <div class="page-header">
+  <div class="page-header" id="secondheader">
     <div id="navi">
     <ul class="nav nav-pills">
       <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
@@ -13,11 +13,12 @@
       <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
     </ul>
     </div>
-    <div class="headpic"><%= image_tag(@participant.avatar.url(:thumb), class: 'headpotrait') %></div>
+  </div>
+    
 
 
   <br>
-  <br>
+
   <!-- showing the activities of a participant -->
   <div class="container">
     <div class="row">
@@ -25,13 +26,17 @@
         <% @participant.activities.each do |activity| %>
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <a class="thumbnail" href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %></a>
-              <% @activity = activity %>
-              <% if @participant.activities.exists? @activity %>
-                <%= render 'canclejoin' %>
-              <% else %>
-                <%= render 'join' %>
-              <% end %>
+              <div class="thumbnail">
+                <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %></a>
+                <div class="caption">
+                  <strong><%= activity.name %></strong>
+                  <% @activity = activity %>
+                  <% if @participant.activities.exists? @activity %>
+                    <%= render 'canclejoin' %>
+                  <% else %>
+                    <%= render 'join' %>
+                  <% end %>
+                </div>
             </div>
           </li>
         <% end %>

@@ -1,36 +1,27 @@
-<div>
+<div id="profile">
   <ul>
-    <li>
-      <header>Name</header>
-      <div><%= @participant.name %></div>
-    </li>
-    <li>
-      <header>Nickname</header>
-      <div><%= @participant.nickname %></div>
-    </li>
-    <li>
-      <header>Gender</header>
-      <div><%= @participant.gender %></div>
-    </li>
-    <li>
-      <header>Age</header>
-      <div><%= @participant.age %></div>
-    </li>
-    <li>
-      <header>Phone</header>
-      <div><%= @participant.phone %></div>
-    </li>
-    <li>
-      <header>Address</header>
-      <div><%= @participant.address %></div>
-    </li>
-    <li>
-      <header>Image</header>
-      <div><%= image_tag @participant.avatar.url(:medium) if @participant.avatar? %></diqv>
-    </li>
+    <div class="headpic"><%= image_tag(@participant.avatar.url(:medium), :class => "headpotrait") if @participant.avatar? %></div>
+
+    <h3 style="text-align:center;"><strong><%= @participant.name %></strong></h3>
+    <br>
+    <h4 style ="text-align:center;">
+      <span class="glyphicon glyphicon-user">&nbspNick&nbsp<%= @participant.nickname %></span>&nbsp&nbsp&nbsp&nbsp
+      <span class="glyphicon glyphicon-grain">&nbspGender&nbsp<%= @participant.gender %></span>&nbsp&nbsp&nbsp&nbsp
+      <span class="glyphicon glyphicon-apple">&nbspAge&nbsp<%= @participant.age %></span>
+
+    </h4>
+    <br>
+    <h4 style="text-align:center;"><span class="glyphicon glyphicon-phone">&nbspPhone&nbsp<%= @participant.phone %></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <span class="glyphicon glyphicon-tree-deciduous">&nbspAddress&nbsp</span><%= @participant.address %>
+    </h4>
+
   </ul>
+
+  <br>
+  <br>
   <%= link_to "Edit", edit_participant_profile_path(@participant), 
-      class: "btn btn-primary", remote: true %>
+      class: "edit btn btn-primary", remote: true %>
+</div>
 </div>
 
 

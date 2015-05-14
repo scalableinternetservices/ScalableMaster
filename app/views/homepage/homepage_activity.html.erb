@@ -1,5 +1,5 @@
 <% if participant_signed_in? %>
-<div class="page-header">
+<div class="page-header" id="secondheader">
 <div id="navi">
 <ul class="nav nav-pills">
   <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
@@ -12,24 +12,34 @@
 
 <% end %>
 
+<br>
+<br>
 <div class="container">
 
 <h4 style="margin-top:-20px;text-align:center;"><span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
 <br>
-<div class="row">
+<br>
+<div class="row" id="row_activity">
 <% @activities.each do |activity| %>
     <div class="col-md-3">
-      <a class="thumbnail" href=<%= "/activities/#{activity.id}"%>>
-          <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
-      </a>  
-      <p class="text-center">
-        <%= activity.name%>
-      </p>
+      <div class="thumbnail">
+        <a href=<%= "/activities/#{activity.id}"%>>
+            <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
+        </a>  
+        <div class="caption">
+          <p class="text-center">
+            <%= activity.name%>
+          </p>
+        </div>
+      </div>
+
     </div>
 <% end %>
-</div>
 
-<div class="row">
+</div>
+<br>
+
+<div class="row" id="row_idea">
 <% @ideas.each do |idea| %>
     <div class="col-md-3">
       <p class="text-center">
@@ -40,7 +50,7 @@
 </div>
 
 </div>
-
+<br>
 <script type="text/javascript">
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()

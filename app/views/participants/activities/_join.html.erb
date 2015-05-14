@@ -1,4 +1,3 @@
-<div id="activity-<%= @activity.id %>-togglejoin">
-	<%= link_to "Join", participant_activity_path(@participant, @activity), method: :put,
-      class: "btn btn-primary", remote: true %>
+<div id="activity-<%= @activity.id %>-togglejoin" class="cancel">
+	<%= link_to "Join", participant_activity_path(@participant, @activity), method: :put, remote: true %>
 </div>

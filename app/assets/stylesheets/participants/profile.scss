@@ -1,3 +1,23 @@
 // Place all the styles related to the participants/profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile .headpic {
+	text-align:center;
+	margin-top:-20px;
+}
+
+#profile .headpotrait {
+	width:80px;
+	height:80px;
+	border: 5px solid #f9f7f8;
+	border-radius:40px 40px;
+
+}
+
+.edit {
+	margin-left:50%;
+	background-color:#e8515a;
+	border-color:#e8515a;
+
+}
