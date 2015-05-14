@@ -22,9 +22,9 @@
     </li>
   </ul>
 
-    <% if @hasActivity.blank? %>
-        <%= render 'join' %>
-    <% else %>
+    <% if @participant.activities.exists? @activity %>
         <%= render 'canclejoin' %>
+    <% else %>
+        <%= render 'join' %>
     <% end %>
 </div>
