@@ -15,7 +15,9 @@ p {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
-
+.timeborder {
+	border-left: 1px solid #BCC7B2;
+}
 .idea-body {
 	background: rgba(0, 0, 0, 0.09);
 	margin-top: -20px;
@@ -25,28 +27,33 @@ p {
 	min-height: 200px;
  	position: relative;
   	padding: 20px;
-  	margin-top: 8px;
+  	margin-top: 20px;
+  	margin-left: 40px;
   	border-radius: 8px 8px;
-  	border-bottom: 1px solid;
+  	border: 1px solid;
 	border-color: rgba(0, 0, 0, 0.09);
 	background-color: #f9f7f8;
 }
 .ideas-participant {
 	float: left;
+	margin-left: -160px;
 	width: 90px;
 }
 .ideas-paricipant-name {
 	margin-top: 10px;
 	text-align:center;
+	background: #e7e7e7;
 }
 .ideas-participant-pic img {
 	width: 90px;	 
 	height: 90px;
-  	border: 1px solid #eee;
+  	border: 1px solid #BCC7B2;
+  	padding: 5px;
   	border-radius: 45px 45px;
+  	background: #e7e7e7;
 }
 .ideas-participant-body {
-	margin-left: 150px;
+	margin-left: 50px;
 }
 .ideas-title {
 	font-family: 'FrancoisOneRegular',arial,serif;
