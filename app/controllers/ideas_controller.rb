@@ -41,7 +41,7 @@ class IdeasController < ApplicationController
   end
 
   def update
-    # byebug
+    byebug
     @idea.stars = [0, @idea.stars + (params[:like] ? 1 : -1)].max
     @idea.save
 

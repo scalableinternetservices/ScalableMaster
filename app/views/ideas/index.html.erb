@@ -33,16 +33,23 @@
         </div>
         <div class="ideas-title">
           <%= idea.title %>
-          <div class="ideas-time">
-            <%= idea.created_at %>
-          </div>
           <div class="ideas-like-quantity">
             +<%= idea.stars %>
           </div>
-          <div class="ideas-like">
-             <%= link_to "", idea_path(idea, like: true), method: :patch,
-          class: "glyphicon glyphicon-heart-empty", remote: true %>
-          </div>
+          <% if participant_signed_in? %>
+            <div class="ideas-time">
+              <%= idea.created_at %>
+            </div>
+            <div class="ideas-like">
+               <%= link_to "", idea_path(idea, like: true), method: :patch,
+            class: "glyphicon glyphicon-heart-empty", remote: true %>
+            </div>
+          <% end %>
+          <% if organizer_signed_in? %>
+            <div class="ideas-time-nolike">
+              <%= idea.created_at %>
+            </div>
+          <% end %>
         </div>
         <div class="ideas-participant-body">
           <div class="ideas-tagslists">
