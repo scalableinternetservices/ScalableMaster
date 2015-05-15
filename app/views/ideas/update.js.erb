@@ -1,10 +1,13 @@
 var link = $("#idea-<%= @idea.id %> a");
 var isLiked = link.hasClass("liked");
+var likeCnt = $("#idea-<%= @idea.id %> .ideas-like-quantity");
 
 if (isLiked) {
+	likeCnt.text(parseInt(likeCnt.text()) - 1);
     link.replaceWith('<%= j link_to "", idea_path(@idea, like: true),
         method: :patch, class: "glyphicon glyphicon-heart-empty", remote: true %>');
 } else {
+	likeCnt.text(parseInt(likeCnt.text()) + 1);
     link.replaceWith('<%= j link_to "", idea_path(@idea, like: false),
         method: :patch, class: "liked glyphicon glyphicon-heart", remote: true %>');
 }
