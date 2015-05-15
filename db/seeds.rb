@@ -20,13 +20,14 @@ org_names =
 ]
 10.times do |xx| 
   x = xx + 1
+  age = Random.rand(20) + 25
   Organizer.create!(name: org_names[xx], 
                     email: "org#{x}@example.com", 
                     password: "12345678", 
                     password_confirmation: "12345678",
                     nickname: "org_nickname#{x}",
                     gender: 1,
-                    age: 1,
+                    age: age,
                     phone: "342-973-4903",
                     address: "534 Wall Street, New York City, NY, 43250",
                     img_url: "org_img_url#{x}.jpg",
@@ -49,13 +50,18 @@ par_names =
 ]
 10.times do |xx| 
   x = xx + 1
+  gender = 1
+  age = Random.rand(20) + 15
+  if xx == 4 || xx == 5
+  	gender = 0
+  end
   Participant.create!(name: par_names[xx], 
                       email: "par#{x}@example.com", 
                       password: "12345678", 
                       password_confirmation: "12345678",
                       nickname: "par_nickname#{x}",
-                      gender: 1,
-                      age: 1,
+                      gender: gender,
+                      age: age,
                       phone: "324-893-0342",
                       address: "223 1st Avenue, New York City, NY, 44392",
                       img_url: "par_img_url#{x}.jpg",
@@ -169,9 +175,12 @@ titles =
 10.times do |xx|
   x = xx + 1
   tmp = Random.rand(9)
+  tmp1 = Random.rand(9)
+  star = Random.rand(100)
   Idea.create!(title: titles[tmp],
-               description: descriptions[tmp],
-               participant_id: x)
+               description: descriptions[tmp1],
+               participant_id: x,
+               stars: star)
 end
 
 tags = 

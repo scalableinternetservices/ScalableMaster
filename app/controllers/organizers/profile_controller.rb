@@ -1,5 +1,8 @@
 class Organizers::ProfileController < Organizers::BaseController
   def show 
+    if @organizer.gender == "1"
+      @organizer.gender = "Male"
+    end
     respond_to do |format|
       format.html
       format.js

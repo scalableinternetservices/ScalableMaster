@@ -7,7 +7,13 @@
     <br>
     <h4 class="text-center">
       <span class="glyphicon glyphicon-user">&nbsp;Nick&nbsp;<%= @participant.nickname %></span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;<%= @participant.gender %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;
+      <% if @participant.gender == 1%>
+      <%= "M" %>
+      <% elsif @participant.gender == 0 %>
+      <%= "F" %>
+      <%end%>
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;
       <span class="glyphicon glyphicon-apple">&nbsp;Age&nbsp;<%= @participant.age %></span>
 
     </h4>
