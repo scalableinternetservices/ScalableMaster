@@ -41,9 +41,6 @@ class OrganizersController < Organizers::BaseController
       end 
     end
 
-    if @ideas.nil? || @ideas.length==0
-      @ideas = Idea.all
-    end
   end
 
 end
