@@ -55,6 +55,7 @@
 
   <h4 class="h4">MY IDEAS</h4>
   <%if @ideas.length > 0 %>
+  <div class="col-md-3">
   <div class="idea idea4">     
         <%= image_tag(("4.png"), :class => "pegen") %>
         <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
@@ -62,9 +63,10 @@
         </p>
    <% end %>
 
-      
+  </div>    
   </div> 
   <%if @ideas.length > 1 %>
+  <div class="col-md-3">
   <div class="idea idea5" >     
         <%= image_tag(("1.png"), :class => "pegen") %>
         <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas[1].description%>">
@@ -72,26 +74,27 @@
         </p>
       
   </div> 
+</div>
   <% end %>
   <%if @ideas.length >2 %>
-
+  <div class="col-md-3">
   <div class="idea idea6">     
         <%= image_tag(("2.png"), :class => "pegen") %>
         <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[2].description%>">
           <%= @ideas[2].title %>
         </p>
-      
+  </div>    
   </div>
   <% end %>
 
   <%if @ideas.length >3 %>
-
+  <div class="col-md-3">
   <div class="idea idea7">     
         <%= image_tag(("3.png"), :class => "pegen") %>
         <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[3].description%>">
           <%= @ideas[3].title %>
         </p>
-      
+  </div>    
   </div>
   <% end %>
 

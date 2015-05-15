@@ -21,7 +21,7 @@
 		<br>
 		<h3><%= @participant.name%></h3>
 		<h5><span class="glyphicon glyphicon-map-marker"></span>&nbsp;;
-			Los Angeles &nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+			Los Angeles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span class="glyphicon glyphicon-grain"></span>
 			<%= @participant.email%>
 		</h5>
@@ -56,16 +56,19 @@
   <h5>&nbsp;</h5>
   <h4 class="h4">MY IDEAS</h4>
   <%if @ideas.length > 0 %>
+  <div class="col-md-3">
   <div class="idea idea4">     
         <%= image_tag(("4.png"), :class => "pegen") %>
         <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
     <%= @ideas[0].title %>
         </p>
+   </div>
    <% end %>
 
       
   </div> 
   <%if @ideas.length > 1 %>
+  <div class="col-md-3">
   <div class="idea idea5" >     
         <%= image_tag(("5.png"), :class => "pegen") %>
         <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas[1].description%>">
@@ -73,9 +76,10 @@
         </p>
       
   </div> 
+</div>
   <% end %>
   <%if @ideas.length >2 %>
-
+  <div class="col-md-3">
   <div class="idea idea6">     
         <%= image_tag(("6.png"), :class => "pegen") %>
         <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[2].description%>">
@@ -83,16 +87,17 @@
         </p>
       
   </div>
+</div>
   <% end %>
 
   <%if @ideas.length >3 %>
-
+  <div class="col-md-3">
   <div class="idea idea7">     
         <%= image_tag(("7.png"), :class => "pegen") %>
         <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[3].description%>">
           <%= @ideas[3].title %>
         </p>
-      
+  </div>    
   </div>
   <% end %>
 
