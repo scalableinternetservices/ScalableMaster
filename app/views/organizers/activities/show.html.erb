@@ -12,7 +12,7 @@
 <div class="container">
   <div class="headpic-big">
     <h2 style="font-family:Century Gothic, CenturyGothic, AppleGothic, sans-serif;"><%= @activity.name %></h2>
-    <%= image_tag(@activity.avatar.url(:medium), :class => "headpotrait-big") if @activity.avatar? %>
+    <%= image_tag(@activity.avatar.url(:large), :class => "headpotrait-big") if @activity.avatar? %>
     <div class="curveline"></div>
   </div>
 
