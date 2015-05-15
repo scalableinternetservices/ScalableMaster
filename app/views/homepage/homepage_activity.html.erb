@@ -31,13 +31,13 @@
           <% else %>
             <%= "/participants/sign_in" %>
           <% end %>
-
         >
             <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
         </a>  
-        <div class="caption">
-          <p class="text-center">
-            <%= activity.name%>
+        <div class="caption text-center">
+          <h4><%= activity.name%></h4>
+          <p class="description">
+            <%= activity.description %>
           </p>
         </div>
       </div>

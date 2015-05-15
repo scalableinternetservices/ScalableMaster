@@ -1,21 +1,6 @@
-class OrganizersController < Organizers::BaseController
-
-  def home
-    redirect_to organizer_summary_path(current_organizer[:id])
-  end
+class Organizers::IdeasController < Organizers::BaseController
 
   def index
-    redirect_to organizer_summary_path(current_organizer[:id])
-  end
-
-  def summary
-    count = @organizer.activities.count
-    if(count > 10) 
-      @activities = @organizer.activities[0..9]
-    else
-      @activities = @organizer.activities
-    end
-    
     if participant_signed_in?
       @participant = Participant.find(current_participant[:id])
       tags = @participant.tags
@@ -41,7 +26,10 @@ class OrganizersController < Organizers::BaseController
       end 
     end
 
-
+    if @ideas.nil? || @ideas.length==0
+      @ideas = Idea.all
+    end
   end
+
 
 end
