@@ -37,12 +37,11 @@ class IdeasController < ApplicationController
   end
 
   def show
-    byebug
   end
 
   def update
-    # byebug
-    @idea.stars = [0, @idea.stars + (params[:like] ? 1 : -1)].max
+    like_change = params[:like] == "true" ? 1 : -1
+    @idea.stars = [0, @idea.stars + like_change].max
     @idea.save
 
     respond_to do |format|
