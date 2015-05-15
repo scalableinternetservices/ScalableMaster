@@ -26,9 +26,11 @@ class Participants::IdeasController < Participants::BaseController
 
   def create
     @idea = @participant.ideas.create(idea_params)
+    @idea.update_tags(tags_params)
     respond_to do |format|
       if @idea
-        format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully created.' }
+        # format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully created.' }
+        format.html { redirect_to participant_ideas_path(@participant), notice: 'Idea was successfully created.' }
         format.js
       else
         format.html { render :new }
@@ -42,7 +44,8 @@ class Participants::IdeasController < Participants::BaseController
     respond_to do |format|
       # byebug
       if @idea.update(idea_params) && @idea.update_tags(tags_params)
-        format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully updated.' }
+        # format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully updated.' }
+        format.html { redirect_to participant_ideas_path(@participant), notice: 'Idea was successfully updated.' }
         format.js
       else
         format.html { render :edit }
