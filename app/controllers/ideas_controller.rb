@@ -5,6 +5,7 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.all.order(:stars => :desc)
 
+    @idea_id = params[:idea_id]
 
     # if participant_signed_in?
     #   @participant = Participant.find(current_participant[:id])
