@@ -26,8 +26,8 @@
         <% @participant.activities.each do |activity| %>
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <div class="thumbnail">
-                <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
+              <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
+                <div class="thumbnail">
                   <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
                   <div class="caption text-center">
                     <h4><%= activity.name %></h4>
@@ -38,7 +38,8 @@
                       <%= render 'join' %>
                     <% end %>
                   </div>
-                </a>
+                </div>
+              </a>
             </div>
           </li>
         <% end %>

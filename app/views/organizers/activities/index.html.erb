@@ -19,12 +19,13 @@
 <div class="row">
 <% @organizer.activities.each do |activity| %>
 	<div class="col-md-3">
-		<div class="thumbnail">
-	  <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
-	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
-  	  <div class="caption text-center">
-  	    <h4><%= activity.name%></h4>
-  	  </div>
+    <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
+		  <div class="thumbnail">
+  	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
+    	  <div class="caption text-center">
+    	    <h4><%= activity.name%></h4>
+  	   </div>
+      </div>
     </a> 
 	</div>
 	</div>

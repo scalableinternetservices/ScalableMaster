@@ -20,8 +20,8 @@
 		</div>
 		<br>
 		<h3><%= @participant.name%></h3>
-		<h5><span class="glyphicon glyphicon-map-marker"></span>&nbsp;
-			Los Angeles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<h5><span class="glyphicon glyphicon-map-marker"></span>&nbsp;;
+			Los Angeles &nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
 			<span class="glyphicon glyphicon-grain"></span>
 			<%= @participant.email%>
 		</h5>
@@ -29,20 +29,20 @@
 	</div>
 	
 	<div class="summary-activity">
-		<h5>&nbsp</h5>
+		<h5>&nbsp;</h5>
     <h4 class="h4">MY ACTIVITY</h4>
-    <h4>&nbsp</h4>
+    <h4>&nbsp;</h4>
 
 		<% @activities.each do |activity|%>
 			<div class="col-md-3">
-				<div class="thumbnail">
-				  <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
+        <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
+				  <div class="thumbnail">
 				  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
   				  <div class="caption text-center">
   					  <h4><%= activity.name%></h4>
   				  </div>
-          </a>
-				</div>
+				  </div>
+        </a>
 			</div>
 		<% end %>
 		<div class= "clear"></div>
