@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" id="secondheader">
 <div id="navi">
 <ul class="nav nav-pills">
   <% if participant_signed_in? %>
@@ -8,24 +8,54 @@
   <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
   <% end %>
   <% if organizer_signed_in?%>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/summary"%>>Summary</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/profile"%>>Profile</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/activities"%>>My Activity</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/ideas"%>>My Ideas</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/summary"%>>Summary</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/profile"%>>Profile</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/activities"%>>My Activity</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/ideas"%>>My Ideas</a></li>
   <% end %>
 </ul>
 </div>
 </div>
-
-<div class="container">
+ 
+<div class="row idea-body" >
+  <div class="col-md-offset-2 col-md-8 timeborder">
+    <br>
   <ul>
     <% @ideas.each do |idea| %>
-      <li id="idea-<%= idea.id %>">
-        <div><%= idea.title %></div>
-        <div><%= idea.description %></div>
-        <%= link_to "", idea_path(idea, like: true), method: :patch,
+      <li id="idea-<%= idea.id %>" class="ideas-entry">
+        <div class="ideas-participant">
+        <div class="ideas-participant-pic">
+           <%= image_tag(idea.participant.avatar.url(:thumb)) if idea.participant.avatar? %>
+        </div>
+        <div class="ideas-paricipant-name">
+            <%= idea.participant.name %>
+        </div>
+        </div>
+        <div class="ideas-title">
+          <%= idea.title %>
+          <div class="ideas-time">
+            <%= idea.created_at %>
+          </div>
+          <div class="ideas-like">
+             <%= link_to "", idea_path(idea, like: true), method: :patch,
           class: "glyphicon glyphicon-heart-empty", remote: true %>
+          </div>
+        </div>
+        <div class="ideas-participant-body">
+          <div class="ideas-tagslists">
+            <ul>
+              <% idea.tags.each do |tag| %>
+                <li class="idea_tags">
+                  <%= tag.name %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <pre class="idea-text"><%= idea.description %></pre>
+          <div class="clear"></div>
+        </div>
       </li>
     <% end %>
   </ul>
+  </div>
 </div>

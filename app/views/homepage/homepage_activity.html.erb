@@ -23,7 +23,16 @@
 <% @activities.each do |activity| %>
     <div class="col-md-3">
       <div class="thumbnail">
-        <a href=<%= "/activities/#{activity.id}"%>>
+        <a href=
+          <% if participant_signed_in? %>
+            <%= "/participants/#{current_participant.id}/activities/#{activity.id}"%>
+          <% elsif organizer_signed_in? %>
+            <%= "/organizers/#{current_organizer.id}/activities/#{activity.id}"%>
+          <% else %>
+            <%= "/participants/sign_in" %>
+          <% end %>
+
+        >
             <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
         </a>  
         <div class="caption">
@@ -104,9 +113,6 @@
   <br>
   <br>
 </div>
- <div class="clear"></div>
-
-<br>
 
 </div>
 <br>

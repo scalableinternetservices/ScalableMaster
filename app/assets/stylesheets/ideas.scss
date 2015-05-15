@@ -1,3 +1,109 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+pre {
+	background-color: initial;
+   	border: none;
+   	border-radius: 0px;
+}
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+.timeborder {
+	border-left: 1px solid #BCC7B2;
+}
+.idea-body {
+	background: #e3e3e3;
+	margin-top: -20px;
+}
+
+.ideas-entry {
+	min-height: 150px;
+	weight: 300px;
+ 	position: relative;
+  	margin-top: 20px;
+  	margin-left: 40px;
+  	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.09);
+	background: #fff;
+	border-radius: 8px 8px;
+}
+.ideas-participant {
+	float: left;
+	margin-left: -140px;
+	width: 90px;
+}
+.ideas-paricipant-name {
+	margin-top: 10px;
+	text-align:center;
+	background: #e7e7e7;
+}
+.ideas-participant-pic img {
+	width: 90px;	 
+	height: 90px;
+  	border: 1px solid #BCC7B2;
+  	padding: 5px;
+  	border-radius: 45px 45px;
+  	background: #e7e7e7;
+}
+.ideas-participant-body {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.ideas-title {
+	font-family: 'FrancoisOneRegular',arial,serif;
+	font-weight: bold;
+  	font-size: 16px;
+  	text-transform: uppercase;
+  	padding-top: 15px;
+  	padding-left: 25px;
+  	color: #56534E;
+  	background-color: #f9f9f9;
+  	height: 40px;
+  	border-bottom: 1px solid #e4e4e4;
+}
+.ideas-tagslists{
+	margin-top:15px;
+	margin-left: -40px;
+	float: left;
+}
+.ideas-time {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 15px;
+  color: rgba(115, 78, 78, 0.24);
+  font-weight: 500;
+}
+
+.ideas-entry .glyphicon {
+	color: rgb(235, 79, 117);
+	position: absolute;
+	right: 15px; 
+	bottom: 5px;
+	font-size: 23px;
+	top: inherit;
+	text-decoration: none;
+}
+.clear {
+	clear:both;
+}
+.idea-text {
+	margin-bottom: 20px;
+	color: #56534E;
+  	word-wrap: break-word;
+  	float: left;
+  	width: 100%;
+  	height: 100%;
+}

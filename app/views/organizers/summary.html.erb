@@ -49,6 +49,7 @@
 
 	<div class= "clear"></div>
 
+<<<<<<< HEAD
 <div class="allidea">
   <h4>&nbsp</h4>
   <%if @ideas.length > 0 %>
@@ -88,5 +89,14 @@
   <br>
 </div>
  <div class="clear"></div>
+=======
+	<div class="summary-idea">
+		<h4>Related Ideas</h4>
+		<% @ideas.each do |idea| %>
+			<p><%= idea.title %></p>
+		<% end %>
+	</div>    
+	<div class= "clear"></div>
+>>>>>>> master
 </div>
 </div>

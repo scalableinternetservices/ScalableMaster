@@ -1,4 +1,5 @@
 class Organizers::ActivitiesController < Organizers::BaseController
+  before_action :set_tags, only: [:edit, :create]
   before_action :set_activity, only: [ :edit, :update, :show ]
   def index
   end
@@ -7,13 +8,17 @@ class Organizers::ActivitiesController < Organizers::BaseController
   end
 
   def show
-    @organizer = Organizer.find(params[:organizer_id])
+    # @organizer = Organizer.find(params[:organizer_id])
+    # organizer already set in BaseController
   end
 
   def new
     @activity = @organizer.activities.new
   end
 
+  def set_tags
+    @all_tags = Tag.all
+  end
 
   def create
     @activity = @organizer.activities.create(activity_params)
@@ -30,7 +35,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
 
   def update
     respond_to do |format|
-      if @activity.update(activity_params)
+      if @activity.update(activity_params) && @activity.update_tags(tags_params)
           format.html { redirect_to :organizer_activity, notice: 'Activity was successfully updated.' }
       else
           format.html { redirect_to :organizer_activity, notice: 'Failed!' }
@@ -45,7 +50,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar)
+      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar)
     end
 
 end

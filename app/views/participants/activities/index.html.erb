@@ -14,7 +14,8 @@
     </ul>
     </div>
   </div>
-    <!-- <div class="headpic"><%= image_tag(@participant.activities.find(1).img_url, class: 'headpotrait') %></div> -->
+    
+
 
   <br>
 
@@ -29,10 +30,13 @@
                 <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>><%= image_tag(activity.avatar.url(:large)) if activity.avatar? %></a>
                 <div class="caption">
                   <strong><%= activity.name %></strong>
-                  <%= link_to "Cancel", participant_activity_path(@participant, activity), 
-                                  method: :delete, remote: true, :class => "cancel" %>
+                  <% @activity = activity %>
+                  <% if @participant.activities.exists? @activity %>
+                    <%= render 'canclejoin' %>
+                  <% else %>
+                    <%= render 'join' %>
+                  <% end %>
                 </div>
-              </div>
             </div>
           </li>
         <% end %>
