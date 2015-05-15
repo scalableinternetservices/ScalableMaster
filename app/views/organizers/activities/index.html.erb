@@ -21,12 +21,11 @@
 	<div class="col-md-3">
 		<div class="thumbnail">
 	  <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
-	  	  <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
-	  </a>  
-	  <div class="caption">
-	  <p class="text-center">
-	    <%= activity.name%>
-	  </p>
+	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
+  	  <div class="caption text-center">
+  	    <h4><%= activity.name%></h4>
+  	  </div>
+    </a> 
 	</div>
 	</div>
  </div>
