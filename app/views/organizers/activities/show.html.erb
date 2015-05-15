@@ -11,25 +11,22 @@
 
 <div class="container">
   <div class="headpic-big">
-    <h1><%= @activity.name %></h1>
+    <h2 style="font-family:Century Gothic, CenturyGothic, AppleGothic, sans-serif;"><%= @activity.name %></h2>
     <%= image_tag(@activity.avatar.url(:medium), :class => "headpotrait-big") if @activity.avatar? %>
+    <div class="curveline"></div>
   </div>
 
-  <div>
-    <%= @activity.description %>
-  </div>
-</div>
 
-<br><br><br><br><br>
-
-
-<div class="container">
-  <div class="row">
-    <div class= "col-sm-6 col-md-4 col-md-offset-4">
-      <div id="activity-<%= @activity.id %>">
-        <%= render 'show' %>
-      </div>
-    </div> 
+  <div class="text-center">
+    <%= link_to "EDIT", edit_organizer_activity_path(@organizer, @activity), remote: true %>
+    <br/><br/>
+    <div>
+      <span class="glyphicon glyphicon-phone">&nbsp;Phone&nbsp;<%= @activity.phone %></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-tree-deciduous">&nbsp;Address&nbsp;<%= @activity.address %></span>
+    </div>
+    <br/>
+    <div><%= @activity.description %></div>
   </div>
 </div>
 
