@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 10.times do |xx| 
-	x = xx + 1
+  x = xx + 1
   Organizer.create!(name: "org#{x}", 
-  									email: "org#{x}@example.com", 
+                    email: "org#{x}@example.com", 
                     password: "12345678", 
                     password_confirmation: "12345678",
                     nickname: "org_nickname#{x}",
@@ -24,9 +24,9 @@ end
 
 
 10.times do |xx| 
-	x = xx + 1
+  x = xx + 1
   Participant.create!(name: "par#{x}", 
-  					  				email: "par#{x}@example.com", 
+                      email: "par#{x}@example.com", 
                       password: "12345678", 
                       password_confirmation: "12345678",
                       nickname: "par_nickname#{x}",
@@ -52,18 +52,6 @@ end
 					 city_name: "Los Angeles")
 	a.save!	
 end
-
-# i = 1
-# Dir.foreach('image_upload/act/') do |img|
-# 	if i > 10
-# 		break;
-# 	end
-# 	act = Activity.find(i)
-# 	if (!File.directory? "image_upload/act/#{img}") && (img != ".DS_Store")
-# 	    act.update_attribute(:avatar_file_name, img)
-# 	    i+=1
-# 	end
-# end
 
 i = 1
 File.open('image_log/act.txt','r').each do |img|
@@ -106,25 +94,43 @@ end
 
 
 10.times do |xx|
-	x = xx + 1
-	Idea.create!(title: "idea#{x}",
-		 					 description: "idea description",
-		 					 participant_id: x)
+  x = xx + 1
+  Idea.create!(title: "idea#{x}",
+               description: "idea description",
+               participant_id: x)
 end
 
 10.times do |xx|
-	x = xx + 1
-	Tag.create!(name: "tag#{x}")
+  x = xx + 1
+  Tag.create!(name: "tag#{x}")
 end
 
 10.times do |xx|
-	x = xx + 1
-	a = Activity.find(x)
-	5.times do |yy|
-		y = yy + 1
-		p = Participant.find(y)
-		a.participants << p
-	end
+  x = xx + 1
+  a = Activity.find(x)
+  5.times do |yy|
+    y = yy + 1
+    p = Participant.find(y)
+    a.participants << p
+  end
+end
+
+p = Participant.all
+p.each do |par|
+  t = Random.rand(5) + 1
+  t.times do |tt|
+    tag_id = Random.rand(10) + 1
+    par.tags << Tag.find(tag_id)
+  end
+end
+
+a = Activity.all
+a.each do |act|
+  t = Random.rand(5) + 1
+  t.times do |tt|
+    tag_id = Random.rand(10) + 1
+    act.tags << Tag.find(tag_id)
+  end
 end
 
 p = Participant.all

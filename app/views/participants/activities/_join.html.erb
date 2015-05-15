@@ -1,3 +1,5 @@
 <div id="activity-<%= @activity.id %>-togglejoin" class="cancel">
-	<%= link_to "Join", participant_activity_path(@participant, @activity), method: :put, remote: true %>
+	<%= link_to participant_activity_path(@participant, @activity), method: :put, remote: true do %>
+    <span class="glyphicon glyphicon-log-out">&nbsp;Join&nbsp;</span>
+  <% end %>
 </div>
