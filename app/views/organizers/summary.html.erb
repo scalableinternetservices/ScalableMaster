@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" id="secondheader">
 <div id="navi">
 <ul class="nav nav-pills">
   <li role="presentation" class="activeo"><a href=<%= "/organizers/#{@organizer.id}/summary"%> >Summary</a></li>
@@ -42,7 +42,10 @@
 	<div class= "clear"></div>
 
 	<div class="summary-idea">
-		<h4>My Ideas</h4>
+		<h4>Related Ideas</h4>
+		<% @ideas.each do |idea| %>
+			<p><%= idea.title %></p>
+		<% end %>
 	</div>    
 	<div class= "clear"></div>
 </div>

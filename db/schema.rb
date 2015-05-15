@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150510215143) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "organizer_id",        limit: 4
-    t.string   "avatar",              limit: 255
     t.string   "city_name",           limit: 255
     t.string   "avatar_file_name",    limit: 255
     t.string   "avatar_content_type", limit: 255
@@ -94,7 +93,6 @@ ActiveRecord::Schema.define(version: 20150510215143) do
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
     t.text     "intro",                  limit: 65535
-    t.string   "avatar",                 limit: 255
     t.string   "avatar_file_name",       limit: 255
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
@@ -132,7 +130,6 @@ ActiveRecord::Schema.define(version: 20150510215143) do
     t.string   "phone",                  limit: 255
     t.string   "address",                limit: 255
     t.string   "img_url",                limit: 255
-    t.string   "avatar",                 limit: 255
     t.string   "avatar_file_name",       limit: 255
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
