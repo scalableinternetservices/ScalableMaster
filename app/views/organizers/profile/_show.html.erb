@@ -8,7 +8,13 @@
     <br>
     <h4 style ="text-align:center;">
       <span class="glyphicon glyphicon-user">&nbsp;Nick&nbsp;<%= @organizer.nickname %></span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;<%= @organizer.gender %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;
+      <% if @organizer.gender == 1%>
+      <%= "M" %>
+      <% elsif @organizer.gender == 0 %>
+      <%= "F" %>
+      <%end%>
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;
       <span class="glyphicon glyphicon-apple">&nbsp;Age&nbsp;<%= @organizer.age %></span>
 
     </h4>
