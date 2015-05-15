@@ -8,10 +8,10 @@
   <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
   <% end %>
   <% if organizer_signed_in?%>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/summary"%>>Summary</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/profile"%>>Profile</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/activities"%>>My Activity</a></li>
-    <li role="presentation"><a href=<%= "/participants/#{current_organizer[:id]}/ideas"%>>My Ideas</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/summary"%>>Summary</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/profile"%>>Profile</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/activities"%>>My Activity</a></li>
+    <li role="presentation"><a href=<%= "/organizers/#{current_organizer[:id]}/ideas"%>>My Ideas</a></li>
   <% end %>
 </ul>
 </div>
