@@ -31,13 +31,13 @@
           <% else %>
             <%= "/participants/sign_in" %>
           <% end %>
-
         >
             <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
         </a>  
-        <div class="caption">
-          <p class="text-center">
-            <%= activity.name%>
+        <div class="caption text-center">
+          <h4><%= activity.name%></h4>
+          <p class="description">
+            <%= activity.description %>
           </p>
         </div>
       </div>
@@ -45,18 +45,58 @@
     </div>
 <% end %>
 
-</div>
+<div class="clear"></div>
 <br>
 
-<div class="row" id="row_idea">
-<% @ideas.each do |idea| %>
-    <div class="col-md-3">
-      <p class="text-center">
-      	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%= idea.description%>"><%= idea.title %></button>
-      </p>
-    </div>
-<% end %>
 </div>
+
+
+
+<br>
+<div class="allidea">
+  <p>&nbsp</p>
+  <% if @ideas.length >0 %>
+  <div class="idea idea4">     
+        <%= image_tag(("4.png"), :class => "pegen") %>
+        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
+    <%= @ideas[0].title %>
+        </p> 
+  </div> 
+  <% end %>
+  <% if @ideas.length > 1 %>
+  <div class="idea idea5" >     
+        <%= image_tag(("1.png"), :class => "pegen") %>
+        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas[1].description%>">
+          <%= @ideas[1].title %>
+        </p>
+      
+  </div> 
+  <% end %>
+  <% if @ideas.length > 2 %>
+  <div class="idea idea6">     
+        <%= image_tag(("2.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[2].description%>">
+          <%= @ideas[2].title %>
+        </p>
+      
+  </div>
+  <% end %>
+  <% if @ideas.length > 3%>
+  <div class="idea idea7">     
+        <%= image_tag(("3.png"), :class => "pegen") %>
+        <p class="text-center text4" data-toggle="tooltip" data-placement="top" title="<%= @ideas[3].description%>">
+          <%= @ideas[3].title %>
+        </p>
+      
+  </div>  
+  <% end %>
+
+  <div class="clear"></div>
+  <br>
+  <br>
+  <br>
+</div>
+
 </div>
 <br>
 <script type="text/javascript">

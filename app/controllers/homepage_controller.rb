@@ -76,7 +76,7 @@ class HomepageController < ApplicationController
       @ideas = Idea.all
     end
 
-
+    @ideas - Idea.all
 
     #respond_to do |format|
     #  format.html { redirect_to action: :homepage_index }
