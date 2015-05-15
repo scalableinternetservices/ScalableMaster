@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [ :show, :update ]
 
   def index
-    @ideas = Idea.all
+    @ideas = Idea.all.order(:stars => :desc)
 
 
     # if participant_signed_in?
