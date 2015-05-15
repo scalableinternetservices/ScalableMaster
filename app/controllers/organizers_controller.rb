@@ -41,6 +41,7 @@ class OrganizersController < Organizers::BaseController
       end 
     end
 
+
   end
 
 end

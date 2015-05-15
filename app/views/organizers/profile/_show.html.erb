@@ -1,36 +1,31 @@
-<div>
+
+
+<div id="profile">
   <ul>
-    <li>
-      <header>Name</header>
-      <div><%= @organizer.name %></div>
-    </li>
-    <li>
-      <header>Nickname</header>
-      <div><%= @organizer.nickname %></div>
-    </li>
-    <li>
-      <header>Gender</header>
-      <div><%= @organizer.gender %></div>
-    </li>
-    <li>
-      <header>Age</header>
-      <div><%= @organizer.age %></div>
-    </li>
-    <li>
-      <header>Phone</header>
-      <div><%= @organizer.phone %></div>
-    </li>
-    <li>
-      <header>Address</header>
-      <div><%= @organizer.address %></div>
-    </li>
-    <li>
-      <header>Image</header>
-      <div><%= image_tag @organizer.avatar.url(:medium) if @organizer.avatar? %></div>
-    </li>
+    <div class="headpic"><%= image_tag(@organizer.avatar.url(:thumb), :class => "headpotrait") if @organizer.avatar? %></div>
+
+    <h3 style="text-align:center;"><strong><%= @organizer.name %></strong></h3>
+    <br>
+    <h4 style ="text-align:center;">
+      <span class="glyphicon glyphicon-user">&nbsp;Nick&nbsp;<%= @organizer.nickname %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;<%= @organizer.gender %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-apple">&nbsp;Age&nbsp;<%= @organizer.age %></span>
+
+    </h4>
+    <br>
+    <h4 style="text-align:center;"><span class="glyphicon glyphicon-phone">&nbsp;Phone&nbsp;<%= @organizer.phone %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-tree-deciduous">&nbsp;Address&nbsp;</span><%= @organizer.address %>
+    </h4>
+
   </ul>
+
+  <br>
+  <br>
   <%= link_to "Edit", edit_organizer_profile_path(@organizer), 
-      class: "btn btn-primary", remote: true %>
+      class: "edit btn btn-primary", remote: true %>
 </div>
+</div>
+
+
 
 

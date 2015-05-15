@@ -11,32 +11,74 @@
 	
 }
 
-.hexagon {
-  position: relative;
-  width: 180px; 
-  height: 60px;
-  background-color: #64C7CC;
-  margin-top:100px;
-  margin-right: 200px;
-  margin-bottom:200px;
+
+
+.pegen {
+	width:50%;
+	height:50%;
 }
 
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
+.idea {
+	float:left;
+	margin-right:-8%;
 }
 
-.hexagon:before {
-  bottom: 100%;
-  border-bottom: 86.60px solid #64C7CC;
+.idea p {
+	margin-top:-30%;
+	font-size:120%;
+	background:rgba(256,256,256,0.8);
+	z-index:100;
+	width:50%;
+	height:50px;
+
 }
 
-.hexagon:after {
-  top: 100%;
-  width: 0;
-  border-top: 86.60px solid #64C7CC;
+.allidea {
+	margin-left:0px;
+}
+
+.idea1 {
+	width:30%;
+	float:right;
+	margin-right:63px;
+
+}
+
+.idea2 {
+
+	width:30%;
+	float:right;
+}
+.idea3 {
+	width:28%;
+	float:right;
+}
+.idea4 {
+	width:28%;
+	float:left;
+	margin-left:70px;
+	}
+
+.idea5 {
+	width:30%;
+    float:left;
+    margin-left:50px;
+	
+}
+
+.idea6 {
+	width:30%;
+	float:left;
+	margin-left:0px;
+}
+
+.idea7 {
+	width:30%;
+    float:left;
+	margin-left:26px;
+}
+
+.allidea img {
+position:relative;
+	z-index:-1;
 }
