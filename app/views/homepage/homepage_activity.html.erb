@@ -33,15 +33,14 @@
           <% end %>
         >
             <%= image_tag(activity.avatar.url(:large))if activity.avatar? %>
+            <div class="caption text-center">
+              <h4><%= activity.name%></h4>
+              <p class="description">
+                <%= activity.description %>
+              </p>
+            </div>
         </a>  
-        <div class="caption text-center">
-          <h4><%= activity.name%></h4>
-          <p class="description">
-            <%= activity.description %>
-          </p>
-        </div>
       </div>
-
     </div>
 <% end %>
 
