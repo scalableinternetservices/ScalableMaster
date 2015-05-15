@@ -169,9 +169,11 @@ titles =
 10.times do |xx|
   x = xx + 1
   tmp = Random.rand(9)
+  star = Random.rand(100)
   Idea.create!(title: titles[tmp],
                description: descriptions[tmp],
-               participant_id: x)
+               participant_id: x,
+               stars: star)
 end
 
 tags = 
