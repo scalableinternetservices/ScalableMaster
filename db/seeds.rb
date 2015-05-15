@@ -133,24 +133,6 @@ a.each do |act|
   end
 end
 
-p = Participant.all
-p.each do |par|
-	t = Random.rand(5) + 1
-	t.times do |tt|
-		tag_id = Random.rand(10) + 1
-		par.tags << Tag.find(tag_id)
-	end
-end
-
-a = Activity.all
-a.each do |act|
-	t = Random.rand(5) + 1
-	t.times do |tt|
-		tag_id = Random.rand(10) + 1
-		act.tags << Tag.find(tag_id)
-	end
-end
-
 o = Organizer.all
 o.each do |org|
 	t = Random.rand(5) + 1
