@@ -1,7 +1,7 @@
 
 <div id="profile">
   <ul>
-    <div class="headpic"><%= image_tag(@participant.avatar.url(:medium), :class => "headpotrait") if @participant.avatar? %></div>
+    <div class="headpic"><%= image_tag(@participant.avatar.url(:thumb), :class => "headpotrait") if @participant.avatar? %></div>
 
     <h3 class="text-center"><strong><%= @participant.name %></strong></h3>
     <br>
