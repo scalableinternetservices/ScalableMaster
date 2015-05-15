@@ -34,7 +34,7 @@
         <div class="ideas-title">
           <%= idea.title %>
           <div class="ideas-like-quantity">
-            +<%= idea.stars %>
+            <%= idea.stars %>
           </div>
           <% if participant_signed_in? %>
             <div class="ideas-time">
@@ -44,8 +44,7 @@
                <%= link_to "", idea_path(idea, like: true), method: :patch,
             class: "glyphicon glyphicon-heart-empty", remote: true %>
             </div>
-          <% end %>
-          <% if organizer_signed_in? %>
+          <% else %>
             <div class="ideas-time-nolike">
               <%= idea.created_at %>
             </div>
