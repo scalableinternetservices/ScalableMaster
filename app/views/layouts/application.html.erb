@@ -31,15 +31,15 @@
       <div class="col-xs-3"></div>   
 
       <div class="col-xs-3">
-        <a class="log" href=<%= "/ideas" %>>Ideas</a>
+        <a class="log" href=<%= "/ideas" %>>IDEAS</a>
       </div>
 
       <% if !participant_signed_in? && !organizer_signed_in?%>
         <div class="col-xs-3">
-          <%= link_to 'Participant log in', new_participant_session_path, method: :get, :class=>"log" %>
+          <%= link_to 'Participant Log in', new_participant_session_path, method: :get, :class=>"log" %>
         </div>
         <div class="col-xs-3">
-          <%= link_to 'Organizer log in', new_organizer_session_path, method: :get, :class=>"log" %>
+          <%= link_to 'Organizer Log in', new_organizer_session_path, method: :get, :class=>"log" %>
         </div>
       <% end %>
 

@@ -29,7 +29,9 @@
 	</div>
 	
 	<div class="summary-activity">
-		<h4>&nbsp</h4>
+		<h5>&nbsp</h5>
+    <h4 class="h4">MY ACTIVITY</h4>
+    <h4>&nbsp</h4>
 		<% @activities.each do |activity|%>
 			<div class="col-md-3">
 				<div class="thumbnail">
@@ -52,12 +54,11 @@
 
 
 <div class="allidea">
-  <p>&nbsp</p>
+  <h4 class="h4">MY IDEAS</h4>
   <%if @ideas.length > 0 %>
   <div class="idea idea4">     
         <%= image_tag(("4.png"), :class => "pegen") %>
         <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
-    <!--     <button data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>"><%= @ideas.find(1).title %></button> -->
     <%= @ideas[0].title %>
         </p>
    <% end %>

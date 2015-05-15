@@ -16,7 +16,7 @@
 <br>
 <div class="container">
 
-<h4 style="margin-top:-20px;text-align:center;"><span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
+<h4 class="h4" style="margin-top:-20px;text-align:center;">ACTIVITY &nbsp &nbsp &nbsp<span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
 <br>
 <br>
 <div class="row" id="row_activity">
@@ -54,8 +54,8 @@
 
 <br>
 <div class="allidea">
-  <p>&nbsp</p>
-  <% if @ideas.length >0 %>
+  <h4 class="h4">IDEAS</h4>
+    <% if @ideas.length >0 %>
   <div class="idea idea4">     
         <%= image_tag(("4.png"), :class => "pegen") %>
         <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
