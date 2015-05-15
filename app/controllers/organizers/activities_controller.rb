@@ -107,11 +107,13 @@ class Organizers::ActivitiesController < Organizers::BaseController
     end
 
     def activity_params
+
       params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar, :city_name)
     end
 
     def tags_params
       params.require(:activity).permit(:tag_names)
+
     end
 
 end

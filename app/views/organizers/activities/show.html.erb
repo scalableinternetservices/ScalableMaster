@@ -1,3 +1,28 @@
+<div class="page-header" id="secondheader">
+  <div id="navi">
+  <ul class="nav nav-pills">
+    <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/summary"%>>Summary</a></li>
+    <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/profile"%>>Profile</a></li>
+    <li role="presentation" class="activeo"><a href=<%= "/participants/#{current_participant[:id]}/activities"%>>My Activity</a></li>
+    <li role="presentation"><a href=<%= "/participants/#{current_participant[:id]}/ideas"%>>My Ideas</a></li>
+  </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="headpic-big">
+    <h1><%= @activity.name %></h1>
+    <%= image_tag(@activity.avatar.url(:medium), :class => "headpotrait-big") if @activity.avatar? %>
+  </div>
+
+  <div>
+    <%= @activity.description %>
+  </div>
+</div>
+
+<br><br><br><br><br>
+
+
 <div class="container">
   <div class="row">
     <div class= "col-sm-6 col-md-4 col-md-offset-4">
@@ -7,3 +32,6 @@
     </div> 
   </div>
 </div>
+
+
+

@@ -22,11 +22,7 @@ class HomepageController < ApplicationController
     puts lat.nil?
     puts lng.nil?
 
-    if participant_signed_in?
-      @participant = Participant.find(current_participant[:id])
-    end
-    
-	  puts "You get into the loop"
+    puts "You get into the loop"
     string_geocode = lat.to_s + "," + lng.to_s
     location = Geocoder.search(string_geocode)
     tmp_hash_array = location[0].data["address_components"]
@@ -35,22 +31,52 @@ class HomepageController < ApplicationController
     user_city_name = ""
     tmp_hash_array.each do |x|
       if x["types"][0] == "locality"
-	      user_city_name = x["long_name"]
+        user_city_name = x["long_name"]
       end
     end
     puts user_city_name
-    @activities = Activity.where(:city_name => user_city_name)
+    
     @city_name = user_city_name
-      #@activities = []
-      #@activities << Activity.all[0]
+    activities_tag = []
+    activities_city = []
+    
+    if participant_signed_in?
+      @participant = Participant.find(current_participant[:id])
+      participant_tags = @participant.tags
+      @activities = []
+      @ideas = []
+      act_id = []
+      idea_id = []
+      participant_tags.each do |tag|
+        idea_tmp = Idea.joins(:tags).where('tags.id = ?', tag)
+        act_tmp = Activity.joins(:tags).where('(tags.id = ? and activities.city_name = ? )', tag.id, user_city_name)
+        act_tmp.each do |act|
+          if !act_id.include? act.id
+            act_id << act.id
+            @activities << act
+          end
+        end
+
+        idea_tmp.each do |idea|
+          if !idea_id.include? idea.id
+            idea_id << idea.id
+            @ideas << idea
+          end
+        end
+      end  
+    end
+    
     if @activities.nil? || @activities.length==0
       @activities = Activity.all
     end
 
 
-    @ideas = Idea.all
 
+    if @ideas.nil? || @ideas.length==0
+      @ideas = Idea.all
+    end
 
+    @ideas - Idea.all
 
     #respond_to do |format|
     #  format.html { redirect_to action: :homepage_index }

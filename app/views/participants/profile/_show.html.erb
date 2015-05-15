@@ -1,18 +1,19 @@
+
 <div id="profile">
   <ul>
     <div class="headpic"><%= image_tag(@participant.avatar.url(:medium), :class => "headpotrait") if @participant.avatar? %></div>
 
-    <h3 style="text-align:center;"><strong><%= @participant.name %></strong></h3>
+    <h3 class="text-center"><strong><%= @participant.name %></strong></h3>
     <br>
-    <h4 style ="text-align:center;">
-      <span class="glyphicon glyphicon-user">&nbspNick&nbsp<%= @participant.nickname %></span>&nbsp&nbsp&nbsp&nbsp
-      <span class="glyphicon glyphicon-grain">&nbspGender&nbsp<%= @participant.gender %></span>&nbsp&nbsp&nbsp&nbsp
-      <span class="glyphicon glyphicon-apple">&nbspAge&nbsp<%= @participant.age %></span>
+    <h4 class="text-center">
+      <span class="glyphicon glyphicon-user">&nbsp;Nick&nbsp;<%= @participant.nickname %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;<%= @participant.gender %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-apple">&nbsp;Age&nbsp;<%= @participant.age %></span>
 
     </h4>
     <br>
-    <h4 style="text-align:center;"><span class="glyphicon glyphicon-phone">&nbspPhone&nbsp<%= @participant.phone %></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <span class="glyphicon glyphicon-tree-deciduous">&nbspAddress&nbsp</span><%= @participant.address %>
+    <h4 class="text-center"><span class="glyphicon glyphicon-phone">&nbsp;Phone&nbsp;<%= @participant.phone %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-tree-deciduous">&nbsp;Address&nbsp;</span><%= @participant.address %>
     </h4>
 
   </ul>
