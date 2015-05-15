@@ -32,7 +32,7 @@
 .thumbnail {
     overflow: hidden;
     position: relative;
-    height: 190px;
+    height: 200px;
 }
 
 .thumbnail:hover {
@@ -59,19 +59,20 @@
 .caption {
   position: absolute;
   bottom: 0;
-  background: #fff;
+  background: rgba(0.3, 0.3, 0.3, 0.5);
   width: 100%;
+  max-height: 100px;
 }
 
-.description {
-    display: none;
-    color: gray;
+.caption h4 {
+    font-size: 12px;
+    line-height: 1.4em;
+    color: #ccc;
+}
+
+.thumbnail:hover .caption h4 {
     font-size: 14px;
-    line-height: 1.8em;
-}
-
-.thumbnail:hover .description {
-    display: block;
+    color: #fff;
 }
 
 
