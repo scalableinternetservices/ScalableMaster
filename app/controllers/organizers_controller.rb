@@ -15,7 +15,8 @@ class OrganizersController < Organizers::BaseController
     else
       @activities = @organizer.activities
     end
-
+    @ideas = Idea.all
+    
   end
 
 end

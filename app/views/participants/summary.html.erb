@@ -50,11 +50,46 @@
     
     <div class= "clear"></div>
 
-	<div class="summary-idea">
-		<h4>My Ideas</h4>
-		<% @ideas.each do |idea| %>
-			<p><%= idea.title %></p>
-		<% end %>
-	</div>
+
+<div class="allidea">
+  <p>&nbsp</p>
+  <%if @ideas.length > 0 %>
+  <div class="idea idea1">     
+        <%= image_tag(("7.png"), :class => "pegen") %>
+        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>">
+    <!--     <button data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>"><%= @ideas.find(1).title %></button> -->
+    <%= @ideas.find(1).title %>
+        </p>
+   <% end %>
+
+      
+  </div> 
+  <%if @ideas.length > 1 %>
+  <div class="idea idea2" >     
+        <%= image_tag(("6.png"), :class => "pegen") %>
+        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(2).description%>">
+          <%= @ideas.find(2).title %>
+        </p>
+      
+  </div> 
+  <% end %>
+  <%if @ideas.length >2 %>
+
+  <div class="idea idea3">     
+        <%= image_tag(("5.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(3).description%>">
+          <%= @ideas.find(3).title %>
+        </p>
+      
+  </div>
+  <% end %>
+
+  <div class="clear"></div>
+  <br>
+  <br>
+  <br>
+</div>
+ <div class="clear"></div>
+
 </div>
 </div>

@@ -1,19 +1,16 @@
-<span id="name">
-  <%= @organizer.name.capitalize! %>
-</span>
-
-
-<div id="wrap">
-<div class="page-header">
-	<div id="navi">
-	<ul class="nav nav-pills">
-	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/summary"%>>Summary</a></li>
-	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/profile" %>>Profile</a></li>
-	  <li role="presentation" class="activeo"><a href=<%= "/organizers/#{@organizer.id}/activities"%>>My Activity</a></li>
-	  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/ideas" %>>Related Ideas</a></li>
-	</ul>
-	</div>
+<div class="page-header" id="secondheader">
+<div id="navi">
+<ul class="nav nav-pills">
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/summary"%> >Summary</a></li>
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/profile" %> >Profile</a></li>
+  <li role="presentation" class="activeo"><a href=<%= "/organizers/#{@organizer.id}/activities"%> >My Activity</a></li>
+  <li role="presentation"><a href=<%= "/organizers/#{@organizer.id}/ideas" %> >My Ideas</a></li>
+</ul>
 </div>
+</div>
+
+
+
 
 
 <br>
@@ -24,13 +21,17 @@
 <div class="row">
 <% @organizer.activities.each do |activity| %>
 	<div class="col-md-3">
-	  <a class="thumbnail" href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
+		<div class="thumbnail">
+	  <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
 	  	  <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
 	  </a>  
+	  <div class="caption">
 	  <p class="text-center">
 	    <%= activity.name%>
 	  </p>
 	</div>
+	</div>
+ </div>
 <% end %>
 </div>
 </div>
