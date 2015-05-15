@@ -50,7 +50,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar, :avatar_cache, :remove_avatar)
+      params.require(:activity).permit(:name, :email, :phone, :address, :img_url, :description, :avatar)
     end
 
 end
