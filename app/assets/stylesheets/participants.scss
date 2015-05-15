@@ -88,3 +88,59 @@
 .clear {
 	clear:both;
 }
+
+/* ----- Xingyu added ------- */
+
+.thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 190px;
+}
+
+.thumbnail:hover {
+  -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail img {
+  -webkit-transition: all 0.3s linear 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -ms-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+}
+
+.thumbnail:hover img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: .6;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+}
+
+.description {
+    display: none;
+    color: gray;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+
+.thumbnail:hover .description {
+    display: block;
+}
+
+
+/* ------------------------- */
+
+
+
+
+
+
