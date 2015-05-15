@@ -36,6 +36,9 @@
           <div class="ideas-time">
             <%= idea.created_at %>
           </div>
+          <div class="ideas-like-quantity">
+            +<%= idea.stars %>
+          </div>
           <div class="ideas-like">
              <%= link_to "", idea_path(idea, like: true), method: :patch,
           class: "glyphicon glyphicon-heart-empty", remote: true %>
@@ -57,5 +60,6 @@
       </li>
     <% end %>
   </ul>
+  <br>
   </div>
 </div>
