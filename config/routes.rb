@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   get '/organizers/:organizer_id/summary' => 'organizers#summary', as: :organizer_summary
   get '/organizers' => 'organizers#index', as: :organizer_root
 
+  get '/organizers/:organizer_id/ideas' => 'organizers/ideas#index', as: :organizer_ideas
+
   # ---------- ideas ----------
 
   get '/ideas' => 'ideas#index', as: :ideas

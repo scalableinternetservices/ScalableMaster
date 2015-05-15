@@ -26,24 +26,22 @@ class OrganizersController < Organizers::BaseController
       flag = 1
     end
       
-    @ideas = []
-    idea_id = []
-    if flag != 1
-      tags.each do |tag|
-        idea_tmp = Idea.joins(:tags).where('tags.id = ?', tag)
+    # @ideas = []
+    # idea_id = []
+    # if flag != 1
+    #   tags.each do |tag|
+    #     idea_tmp = Idea.joins(:tags).where('tags.id = ?', tag)
 
-        idea_tmp.each do |idea|
-          if !idea_id.include? idea.id
-            idea_id << idea.id
-            @ideas << idea
-          end
-        end
-      end 
-    end
+    #     idea_tmp.each do |idea|
+    #       if !idea_id.include? idea.id
+    #         idea_id << idea.id
+    #         @ideas << idea
+    #       end
+    #     end
+    #   end 
+    # end
+    @ideas = Idea.joins(:tags).where('tags.id IN (?)', tags.select(:id)).distinct
     
-    if @ideas.nil? || @ideas.length==0
-      @ideas = Idea.all
-    end
 
   end
 
