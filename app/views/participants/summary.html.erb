@@ -16,7 +16,7 @@
 <div class="row">
 	<div class="summary-profile">
 		<div class="headpic">
-			<%= image_tag(@participant.avatar.url(:medium), :class => "headpotrait") if @participant.avatar? %>
+			<%= image_tag(@participant.avatar.url(:thumb), :class => "headpotrait") if @participant.avatar? %>
 		</div>
 		<br>
 		<h3><%= @participant.name%></h3>
@@ -54,31 +54,42 @@
 <div class="allidea">
   <p>&nbsp</p>
   <%if @ideas.length > 0 %>
-  <div class="idea idea1">     
-        <%= image_tag(("7.png"), :class => "pegen") %>
-        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>">
+  <div class="idea idea4">     
+        <%= image_tag(("4.png"), :class => "pegen") %>
+        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
     <!--     <button data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>"><%= @ideas.find(1).title %></button> -->
-    <%= @ideas.find(1).title %>
+    <%= @ideas[0].title %>
         </p>
    <% end %>
 
       
   </div> 
   <%if @ideas.length > 1 %>
-  <div class="idea idea2" >     
-        <%= image_tag(("6.png"), :class => "pegen") %>
-        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(2).description%>">
-          <%= @ideas.find(2).title %>
+  <div class="idea idea5" >     
+        <%= image_tag(("5.png"), :class => "pegen") %>
+        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas[1].description%>">
+          <%= @ideas[1].title %>
         </p>
       
   </div> 
   <% end %>
   <%if @ideas.length >2 %>
 
-  <div class="idea idea3">     
-        <%= image_tag(("5.png"), :class => "pegen") %>
-        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(3).description%>">
-          <%= @ideas.find(3).title %>
+  <div class="idea idea6">     
+        <%= image_tag(("6.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[2].description%>">
+          <%= @ideas[2].title %>
+        </p>
+      
+  </div>
+  <% end %>
+
+  <%if @ideas.length >3 %>
+
+  <div class="idea idea7">     
+        <%= image_tag(("7.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[3].description%>">
+          <%= @ideas[3].title %>
         </p>
       
   </div>
@@ -92,4 +103,9 @@
  <div class="clear"></div>
 
 </div>
+<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
 </div>

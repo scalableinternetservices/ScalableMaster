@@ -10,7 +10,7 @@
 </div>
 
 
-
+<%@ideas%>
 <!-- showing the summary of a participant -->
 <div class="container">
 <div class="row">
@@ -49,35 +49,45 @@
 
 	<div class= "clear"></div>
 
-<<<<<<< HEAD
+
 <div class="allidea">
   <h4>&nbsp</h4>
   <%if @ideas.length > 0 %>
-  <div class="idea idea1">     
-        <%= image_tag(("7.png"), :class => "pegen") %>
-        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>">
-    <!--     <button data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(1).description%>"><%= @ideas.find(1).title %></button> -->
-    <%= @ideas.find(1).title %>
+  <div class="idea idea4">     
+        <%= image_tag(("4.png"), :class => "pegen") %>
+        <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @ideas[0].description%>">
+    <%= @ideas[0].title %>
         </p>
    <% end %>
 
       
   </div> 
   <%if @ideas.length > 1 %>
-  <div class="idea idea2" >     
-        <%= image_tag(("6.png"), :class => "pegen") %>
-        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(2).description%>">
-          <%= @ideas.find(2).title %>
+  <div class="idea idea5" >     
+        <%= image_tag(("1.png"), :class => "pegen") %>
+        <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @ideas[1].description%>">
+          <%= @ideas[1].title %>
         </p>
       
   </div> 
   <% end %>
   <%if @ideas.length >2 %>
 
-  <div class="idea idea3">     
-        <%= image_tag(("5.png"), :class => "pegen") %>
-        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas.find(3).description%>">
-          <%= @ideas.find(3).title %>
+  <div class="idea idea6">     
+        <%= image_tag(("2.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[2].description%>">
+          <%= @ideas[2].title %>
+        </p>
+      
+  </div>
+  <% end %>
+
+  <%if @ideas.length >3 %>
+
+  <div class="idea idea7">     
+        <%= image_tag(("3.png"), :class => "pegen") %>
+        <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @ideas[3].description%>">
+          <%= @ideas[3].title %>
         </p>
       
   </div>
@@ -89,14 +99,11 @@
   <br>
 </div>
  <div class="clear"></div>
-=======
-	<div class="summary-idea">
-		<h4>Related Ideas</h4>
-		<% @ideas.each do |idea| %>
-			<p><%= idea.title %></p>
-		<% end %>
-	</div>    
-	<div class= "clear"></div>
->>>>>>> master
+
 </div>
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
 </div>
