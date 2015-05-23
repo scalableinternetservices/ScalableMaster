@@ -2,29 +2,98 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* ----- for profile page -------*/
+
 #profile .headpic {
-	text-align:center;
-	margin-top:-20px;
+	text-align: center;
+    position: relative;
+    height: 1000px;
+}
+
+#profile .headpic-top {
+    position: relative;
+    top: 45px;
+    font-weight: bold;
 }
 
 #profile .headpotrait {
-	width:80px;
-	height:80px;
+	width: 80px;
+	height: 80px;
 	border: 5px solid #f9f7f8;
-	border-radius:40px 40px;
-
+	border-radius: 40px 40px;
+    position: relative;
+    top: -45px;
 }
 
-.edit {
-	margin-left:50%;
-	background-color:#e8515a;
-	border-color:#e8515a;
-
+#profile .headpic-container {
+    margin-top: 60px;
 }
+
+#profile .headpic-container .headpic-top {
+    position: relative;
+    top: 0px;
+    font-weight: bold;
+}
+
+#profile .headpic-container .headpotrait {
+    position: relative;
+    top: 50px;
+    width: 350px;
+    height: 350px;
+    border: 10px solid #f9f7f8;
+    border-radius: 200px 200px;
+}
+
+#profile .headpic-container .straightline {
+    border: solid 1px;
+    margin-top: -90px;
+    color: #ccc;
+}
+
+#profile .headpic-container .headpic-topleft {
+    position: absolute;
+    top: 115px;
+    left: 0px;
+    width: 300px;
+    line-height: 1.4em;
+}
+
+#profile .headpic-container .headpic-topright {
+    position: absolute;
+    top: 115px;
+    right: 0px;
+    width: 300px;
+    line-height: 1.4em;
+}
+
+#profile .headpic-container .headpic-bottomleft {
+    position: absolute;
+    top: 205px;
+    left: 0px;
+    width: 300px;
+    line-height: 1.4em;
+}
+
+#profile .headpic-container .headpic-bottomright {
+    position: absolute;
+    top: 205px;
+    right: 0px;
+    width: 300px;
+    line-height: 1.4em;
+}
+
+/*.edit {
+    margin-top: 100px;
+    margin-left: 48%;
+    background-color: #e8515a;
+    border-color: #e8515a;
+}*/
+
+/* ----- for profile edit page -------*/
 
 #formEdit {
-width:100%;
-margin-left:7%;
+    width:100%;
+    margin-left:7%;
 }
 
 .editImage {
@@ -33,7 +102,7 @@ margin-left:7%;
 }
 
 .editForm {
-margin-left:10%;
+    margin-left:10%;
 	float:left;
 	width:50%;
 }
@@ -45,3 +114,4 @@ margin-left:10%;
 .editSubmit {
 	margin-left:6%;
 }
+
