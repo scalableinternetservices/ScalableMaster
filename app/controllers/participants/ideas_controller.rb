@@ -32,7 +32,11 @@ class Participants::IdeasController < Participants::BaseController
     respond_to do |format|
       if @idea
         # format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully created.' }
+<<<<<<< HEAD
+        format.html { redirect_to participant_ideas_path(@participant), notice: 'Idea was successfully created.' }
+=======
         format.html { redirect_to participant_ideas_path(@participant, idea_id: @idea.id), notice: 'Idea was successfully created.' }
+>>>>>>> master
         format.js
       else
         format.html { render :new }
@@ -47,7 +51,11 @@ class Participants::IdeasController < Participants::BaseController
       # byebug
       if @idea.update(idea_params) && @idea.update_tags(tags_params)
         # format.html { redirect_to participant_idea_path(@participant, @idea), notice: 'Idea was successfully updated.' }
+<<<<<<< HEAD
+        format.html { redirect_to participant_ideas_path(@participant), notice: 'Idea was successfully updated.' }
+=======
         format.html { redirect_to participant_ideas_path(@participant, idea_id: @idea.id), notice: 'Idea was successfully updated.' }
+>>>>>>> master
         format.js
       else
         format.html { render :edit }
