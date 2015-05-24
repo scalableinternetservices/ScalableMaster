@@ -125,3 +125,40 @@ p {
   	width: 100%;
   	height: 100%;
 }
+
+.pagination {
+  width: 90%;
+  margin-left: 5%;
+  font-size: 13px;
+  background: #F9F9F9;
+  border: 1px solid #E4E4E4;
+  text-align: center;
+  padding: 10px;
+  cursor: default;
+}
+.pagination a, .pagination span {
+  padding: 0.2em 0.3em; 
+}
+.pagination .disabled {
+  color: #aaaaaa; 
+}
+.pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background-color: #E3E3E3;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; 
+}
+.pagination a {
+  text-decoration: none;
+  color: black; 
+}
+.pagination a:hover, .pagination a:focus {
+  text-decoration: underline; 
+}

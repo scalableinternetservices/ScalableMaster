@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [ :show, :update ]
 
   def index
-    @ideas = Idea.all.order(:stars => :desc)
+    @ideas = Idea.all.order(:stars => :desc).paginate(page: params[:page], per_page: 9)
 
     @idea_id = params[:idea_id]
 

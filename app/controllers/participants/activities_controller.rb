@@ -2,6 +2,7 @@ class Participants::ActivitiesController < Participants::BaseController
   before_action :set_activity, only: [ :show, :canclejoin, :join ]
 
   def index
+    @activities = @participant.activities.all.paginate(page: params[:page], per_page: 8)
   end
 
   def show
