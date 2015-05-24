@@ -17,7 +17,7 @@
 <!-- showing the activities of an organizer -->
 <div class="container">
 <div class="row">
-<% @organizer.activities.each do |activity| %>
+<% @activities.each do |activity| %>
 	<div class="col-md-3">
     <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
 		  <div class="thumbnail">
@@ -30,8 +30,7 @@
 	</div>
 	 <% end %>
 	</div>
- 
-
+ <%= will_paginate @activities %>
  </div>
 </div>
 </div>
