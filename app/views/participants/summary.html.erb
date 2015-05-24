@@ -29,12 +29,14 @@
 		<br>
 	</div>
 	
+  <% cache(cache_key_for_activities) do %>
 	<div class="summary-activity">
 		<h5>&nbsp;</h5>
     <h4 class="h4">MY ACTIVITY</h4>
     <h4>&nbsp;</h4>
 
 		<% @activities.each do |activity|%>
+      <% cache(activity) do %>
 			<div class="col-md-3">
         <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
 				  <div class="thumbnail">
@@ -45,16 +47,23 @@
 				  </div>
         </a>
 			</div>
+      <% end %>
 		<% end %>
 		<div class= "clear"></div>
 
 	</div>
-    
+  <% end %>    
+
     <div class= "clear"></div>
 
 
 <div class="allidea">
-
+  <% if @ideas.length <= 4 %>
+    <% ideas_key = cache_key_for_ideas %>
+  <% else %>
+    <% ideas_key = "participants-summary-ideas" %>
+  <% end %>
+  <% cache(ideas_key) do %>
   <h4 class="h4">IDEAS</h4>
     <div class="row">
     <% if @ideas.length > 0 %>
@@ -115,7 +124,7 @@
       <% end %>
     </div>
     <% end %>
-
+  <% end %>
 
   <div class="clear"></div>
   <br>
