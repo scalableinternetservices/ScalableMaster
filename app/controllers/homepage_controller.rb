@@ -15,8 +15,7 @@ class HomepageController < ApplicationController
 
       ul = Userlocation.find_by :user_id => current_participant[:id]
       if not (ul.nil? or Time.now - ul.updated_at > 30.minutes)
-        #redirect_to action: :homepage_activity
-        redirect_to '/home_activity'
+        redirect_to homepage_activity_url
       end
     end  
   end
