@@ -104,6 +104,25 @@ class HomepageController < ApplicationController
       #     end
       #   end
       # end  
+    else
+      user_city_name = ""
+      lat = params["lat"]
+      lng = params["lng"]
+      puts lat.nil?
+      puts lng.nil?
+      
+      string_geocode = lat.to_s + "," + lng.to_s
+      location = Geocoder.search(string_geocode)
+      tmp_hash_array = location[0].data["address_components"]
+      
+      # puts tmp_hash_array
+      
+      tmp_hash_array.each do |x|
+        if x["types"][0] == "locality"
+          user_city_name = x["long_name"]
+        end
+      end
+      @city_name = user_city_name
     end
     
     if @activities.nil? || @activities.length == 0
