@@ -22,9 +22,7 @@ class HomepageController < ApplicationController
   end
 
 
-  def homepage_activity   
-
-    
+  def homepage_activity
     if participant_signed_in?
 
       user_city_name = ""
