@@ -17,27 +17,66 @@ class HomepageController < ApplicationController
 
 
   def homepage_activity   
-    lat = params["lat"]
-    lng = params["lng"]
-    puts lat.nil?
-    puts lng.nil?
 
-    string_geocode = lat.to_s + "," + lng.to_s
-    location = Geocoder.search(string_geocode)
-    tmp_hash_array = location[0].data["address_components"]
+    # k = false
+    # if !participant_signed_in?
+    #   k = true
+    # else
+    #   ul = Userlocation.find_by :user_id => current_participant[:id]
+    #   time_difference = Time.now - ul.updated_time
+    #   if time_difference > 30.minutes
+    #     k = true
+    #   end
+    #   ul.updated_time = Time.now
+    #   ul.save
+    # end
 
-    # puts tmp_hash_array
-    user_city_name = ""
-    tmp_hash_array.each do |x|
-      if x["types"][0] == "locality"
-        user_city_name = x["long_name"]
-      end
-    end
-    # puts user_city_name
-    
-    @city_name = user_city_name
     
     if participant_signed_in?
+
+      user_city_name = ""
+      ul = Userlocation.find_by :user_id => current_participant[:id]
+
+      if ul.nil? or Time.now - ul.updated_time > 30.minutes
+
+        lat = params["lat"]
+        lng = params["lng"]
+        puts lat.nil?
+        puts lng.nil?
+        
+        string_geocode = lat.to_s + "," + lng.to_s
+        location = Geocoder.search(string_geocode)
+        tmp_hash_array = location[0].data["address_components"]
+        
+        # puts tmp_hash_array
+        
+        tmp_hash_array.each do |x|
+          if x["types"][0] == "locality"
+            user_city_name = x["long_name"]
+          end
+        end
+        # puts user_city_name
+
+      else
+        user_city_name = ul.location
+      end
+
+      #store back the data
+      if ul.nil?
+        ul = Userlocation.new
+        ul.location = user_city_name
+        ul.updated_time = Time.now
+        ul.user_id = current_participant[:id]
+        ul.save
+      else
+        ul.location = user_city_name
+        ul.updated_time = Time.now
+        ul.save
+      end
+
+      @city_name = user_city_name
+
+
       @participant = Participant.find(current_participant[:id])
       participant_tags_id = @participant.tags.select(:id)
 
@@ -65,7 +104,6 @@ class HomepageController < ApplicationController
       #     end
       #   end
       # end  
-
     end
     
     if @activities.nil? || @activities.length == 0
