@@ -37,7 +37,7 @@ class HomepageController < ApplicationController
       user_city_name = ""
       ul = Userlocation.find_by :user_id => current_participant[:id]
 
-      if ul.nil? or Time.now - ul.updated_time > 30.minutes
+      if ul.nil? or Time.now - ul.updated_at > 30.minutes
 
         lat = params["lat"]
         lng = params["lng"]
@@ -65,12 +65,12 @@ class HomepageController < ApplicationController
       if ul.nil?
         ul = Userlocation.new
         ul.location = user_city_name
-        ul.updated_time = Time.now
+        #ul.updated_time = Time.now
         ul.user_id = current_participant[:id]
         ul.save
       else
         ul.location = user_city_name
-        ul.updated_time = Time.now
+        #ul.updated_time = Time.now
         ul.save
       end
 
