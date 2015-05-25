@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   # get '/homepage/:participant_id' => 'homepage#homepage_index'
   get '/homepage' => 'homepage#homepage_index', as: :participant_root
   post '/homepage' => 'homepage#homepage_activity', as: :participant_homepage
+  get '/home_activity' => 'homepage#homepage_activity', as: :homepage_activity
 
   # devise_scope :participants do
   #   authenticated :participants do
