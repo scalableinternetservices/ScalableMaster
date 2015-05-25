@@ -3,7 +3,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
   require 'json'
 
   before_action :set_tags, only: [:edit, :create, :new]
-  before_action :set_activity, only: [ :edit, :update, :show ]
+  before_action :set_activity, only: [ :edit, :update, :show, :destroy ]
   def index
     @activities = @organizer.activities.all.paginate(page: params[:page], per_page: 8)
   end
@@ -98,6 +98,14 @@ class Organizers::ActivitiesController < Organizers::BaseController
       else
           format.html { redirect_to :organizer_activity, notice: 'Failed!' }
       end
+    end
+  end
+
+  def destroy
+    @activity.destroy
+    respond_to do |format|
+      format.html { redirect_to organizer_activities_path(@organizer), notice: 'Activity was successfully destroyed.' }
+      format.js
     end
   end
 

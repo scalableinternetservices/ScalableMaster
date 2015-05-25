@@ -18,8 +18,10 @@
 
 
   <div class="text-center">
-    <%= link_to "EDIT", edit_organizer_activity_path(@organizer, @activity)%>
-    <br/><br/>
+    <span class="activity_edit"><%= link_to "EDIT", edit_organizer_activity_path(@organizer, @activity)%></span>
+    <span class="activity_delete"><%= link_to "DELETE", organizer_activity_path(@organizer, @activity), method: :delete%></span>
+    <br/>
+    <br/>
     <div>
       <span class="glyphicon glyphicon-phone">&nbsp;Phone&nbsp;<%= @activity.phone %></span>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
