@@ -12,24 +12,17 @@ class HomepageController < ApplicationController
     # @participant = Participant.find(params[:participant_id])
     if participant_signed_in?
       @participant = Participant.find(current_participant[:id])
+
+      ul = Userlocation.find_by :user_id => current_participant[:id]
+      if not (ul.nil? or Time.now - ul.updated_at > 30.minutes)
+        #redirect_to action: :homepage_activity
+        redirect_to '/home_activity'
+      end
     end  
   end
 
 
   def homepage_activity   
-
-    # k = false
-    # if !participant_signed_in?
-    #   k = true
-    # else
-    #   ul = Userlocation.find_by :user_id => current_participant[:id]
-    #   time_difference = Time.now - ul.updated_time
-    #   if time_difference > 30.minutes
-    #     k = true
-    #   end
-    #   ul.updated_time = Time.now
-    #   ul.save
-    # end
 
     
     if participant_signed_in?
@@ -65,12 +58,12 @@ class HomepageController < ApplicationController
       if ul.nil?
         ul = Userlocation.new
         ul.location = user_city_name
-        #ul.updated_time = Time.now
+        ul.updated_time = Time.now
         ul.user_id = current_participant[:id]
         ul.save
       else
         ul.location = user_city_name
-        #ul.updated_time = Time.now
+        ul.updated_time = Time.now
         ul.save
       end
 
