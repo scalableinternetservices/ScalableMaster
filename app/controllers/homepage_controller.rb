@@ -20,10 +20,8 @@ class HomepageController < ApplicationController
     end  
   end
 
-
   def homepage_activity
     if participant_signed_in?
-
       user_city_name = ""
       ul = Userlocation.find_by :user_id => current_participant[:id]
 
@@ -65,35 +63,11 @@ class HomepageController < ApplicationController
       end
 
       @city_name = user_city_name
-
-
       @participant = Participant.find(current_participant[:id])
       participant_tags_id = @participant.tags.select(:id)
 
       @ideas = Idea.joins(:tags).where('tags.id IN (?)', participant_tags_id).distinct
       @activities = Activity.joins(:tags).where('tags.id IN (?)', participant_tags_id).distinct
-
-      # @activities = []
-      # @ideas = []
-      # act_id = []
-      # idea_id = []
-      # participant_tags.each do |tag|
-      #   idea_tmp = Idea.joins(:tags).where('tags.id = ?', tag)
-      #   act_tmp = Activity.joins(:tags).where('(tags.id = ? and activities.city_name = ? )', tag.id, user_city_name)
-      #   act_tmp.each do |act|
-      #     if !act_id.include? act.id
-      #       act_id << act.id
-      #       @activities << act
-      #     end
-      #   end
-
-      #   idea_tmp.each do |idea|
-      #     if !idea_id.include? idea.id
-      #       idea_id << idea.id
-      #       @ideas << idea
-      #     end
-      #   end
-      # end  
     else
       user_city_name = ""
       lat = params["lat"]
@@ -123,11 +97,6 @@ class HomepageController < ApplicationController
       @ideas = Idea.all
     end
 
-    #respond_to do |format|
-    #  format.html { redirect_to action: :homepage_index }
-    #  format.js
-    #end
-  
   end
 
 end
