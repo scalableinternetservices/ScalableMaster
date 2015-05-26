@@ -94,8 +94,8 @@ act_descriptions =
 	"ROUND ROBIN COCKTAIL CLASS THURSDAYS 9PM - 10PM Learn 4 cocktails from 4 different Continental Club bartenders",
 	"Meal and a Spiel offers intimate hands on cooking experience for all levels that will provide you with very do-able access to exquisite and healthy cooking. Classes are limited to 10 people. We stand for high quality ingredients. All produce is organic when possible and all chicken/meats are hormone and antibiotic free, grass fed when possible. You will learn more than technique, you will learn how to “feel the cooking” so you can use the recipes as a jumping board for your own creations."
 ]
-10.times do |xx|
-	x = xx + 1
+1000.times do |xx|
+	x = xx % 10 + 1
 	tmp = Random.rand(9)
 	a = Activity.new(name: act_names[tmp],
 					 description: act_descriptions[tmp],
@@ -109,12 +109,23 @@ act_descriptions =
 	a.save!	
 end
 
+# i = 1
+# File.open('image_log/act.txt','r').each do |img|
+# 	img = img.strip
+# 	if i > 100
+# 		break;
+# 	end
+# 	act = Activity.find(i)
+# 	if (!File.directory? "image_upload/act/#{img}") && (img != "")
+# 	    act.update_attribute(:avatar_file_name, img)
+# 	    i+=1
+# 	end
+# end
+
 i = 1
-File.open('image_log/act.txt','r').each do |img|
-	img = img.strip
-	if i > 10
-		break;
-	end
+while i < 200
+	img_names = File.open('image_log/act.txt', 'r').readlines
+	img = img_names[(i-1) % 10].strip
 	act = Activity.find(i)
 	if (!File.directory? "image_upload/act/#{img}") && (img != "")
 	    act.update_attribute(:avatar_file_name, img)

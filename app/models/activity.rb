@@ -16,8 +16,15 @@ class Activity < ActiveRecord::Base
         self.save
       end
     end
+    @@id_path = ["001","002", "003", "004", "005", "006", "007", "008", "009", "010"]
+    @@img_name = ["1.jpg","10.jpg", "2.jpg", "3.jpg", "4.jpg", "6.jpg", "7.jpg", "IMG_5411.jpg", "IMG_6056.jpg", "IMG_6169.jpg"]
+    def self.get_rand
+      @@index = Random.rand(10)
+      @@index
+    end
     
 
-	has_attached_file :avatar, :styles => { :medium => "400x400>", :thumb => "100x100#", :large => "700x700#"}, :default_url => "/images/:style/missing.png"
+	has_attached_file :avatar, :styles => { :medium => "400x400>", :thumb => "100x100#", :large => "700x700#"}, :default_url => lambda {|x| "http://s3-us-west-2.amazonaws.com/scalableinternetservices/ScalableMaster/default/activities/avatars/000/000/#{@@id_path[Activity.get_rand]}/large/#{@@img_name[@@index]}"}
     validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+# endlambda {"http://s3-us-west-2.amazonaws.com/scalableinternetservices/ScalableMaster/activities/avatars/000/000/#{@@id_path[get_rand]}/original/#{@@img_name[@@index]}"}
 end

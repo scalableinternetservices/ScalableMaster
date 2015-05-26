@@ -9,10 +9,12 @@
 </div>
 </div>
 
+<% cache(cache_key_for_idea_ideas(@ideas)) do%>
 <div class="container row">
   <div class="col-md-offset-3 col-md-6">
   <ul>
     <% @ideas.each do |idea| %>
+    <% cache(idea) do %>
       <li id="idea-<%= idea.id %>">
         <div class="my-ideas">
             <span class="my-idea-title">
@@ -32,11 +34,13 @@
         </div>
       </li>
     <% end %>
+    <% end %>
   </ul>
   <br>
   </div>
   <%= will_paginate @ideas %>
 </div>
+<% end %>
 
 <script type="text/javascript">
   $('#idea-<%= j @idea_id %>').scrollView();
