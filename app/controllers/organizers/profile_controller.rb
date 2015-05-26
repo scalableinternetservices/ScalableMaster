@@ -21,7 +21,7 @@ class Organizers::ProfileController < Organizers::BaseController
   def update
     # byebug
     respond_to do |format|
-      if @organizer.update(organizer_params) && @participant.update_tags(tags_params)
+      if @organizer.update(organizer_params) && @organizer.update_tags(tags_params)
         format.html { redirect_to organizer_profile_path(@organizer), notice: 'Organizer was successfully updated.' }
         format.js
       else

@@ -16,9 +16,10 @@ org_names =
 	"Robin Li",
 	"Mark Zuckerberg",
 	"Jeff Bezos",
-	"Larry Page"
+	"Larry Page",
+	"Huateng Ma"
 ]
-10.times do |xx| 
+11.times do |xx| 
   x = xx + 1
   age = Random.rand(20) + 25
   Organizer.create!(name: org_names[xx], 
@@ -95,7 +96,7 @@ act_descriptions =
 	"Meal and a Spiel offers intimate hands on cooking experience for all levels that will provide you with very do-able access to exquisite and healthy cooking. Classes are limited to 10 people. We stand for high quality ingredients. All produce is organic when possible and all chicken/meats are hormone and antibiotic free, grass fed when possible. You will learn more than technique, you will learn how to “feel the cooking” so you can use the recipes as a jumping board for your own creations."
 ]
 200.times do |xx|
-	x = xx % 10 + 1
+	x = xx % 11 + 1
 	tmp = Random.rand(9)
 	a = Activity.new(name: act_names[tmp],
 					 description: act_descriptions[tmp],
@@ -136,7 +137,7 @@ end
 i = 1
 File.open('image_log/org.txt','r').each do |img|
 	img = img.strip
-	if i > 10
+	if i > 11
 		break;
 	end
 	org = Organizer.find(i)
