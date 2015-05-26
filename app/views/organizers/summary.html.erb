@@ -16,7 +16,7 @@
       <%= image_tag(@organizer.avatar.url(:thumb), :class => "headpotrait") if @organizer.avatar? %>
     </div>
     <br>
-    <h3 class="h4"><%= @organizer.name.capitalize%></h3>
+    <h3 class="h4"><%= @organizer.name.capitalize if !@organizer.name.nil?%></h3>
     <h5><span class="glyphicon glyphicon-map-marker"></span>&nbsp;
       Los Angeles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <span class="glyphicon glyphicon-grain"></span>
