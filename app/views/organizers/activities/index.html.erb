@@ -9,29 +9,34 @@
 </div>
 </div>
 
-
-
 <br>
 
-
 <!-- showing the activities of an organizer -->
+
+<% cache(cache_key_for_activities_all(@activities, 'organizers/activities/index')) do %>
+
 <div class="container">
-<div class="row">
-<% @activities.each do |activity| %>
-	<div class="col-md-3">
-    <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
-		  <div class="thumbnail">
-  	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
-    	  <div class="caption text-center">
-    	    <h4><%= activity.name%></h4>
-  	   </div>
-      </div>
-    </a> 
-	</div>
-	 <% end %>
-	</div>
- <%= will_paginate @activities %>
- </div>
+  <div class="row">
+    <% @activities.each do |activity| %>
+
+      <% cache(cache_key_for_activities_row(activity, 'organizers/activities/index')) do %>
+
+    	<div class="col-md-3">
+        <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
+    		  <div class="thumbnail">
+      	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
+        	  <div class="caption text-center">
+        	    <h4><%= activity.name%></h4>
+      	   </div>
+          </div>
+        </a> 
+    	</div>
+
+      <% end %>
+
+    <% end %>
+  </div>
+  <%= will_paginate @activities %>
 </div>
-</div>
-</div>
+
+<% end %>

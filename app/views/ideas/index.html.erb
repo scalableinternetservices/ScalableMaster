@@ -17,14 +17,16 @@
 </div>
 </div>
 
-<% cache(cache_key_for_ideas_all(@ideas)) do %>
+<% cache(cache_key_for_ideas_all(@ideas, "ideas/index")) do %>
   <div class="row idea-body" >
     <div class="col-md-offset-2 col-md-8 timeborder">
     <br>
 
     <ul>
       <% @ideas.each do |idea| %>
-        <% cache(cache_key_for_ideas_row(idea)) do %>
+
+        <% cache(cache_key_for_ideas_row(idea, "ideas/index")) do %>
+        
           <li id="idea-<%= idea.id %>" class="ideas-entry">
             <div class="ideas-participant">
             <div class="ideas-participant-pic">

@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#show', as: :organizer_activity
   patch '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
   put '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#update'
+  delete '/organizers/:organizer_id/activities/:activity_id' => 'organizers/activities#destroy'
   get '/organizers/:organizer_id/activities/:activity_id/edit' => 'organizers/activities#edit', as: :edit_organizer_activity
 
   get '/organizers/:organizer_id/summary' => 'organizers#summary', as: :organizer_summary

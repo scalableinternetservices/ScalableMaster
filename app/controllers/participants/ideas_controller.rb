@@ -4,7 +4,7 @@ class Participants::IdeasController < Participants::BaseController
 
   def index
     @ideas = @participant.ideas.all.paginate(page: params[:page], per_page: 10)
-
+    
     @idea_id = params[:idea_id]
   end
 

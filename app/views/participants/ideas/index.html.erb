@@ -9,34 +9,46 @@
 </div>
 </div>
 
+<% cache(cache_key_for_ideas_all(@ideas, "participants/ideas/index")) do %>
+
 <div class="container row">
   <div class="col-md-offset-3 col-md-6">
   <ul>
     <% @ideas.each do |idea| %>
+
+      <% cache(cache_key_for_ideas_row(idea, "participants/ideas/index")) do %>
+
       <li id="idea-<%= idea.id %>">
         <div class="my-ideas">
-            <span class="my-idea-title">
-              <%= link_to idea.title, edit_participant_idea_path(@participant, idea) %>
-            </span>
-            <span class="glyphicon glyphicon-trash">
-            </span>
-            <ul class="idea-tagslist">
-              <% idea.tags.each do |tag| %>
-                <li class="idea_tags">
-                  <%= tag.name %>
-                </li>
-              <% end %>
-            </ul>
-            <div class="clear"><div>
-            <pre><%= idea.description %></pre>
+          <span class="my-idea-title">
+            <%= link_to idea.title, edit_participant_idea_path(@participant, idea) %>
+          </span>
+          <span class="glyphicon glyphicon-trash">
+          </span>
+          <ul class="idea-tagslist">
+            <% idea.tags.each do |tag| %>
+              <li class="idea_tags">
+                <%= tag.name %>
+              </li>
+            <% end %>
+          </ul>
+          <div class="clear"><div>
+          <pre><%= idea.description %></pre>
         </div>
       </li>
+
+      <% end %>
+
     <% end %>
+    
   </ul>
   <br>
   </div>
   <%= will_paginate @ideas %>
 </div>
+<% end %>
+
+
 
 <script type="text/javascript">
   $('#idea-<%= j @idea_id %>').scrollView();

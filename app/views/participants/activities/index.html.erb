@@ -2,7 +2,7 @@
 <p>Find me in app/views/participant_activities/show.html.erb</p> -->
 
 <!-- showing the details of a participant -->
-
+<div>
 
   <div class="page-header" id="secondheader">
     <div id="navi">
@@ -19,11 +19,18 @@
 
   <br>
 
+  <% cache(cache_key_for_activities_all(@activities, 'participants/activities/index')) do %>
+
   <!-- showing the activities of a participant -->
+ <!--   cache(cache_key_for_activities(@activities, "activity")) do  -->
+  
   <div class="container">
     <div class="row">
       <ul>
         <% @activities.each do |activity| %>
+
+          <% cache(cache_key_for_activities_row(activity, 'participants/activities/index')) do %>
+
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
               <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
@@ -42,9 +49,16 @@
               </a>
             </div>
           </li>
+
+          <% end %>
+
         <% end %>
+        
       </ul>
     </div>
     <%= will_paginate @activities %>
   </div>
+
+  <% end %>
+
 </div>
