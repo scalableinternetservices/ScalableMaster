@@ -32,7 +32,7 @@
 
   <div class="form-group">
     <%= f.label :tag_names, "Tag" %>
-    <%= f.text_field :tag_names, class: "form-control", 'data-role'=>'tagsinput' %>
+    <%= f.text_field :tag_names, class: "form-control", id: "tags", 'data-role'=>'tagsinput' %>
   </div>
 
   <div class="form-group" id="all_tags">
@@ -46,16 +46,13 @@
 <% end %>
 
 <script type="text/javascript">
-  //$('*[data-role=tagsinput]').tagsinput();
-
   $('*[data-role=tagsinput]').tagsinput({
     // freeInput: true,
     trimValue: true
-    });
-    $('#all_tags button').click(function() {
-      new_tag_name = $(this).text();
-      $('#activity_tag_names').tagsinput('add', new_tag_name);
-    });
+  });
 
-  //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAEuB0H0PzN0_OHVxZv3XBMOgixjCdRph8
+  $('#all_tags button').click(function() {
+    new_tag_name = $(this).text();
+    $('#tags').tagsinput('add', new_tag_name);
+  });
 </script>

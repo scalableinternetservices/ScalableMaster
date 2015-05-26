@@ -1,4 +1,6 @@
 class Organizers::ProfileController < Organizers::BaseController
+  before_action :set_tags, only: [:edit, :new]
+
   def show 
     if @organizer.gender == "1"
       @organizer.gender = "Male"
@@ -19,7 +21,7 @@ class Organizers::ProfileController < Organizers::BaseController
   def update
     # byebug
     respond_to do |format|
-      if @organizer.update(organizer_params)
+      if @organizer.update(organizer_params) && @participant.update_tags(tags_params)
         format.html { redirect_to organizer_profile_path(@organizer), notice: 'Organizer was successfully updated.' }
         format.js
       else
@@ -28,4 +30,14 @@ class Organizers::ProfileController < Organizers::BaseController
       end
     end
   end
+
+  private
+    def set_tags
+        @all_tags = Tag.all
+      end
+
+    def tags_params
+      params.require(:organizer).permit(:tag_names)
+    end
+
 end
