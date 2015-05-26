@@ -5,6 +5,6 @@ module IdeasHelper
   end
 
   def cache_key_for_ideas_row(idea, page)
-    "ideas-#{page}-row-#{idea.updated_at}"
+    "ideas-#{page}-row-#{idea.updated_at}-#{idea.id}"
   end
 end

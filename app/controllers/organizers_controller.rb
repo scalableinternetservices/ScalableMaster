@@ -11,7 +11,7 @@ class OrganizersController < Organizers::BaseController
   def summary
     count = @organizer.activities.count
     if(count > 10) 
-      @activities = @organizer.activities[0..9]
+      @activities = @organizer.activities.limit(9)
     else
       @activities = @organizer.activities
     end

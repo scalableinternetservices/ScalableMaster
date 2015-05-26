@@ -22,7 +22,7 @@
   <% cache(cache_key_for_activities_all(@activities, 'participants/activities/index')) do %>
 
   <!-- showing the activities of a participant -->
-  <% cache(cache_key_for_activities(@activities, "activity")) do %>
+ <!--   cache(cache_key_for_activities(@activities, "activity")) do  -->
   
   <div class="container">
     <div class="row">
@@ -53,7 +53,7 @@
           <% end %>
 
         <% end %>
-        <% end %>
+        
       </ul>
     </div>
     <%= will_paginate @activities %>

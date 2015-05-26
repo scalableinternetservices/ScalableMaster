@@ -5,6 +5,6 @@ module ActivitiesHelper
   end
 
   def cache_key_for_activities_row(activity, page)
-    "ideas-#{page}-row-#{activity.updated_at}"
+    "ideas-#{page}-row-#{activity.updated_at}-#{activity.id}"
   end
 end

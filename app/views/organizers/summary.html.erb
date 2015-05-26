@@ -23,7 +23,6 @@
 			<%= @organizer.email%>
 		</h5>
 	</div>
-
   <% cache(cache_key_for_activities_all(@activities, "organizers/summary")) do %>
 	
 	<div class="summary-activity">
@@ -54,6 +53,7 @@
   </div>
 
   <% end %>
+
 
   <% cache(cache_key_for_ideas_all(@ideas.limit(4), "organizers/summary")) do %>
 
