@@ -2,7 +2,7 @@
 <p>Find me in app/views/participant_activities/show.html.erb</p> -->
 
 <!-- showing the details of a participant -->
-
+<div>
 
   <div class="page-header" id="secondheader">
     <div id="navi">
@@ -22,6 +22,8 @@
   <% cache(cache_key_for_activities_all(@activities, 'participants/activities/index')) do %>
 
   <!-- showing the activities of a participant -->
+  <% cache(cache_key_for_activities(@activities, "activity")) do %>
+  
   <div class="container">
     <div class="row">
       <ul>
@@ -50,6 +52,7 @@
 
           <% end %>
 
+        <% end %>
         <% end %>
       </ul>
     </div>
