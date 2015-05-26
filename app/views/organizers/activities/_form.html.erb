@@ -26,7 +26,7 @@
 
   <div class="form-group">
     <%= f.label :avatar, "Image" %>
-    <%= image_tag(@activity.avatar.url(:thumb)) if @activity.avatar? %>
+    <%= image_tag(@activity.avatar.url(:thumb)) if @activity.avatar?  %>
     <%= f.file_field :avatar %>
   </div>
 

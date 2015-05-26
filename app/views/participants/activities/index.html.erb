@@ -20,7 +20,7 @@
   <br>
 
   <!-- showing the activities of a participant -->
-  <% cache(cache_key_for_activities("activity")) do %>
+  <% cache(cache_key_for_activities(@activities, "activity")) do %>
   <div class="container">
     <div class="row">
       <ul>
@@ -30,7 +30,7 @@
             <div class="col-md-3">
               <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
                 <div class="thumbnail">
-                  <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
+                  <%= image_tag(activity.avatar.url(:large)) if @activity.avatar? %>
                   <div class="caption text-center">
                     <h4><%= activity.name %></h4>
                     <% @activity = activity %>
