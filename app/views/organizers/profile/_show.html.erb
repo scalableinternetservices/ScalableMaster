@@ -1,37 +1,57 @@
-
-
 <div id="profile">
-  <ul>
-    <div class="headpic"><%= image_tag(@organizer.avatar.url(:thumb), :class => "headpotrait") if @organizer.avatar? %></div>
+  <div class="headpic">
+    <h3 class="headpic-top text-center"><%= @organizer.name %></h3>
 
-    <h3 style="text-align:center;"><strong><%= @organizer.name %></strong></h3>
-    <br>
-    <h4 style ="text-align:center;">
-      <span class="glyphicon glyphicon-user">&nbsp;Nick&nbsp;<%= @organizer.nickname %></span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="glyphicon glyphicon-grain">&nbsp;Gender&nbsp;
-      <% if @organizer.gender == 1%>
-      <%= "M" %>
+    <%= link_to edit_organizer_profile_path(@organizer) do %>
+      <% if @organizer.avatar? %>
+        <%= image_tag(@organizer.avatar.url(:large), :class => "headpotrait") %>
+      <% else %>
+        click to edit
+      <% end %>
+    <% end %>
+  
+    <div class="straightline"></div>
+    <div class="straightline"></div>
+
+    <h4 class="headpic-topleft text-center">
+      <span class="glyphicon glyphicon-user"></span>
+      Nickname&nbsp;&nbsp;<%= @organizer.nickname %>
+    </h4>
+
+    <h4 class="headpic-topright text-center">
+      <span class="glyphicon glyphicon-grain"></span>
+      Gender&nbsp;
+      <% if @organizer.gender == 1 %>
+        M
       <% elsif @organizer.gender == 0 %>
-      <%= "F" %>
-      <%end%>
-      </span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="glyphicon glyphicon-apple">&nbsp;Age&nbsp;<%= @organizer.age %></span>
-
-    </h4>
-    <br>
-    <h4 style="text-align:center;"><span class="glyphicon glyphicon-phone">&nbsp;Phone&nbsp;<%= @organizer.phone %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="glyphicon glyphicon-tree-deciduous">&nbsp;Address&nbsp;</span><%= @organizer.address %>
+        F
+      <% end %>
+      &nbsp;&nbsp;
+      <span class="glyphicon glyphicon-apple"></span>
+      Age&nbsp;<%= @organizer.age %>
     </h4>
 
-  </ul>
+    <h4 class="headpic-bottomleft text-center">
+      <span class="glyphicon glyphicon-phone"></span>
+      Phone&nbsp;&nbsp;<%= @organizer.phone %>
+    </h4>
 
-  <br>
-  <br>
-  <%= link_to "Edit", edit_organizer_profile_path(@organizer), 
-      class: "edit btn btn-primary", remote: true %>
+    <h4 class="headpic-bottomright text-center">
+      <span class="glyphicon glyphicon-tree-deciduous"></span>
+      Address&nbsp;&nbsp;<%= @organizer.address %>
+    </h4>
+
+  </div>
 </div>
-</div>
 
-
+<script type="text/javascript">
+  $('#profile .headpic h4').hide().delay(2000).fadeIn(1000);
+  setTimeout(function() {
+    $('#profile .headpic').addClass('headpic-container', {
+       duration: 1000,
+       children: true
+    });
+  }, 1000);
+</script>
 
 

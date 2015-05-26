@@ -1,10 +1,11 @@
+<% cache(@participant) do%>
 <div id="profile">
   <div class="headpic">
     <h3 class="headpic-top text-center"><%= @participant.name %></h3>
 
     <%= link_to edit_participant_profile_path(@participant) do %>
       <% if @participant.avatar? %>
-        <%= image_tag(@participant.avatar.url(:thumb), :class => "headpotrait") %>
+        <%= image_tag(@participant.avatar.url(:large), :class => "headpotrait") %>
       <% else %>
         click to edit
       <% end %>
@@ -43,7 +44,7 @@
 
   </div>
 </div>
-
+<% end %>
 <script type="text/javascript">
   $('#profile .headpic h4').hide().delay(2000).fadeIn(1000);
   setTimeout(function() {

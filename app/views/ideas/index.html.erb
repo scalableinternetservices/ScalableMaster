@@ -17,60 +17,64 @@
 </div>
 </div>
 
-<div class="row idea-body" >
-  <div class="col-md-offset-2 col-md-8 timeborder">
+<% cache(cache_key_for_ideas_all(@ideas)) do %>
+  <div class="row idea-body" >
+    <div class="col-md-offset-2 col-md-8 timeborder">
     <br>
 
-  <ul>
-    <% @ideas.each do |idea| %>
-      <li id="idea-<%= idea.id %>" class="ideas-entry">
-        <div class="ideas-participant">
-        <div class="ideas-participant-pic">
-           <%= image_tag(idea.participant.avatar.url(:thumb)) if idea.participant.avatar? %>
-        </div>
-        <div class="ideas-paricipant-name">
-            <%= idea.participant.name %>
-        </div>
-        </div>
-        <div class="ideas-title">
-          <%= idea.title %>
-          <div class="ideas-like-quantity">
-            <%= idea.stars %>
-          </div>
-          <% if participant_signed_in? %>
-            <div class="ideas-time">
-              <%= idea.created_at %>
+    <ul>
+      <% @ideas.each do |idea| %>
+        <% cache(cache_key_for_ideas_row(idea)) do %>
+          <li id="idea-<%= idea.id %>" class="ideas-entry">
+            <div class="ideas-participant">
+            <div class="ideas-participant-pic">
+               <%= image_tag(idea.participant.avatar.url(:thumb)) if idea.participant.avatar? %>
             </div>
-            <div class="ideas-like">
-               <%= link_to "", idea_path(idea, like: true), method: :patch,
-            class: "glyphicon glyphicon-heart-empty", remote: true %>
+            <div class="ideas-paricipant-name">
+                <%= idea.participant.name %>
             </div>
-          <% else %>
-            <div class="ideas-time-nolike">
-              <%= idea.created_at %>
             </div>
-          <% end %>
-        </div>
-        <div class="ideas-participant-body">
-          <div class="ideas-tagslists">
-            <ul>
-              <% idea.tags.each do |tag| %>
-                <li class="idea_tags">
-                  <%= tag.name %>
-                </li>
+            <div class="ideas-title">
+              <%= idea.title %>
+              <div class="ideas-like-quantity">
+                <%= idea.stars %>
+              </div>
+              <% if participant_signed_in? %>
+                <div class="ideas-time">
+                  <%= idea.created_at %>
+                </div>
+                <div class="ideas-like">
+                   <%= link_to "", idea_path(idea, like: true), method: :patch,
+                class: "glyphicon glyphicon-heart-empty", remote: true %>
+                </div>
+              <% else %>
+                <div class="ideas-time-nolike">
+                  <%= idea.created_at %>
+                </div>
               <% end %>
-            </ul>
-          </div>
-          <pre class="idea-text"><%= idea.description %></pre>
-          <div class="clear"></div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <br>
+            </div>
+            <div class="ideas-participant-body">
+              <div class="ideas-tagslists">
+                <ul>
+                  <% idea.tags.each do |tag| %>
+                    <li class="idea_tags">
+                      <%= tag.name %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <pre class="idea-text"><%= idea.description %></pre>
+              <div class="clear"></div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <br>
+    </div>
+    <%= will_paginate @ideas %>
   </div>
-  <%= will_paginate @ideas %>
-</div>
+<% end %>
 
 <script type="text/javascript">
   $('#idea-<%= j @idea_id %>').scrollView();

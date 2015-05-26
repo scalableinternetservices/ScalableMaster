@@ -122,7 +122,6 @@ class Organizers::ActivitiesController < Organizers::BaseController
 
     def tags_params
       params.require(:activity).permit(:tag_names)
-
     end
 
 end
