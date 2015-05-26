@@ -2,7 +2,7 @@
   <%= form_for @participant, url: participant_profile_path(@participant), 
                             multipart: true, method: :patch do |f| %>
     <div class="form-group editImage">
-          <%= image_tag(@participant.avatar.url(:medium), :class => "editImageStyle") if @participant.avatar? %>
+          <%= image_tag(@participant.avatar.url(:large), :class => "editImageStyle") if @participant.avatar? %>
       <%= f.file_field :avatar %>
       
     </div>
