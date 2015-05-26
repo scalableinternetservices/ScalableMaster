@@ -19,11 +19,16 @@
 
   <br>
 
+  <% cache(cache_key_for_activities_all(@activities, 'participants/activities/index')) do %>
+
   <!-- showing the activities of a participant -->
   <div class="container">
     <div class="row">
       <ul>
         <% @activities.each do |activity| %>
+
+          <% cache(cache_key_for_activities_row(activity, 'participants/activities/index')) do %>
+
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
               <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
@@ -42,9 +47,15 @@
               </a>
             </div>
           </li>
+
+          <% end %>
+
         <% end %>
       </ul>
     </div>
     <%= will_paginate @activities %>
   </div>
+
+  <% end %>
+
 </div>

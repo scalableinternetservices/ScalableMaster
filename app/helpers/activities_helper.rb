@@ -1,10 +1,10 @@
 module ActivitiesHelper
-  def cache_key_for_activities_all(activities)
+  def cache_key_for_activities_all(activities, page)
     max_updated_at = activities.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    "ideas-all-#{max_updated_at}"
+    "ideas-#{page}-all-#{max_updated_at}"
   end
 
-  def cache_key_for_activities_row(activity)
-    "ideas-row-#{activity.updated_at}"
+  def cache_key_for_activities_row(activity, page)
+    "ideas-#{page}-row-#{activity.updated_at}"
   end
 end

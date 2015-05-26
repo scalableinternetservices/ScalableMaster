@@ -26,7 +26,7 @@
 		<br>
 	</div>
 
-  <% cache(cache_key_for_activities_all(@activities)) do %>
+  <% cache(cache_key_for_activities_all(@activities, "participants/summary")) do %>
 	
 	<div class="summary-activity">
 		<h5>&nbsp;</h5>
@@ -35,6 +35,9 @@
 
     <div class="row">
   		<% @activities.each do |activity|%>
+
+        <% cache(cache_key_for_activities_row(activity, "participants/summary")) do %>
+
   			<div class="col-md-3">
           <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}" %>>
   				  <div class="thumbnail">
@@ -45,60 +48,60 @@
   				  </div>
           </a>
   			</div>
+        
+        <% end %>
+        
   		<% end %>
 		</div>
 	</div>
 
   <% end %>
 
-  <% cache(cache_key_for_ideas_all(@ideas.limit(4))) do %>
+  <% cache(cache_key_for_ideas_all(@ideas.limit(4), "organizers/summary")) do %>
 
   <div class="allidea">
     <h4 class="h4">IDEAS</h4>
     <div class="row">
       <% if @ideas.length > 0 %>
         <div class="col-md-3">
-
-        <% @idea = @ideas[0] %>
-        <%= link_to ideas_path(idea_id: @idea.id) do %>
-          <div class="idea idea4">     
-            <%= image_tag(("4.png"), :class => "pegen") %>
-            <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @idea.description%>">
-              <%= @idea.title %>
-            </p> 
-          </div>
-        <% end %>
-      </div>
+          <% @idea = @ideas[0] %>
+          <%= link_to ideas_path(idea_id: @idea.id) do %>
+            <div class="idea idea4">     
+              <%= image_tag(("4.png"), :class => "pegen") %>
+              <p class="text-center text1" data-toggle="tooltip" data-placement="top" title="<%= @idea.description%>">
+                <%= @idea.title %>
+              </p> 
+            </div>
+          <% end %>
+        </div>
       <% end %>
     
       <% if @ideas.length > 1 %>
         <div class="col-md-3">
-
         <% @idea = @ideas[1] %>
         <%= link_to ideas_path(idea_id: @idea.id) do %>
-        <div class="idea idea5" >     
-          <%= image_tag(("1.png"), :class => "pegen") %>
-          <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @idea.description%>">
-            <%= @idea.title %>
-          </p>
-        </div> 
+          <div class="idea idea5" >     
+            <%= image_tag(("1.png"), :class => "pegen") %>
+            <p class="text-center text2" data-toggle="tooltip" data-placement="top" title="<%= @idea.description%>">
+              <%= @idea.title %>
+            </p>
+          </div> 
         <% end %>
-      </div>
+        </div>
       <% end %>
 
       <% if @ideas.length > 2 %>
         <div class="col-md-3">
-
         <% @idea = @ideas[2] %>
         <%= link_to ideas_path(idea_id: @idea.id) do %>
-        <div class="idea idea6">     
+          <div class="idea idea6">     
           <%= image_tag(("2.png"), :class => "pegen") %>
           <p class="text-center text3" data-toggle="tooltip" data-placement="top" title="<%= @idea.description%>">
             <%= @idea.title %>
           </p>
-        </div>
+          </div>
         <% end %>
-      </div>
+        </div>
       <% end %>
 
       <% if @ideas.length > 3%>
@@ -112,7 +115,7 @@
           </p>
         </div>  
         <% end %>
-      </div>
+        </div>
       <% end %>
     </div>
     <br>
