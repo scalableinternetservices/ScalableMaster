@@ -6,6 +6,15 @@ class HomepageController < ApplicationController
     if participant_signed_in?
       @participant = Participant.find(current_participant[:id])
     end
+
+    if session[:last_seen].nil?
+      session[:last_seen] = Time.now
+    end
+
+    if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
+      redirect_to homepage_activity_url
+    end
+
   end
 
   def homepage_index
@@ -13,17 +22,27 @@ class HomepageController < ApplicationController
     if participant_signed_in?
       @participant = Participant.find(current_participant[:id])
 
-      ul = Userlocation.find_by :user_id => current_participant[:id]
-      if not (ul.nil? or Time.now - ul.updated_at > 30.minutes)
-        redirect_to homepage_activity_url
-      end
-    end  
+      # ul = Userlocation.find_by :user_id => current_participant[:id]
+      # if not (ul.nil? or Time.now - ul.updated_at > 30.minutes)
+      #   redirect_to homepage_activity_url
+      # end
+    end
+
+    if session[:last_seen].nil?
+      session[:last_seen] = Time.now
+    end
+
+    if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
+      redirect_to homepage_activity_url
+    end
+
   end
 
   def homepage_activity
     if session[:last_seen].nil?
       session[:last_seen] = Time.now
     end
+
     if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
       @city_name = session[:city_name]
       user_city_name = session[:city_name]
@@ -107,8 +126,6 @@ class HomepageController < ApplicationController
     if @ideas.nil? || @ideas.length == 0
       @ideas = Idea.all
     end
-
-    
 
   end
 
