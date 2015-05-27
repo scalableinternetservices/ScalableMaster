@@ -21,12 +21,8 @@
   </div>
 
   <%= f.submit "Submit", { class: 'btn btn-primary', disable_with: 'Submiting...' } %>
-  <% if @idea.new_record? %>
-    <%= link_to "Cancel", :back, class: 'btn btn-default' %>
-  <% else %>
-    <%= link_to "Cancel", participant_idea_path(@participant, @idea), 
-        class: 'btn btn-default' %>
-  <% end %>
+  <%= link_to "Cancel", :back, class: 'btn btn-default' %>
+  
 <% end %>
 
 <script type="text/javascript">
