@@ -12,7 +12,6 @@
     <server host="ec2-52-25-217-16.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
-
   <load>
     <arrivalphase phase="1" duration="10" unit="second">
       <users arrivalrate="1" unit="second"></users>
@@ -45,6 +44,68 @@
   </options>
 
   <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at activities -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/ideas' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at ideas -->
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- log in as participant -->
+      <request>
+        <http url='/participants/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- create a random participant number -->
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="random_participant_number" />
+      </setdynvars>
+
+      <!-- participant is filling out the login information -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+       <!-- <dyn_variable name="created_submission_url" re="[Ll]ocation: (http://.*)\r"/>
+        <dyn_variable name="created_submission_id" re="[Ll]ocation: http://.*/submissions/(.*)\r"/> -->
+       <http
+       url='/participants/sign_in'
+       version='1.1'
+       method='POST' 
+       contents='participant%5Bemail%5D=par%%_random_participant_number%%%40example.com&amp;participant%5Bpassword%5D=12345678&amp;participant%5Bremember_me%5D=0&amp;commit=Log+in'>
+       </http>
+     </request>
+
+     <!-- look at the homepage -->
+     <thinktime value="1" random="true"></thinktime>
+
+     <!-- visit an activity -->
+     <request>
+       <http url='/' version='1.1' method='GET'></http>
+     </request>
+
+     <!-- visit the new idea form -->
+     <request>
+       <http url='/participants/1/activities/2' version='1.1' method='GET'></http>
+     </request>
+
+
+      <!-- Uncomment the following to debug print your dynamic variables  --> 
+      
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+    </session>
+
     <session name="http-example" probability="100" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
@@ -112,7 +173,6 @@
        contents='idea%5Btitle%5D=%%_random_idea_title%%&amp;idea%5Bdescription%5D=%%_random_idea_content%%&amp;idea%5Btag_names%5D=Fiction%2CSkating&amp;commit=Submit'>
        </http>
      </request>
-     
 
       <!-- Uncomment the following to debug print your dynamic variables  --> 
       
@@ -122,7 +182,6 @@
         <var name="dump" />
       </setdynvars>
       
-
     </session>
   </sessions>
 </tsung>
