@@ -11,7 +11,7 @@ class HomepageController < ApplicationController
       session[:last_seen] = Time.now
     end
 
-    if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
+    if not session[:city_name].nil? && Time.now - Time.parse(session[:last_seen]) < 30.minutes
       redirect_to homepage_activity_url
     end
 
@@ -32,7 +32,7 @@ class HomepageController < ApplicationController
       session[:last_seen] = Time.now
     end
 
-    if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
+    if not session[:city_name].nil? && Time.now - Time.parse(session[:last_seen]) < 30.minutes
       redirect_to homepage_activity_url
     end
 
@@ -43,7 +43,7 @@ class HomepageController < ApplicationController
       session[:last_seen] = Time.now
     end
 
-    if not session[:city_name].nil? && Time.now - session[:last_seen] < 30.minutes
+    if not session[:city_name].nil? && Time.now - Time.parse(session[:last_seen]) < 30.minutes
       @city_name = session[:city_name]
       user_city_name = session[:city_name]
     else
