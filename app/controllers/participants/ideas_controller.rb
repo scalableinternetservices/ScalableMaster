@@ -39,7 +39,6 @@ class Participants::IdeasController < Participants::BaseController
         format.js
       end
     end
-
   end
 
   def update

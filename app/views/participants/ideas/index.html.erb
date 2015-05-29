@@ -23,8 +23,9 @@
           <span class="my-idea-title">
             <%= link_to idea.title, edit_participant_idea_path(@participant, idea) %>
           </span>
-          <span class="glyphicon glyphicon-trash">
-          </span>
+          <%= link_to participant_idea_path(@participant, idea), method: :delete do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
           <ul class="idea-tagslist">
             <% idea.tags.each do |tag| %>
               <li class="idea_tags">
