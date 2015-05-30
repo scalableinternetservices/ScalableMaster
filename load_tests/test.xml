@@ -44,19 +44,17 @@
   </options>
 
   <sessions>
-    <session name="http-example" probability="100" type="ts_http">
+    <session name="participant-read" probability="80" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
 
-      <!-- wait for up to 2 seconds, user is looking at activities -->
       <thinktime value="2" random="true"></thinktime>
 
       <request>
         <http url='/ideas' version='1.1' method='GET'></http>
       </request>
 
-      <!-- wait for up to 2 seconds, user is looking at ideas -->
       <thinktime value="5" random="true"></thinktime>
 
       <!-- log in as participant -->
@@ -73,29 +71,134 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request subst="true">
-       <!-- <dyn_variable name="created_submission_url" re="[Ll]ocation: (http://.*)\r"/>
-        <dyn_variable name="created_submission_id" re="[Ll]ocation: http://.*/submissions/(.*)\r"/> -->
-       <http
-       url='/participants/sign_in'
-       version='1.1'
-       method='POST' 
-       contents='participant%5Bemail%5D=par%%_random_participant_number%%%40example.com&amp;participant%5Bpassword%5D=12345678&amp;participant%5Bremember_me%5D=0&amp;commit=Log+in'>
-       </http>
-     </request>
+        <http
+          url='/participants/sign_in'
+          version='1.1'
+          method='POST' 
+          contents='participant%5Bemail%5D=par%%_random_participant_number%%%40example.com&amp;participant%5Bpassword%5D=12345678&amp;participant%5Bremember_me%5D=0&amp;commit=Log+in'>
+        </http>
+      </request>
+     
+      <!-- <request>
+        <dyn_variable name="activity_url" xpath="/html/body/div[@id='main']/div[@class='container']/div[@id='row_activity']/div[@class='col-md-3'][1]/div[@class='thumbnail']/a/@href"/>
+        <http url='/homepage' version='1.1' method='GET'></http>
+      </request> -->
 
-     <!-- look at the homepage -->
-     <thinktime value="1" random="true"></thinktime>
+      <thinktime value="2" random="true"></thinktime>
 
-     <!-- visit an activity -->
-     <request>
-       <http url='/' version='1.1' method='GET'></http>
-     </request>
+      <!-- visit my summary -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/summary'
+        version='1.1' method='GET'>
+        </http>
+      </request>
 
-     <!-- visit the new idea form -->
-     <request>
-       <http url='/participants/1/activities/2' version='1.1' method='GET'></http>
-     </request>
+      <thinktime value="5" random="true"></thinktime>
 
+      <!-- visit my profile -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/profile'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- back to homepage -->
+      <request>
+        <http url="/homepage" version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit an activity -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/activities/2'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- back to homepage -->
+      <request>
+        <http url="/homepage" version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+     <!-- visit another activity -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/activities/8'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- join activity -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/activities/8'
+        version='1.1' method='PUT'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit my activity -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/activities'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- cancel activity -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/activities/8'
+        version='1.1' method='DELETE'>
+        </http>
+      </request>
+
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- visit my idea -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/ideas'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit my summary again -->
+      <request subst="true">
+        <http 
+        url='/participants/%%_random_participant_number%%/summary'
+        version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- log out -->
+      <request>
+        <http 
+        url='/participants/sign_out'
+        version='1.1' method='DELETE'>
+        </http>
+      </request>
 
       <!-- Uncomment the following to debug print your dynamic variables  --> 
       
@@ -106,7 +209,7 @@
       </setdynvars>
     </session>
 
-    <session name="http-example" probability="100" type="ts_http">
+    <session name="participant-write" probability="20" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
@@ -120,7 +223,6 @@
 
       <!-- wait for up to 2 seconds, user is looking at ideas -->
       <thinktime value="2" random="true"></thinktime>
-
 
       <!-- log in as participant -->
       <request>
