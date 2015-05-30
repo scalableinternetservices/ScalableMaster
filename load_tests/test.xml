@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-25-217-16.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ScalableMaster-no-cache-576255081.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -112,6 +112,17 @@
        contents='idea%5Btitle%5D=%%_random_idea_title%%&amp;idea%5Bdescription%5D=%%_random_idea_content%%&amp;idea%5Btag_names%5D=Fiction%2CSkating&amp;commit=Submit'>
        </http>
      </request>
+
+     <!-- <thinktime value="2" random="true"></thinktime>
+
+     <request subst="true">
+       <http
+       url='/participants/%%_random_participant_number%%/ideas/'
+       version='1.1'
+       method='DELETE' 
+       contents='idea%5Btitle%5D=%%_random_idea_title%%&amp;idea%5Bdescription%5D=%%_random_idea_content%%&amp;idea%5Btag_names%5D=Fiction%2CSkating&amp;commit=Submit'>
+       </http>
+     </request> -->
      
 
       <!-- Uncomment the following to debug print your dynamic variables  --> 
