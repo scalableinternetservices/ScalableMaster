@@ -184,8 +184,8 @@ titles =
 	"Funny",
 	"0_0"
 ]
-10.times do |xx|
-  x = xx + 1
+1000.times do |xx|
+  x = xx % 10 + 1
   tmp = Random.rand(9)
   tmp1 = Random.rand(9)
   star = Random.rand(100)
