@@ -95,7 +95,7 @@ act_descriptions =
 	"ROUND ROBIN COCKTAIL CLASS THURSDAYS 9PM - 10PM Learn 4 cocktails from 4 different Continental Club bartenders",
 	"Meal and a Spiel offers intimate hands on cooking experience for all levels that will provide you with very do-able access to exquisite and healthy cooking. Classes are limited to 10 people. We stand for high quality ingredients. All produce is organic when possible and all chicken/meats are hormone and antibiotic free, grass fed when possible. You will learn more than technique, you will learn how to “feel the cooking” so you can use the recipes as a jumping board for your own creations."
 ]
-200.times do |xx|
+800.times do |xx|
 	x = xx % 11 + 1
 	tmp = Random.rand(9)
 	a = Activity.new(name: act_names[tmp],
@@ -213,18 +213,33 @@ tags =
   Tag.create!(name: tags[xx])
 end
 
-10.times do |xx|
-  x = xx + 1
-  a = Activity.find(x)
-  y_set = []
-  Random.rand(6).times do |yy|
-    y = Random.rand(10) + 1
-    if !y_set.include? y
-    	y_set << y
-    	p = Participant.find(y)
-    	a.participants << p
-    end
-  end
+# 10.times do |xx|
+#   x = xx + 1
+#   a = Activity.find(x)
+#   y_set = []
+#   Random.rand(10).times do |yy|
+#     y = Random.rand(10) + 1
+#     if !y_set.include? y
+#     	y_set << y
+#     	p = Participant.find(y)
+#     	a.participants << p
+#     end
+#   end
+# end
+
+count = Participant.count
+count.times do |i|
+	ii = i + 1
+	p = Participant.find(ii)
+	a_set = []
+	Random.rand(10).times do |j|
+		jj = Random.rand(count) + 1
+		if !a_set.include? jj
+			a_set << jj
+			a = Activity.find(jj)
+			p.activities << a
+		end
+	end
 end
 
 p = Participant.all
