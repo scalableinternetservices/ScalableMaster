@@ -70,7 +70,8 @@ class Organizers::ActivitiesController < Organizers::BaseController
     
     #use this addr to find the city of the activity
     addr = activity_params[:address]
-
+    city_hash = {}
+    city_hash[:city_name] = ""
     # if address changed
     if addr != @activity.address
       url_beign = 'https://maps.googleapis.com/maps/api/geocode/json?address='
@@ -95,7 +96,8 @@ class Organizers::ActivitiesController < Organizers::BaseController
         city_hash[:city_name] = ""
       end
     end
-
+    #puts "!!!!!!!!!!!!!!!!!!!!"
+    #puts city_hash
     respond_to do |format|
       if @activity.update(activity_params) && @activity.update_tags(tags_params) && @activity.update(city_hash)
           format.html { redirect_to :organizer_activity, notice: 'Activity was successfully updated.' }
