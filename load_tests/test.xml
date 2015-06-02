@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ScalableMaster-no-cache-576255081.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
+    <server host="Scalablemaster-test1-1804496117.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -45,7 +45,51 @@
   </options>
 
   <sessions>
-    <session name="http-example" probability="100" type="ts_http">
+    <session name="http-example1" weight="70" type="ts_http">
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/ideas' version='1.1' method='GET'></http>
+      </request>
+
+      
+      <thinktime value="2" random="true"></thinktime>
+
+
+      
+      <request>
+        <http url='/participants/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="random_participant_number" />
+      </setdynvars>
+
+      
+      <thinktime value="1" random="true"></thinktime>
+
+      <request subst="true">
+       <http
+       url='/participants/sign_in'
+       version='1.1'
+       method='POST' 
+       contents='participant%5Bemail%5D=par%%_random_participant_number%%%40example.com&amp;participant%5Bpassword%5D=12345678&amp;participant%5Bremember_me%5D=0&amp;commit=Log+in'>
+       </http>
+     </request>
+
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+    </session>
+
+    <session name="http-example" weight="100" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
