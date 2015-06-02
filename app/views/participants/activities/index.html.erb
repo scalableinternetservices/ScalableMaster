@@ -19,7 +19,7 @@
 
   <br>
 
-  <% cache(cache_key_for_activities_all(@activities, 'participants/activities/index')) do %>
+  <% cache(cache_key_for_activities_all(@activities, 'participants/#{@participant.id}/activities/index')) do %>
 
   <!-- showing the activities of a participant -->
  <!--   cache(cache_key_for_activities(@activities, "activity")) do  -->
@@ -29,7 +29,7 @@
       <ul>
         <% @activities.each do |activity| %>
 
-          <% cache(cache_key_for_activities_row(activity, 'participants/activities/index')) do %>
+          <% cache(cache_key_for_activities_row(activity, 'participants/#{@participant.id}/activities/index')) do %>
 
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">

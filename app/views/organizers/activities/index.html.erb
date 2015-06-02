@@ -13,13 +13,13 @@
 
 <!-- showing the activities of an organizer -->
 
-<% cache(cache_key_for_activities_all(@activities, 'organizers/activities/index')) do %>
+<% cache(cache_key_for_activities_all(@activities, 'organizers/#{@organizer.id}/activities/index')) do %>
 
 <div class="container">
   <div class="row">
     <% @activities.each do |activity| %>
 
-      <% cache(cache_key_for_activities_row(activity, 'organizers/activities/index')) do %>
+      <% cache(cache_key_for_activities_row(activity, 'organizers/#{@organizer.id}/activities/index')) do %>
 
     	<div class="col-md-3">
         <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
