@@ -17,7 +17,7 @@
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
 
-    <arrivalphase phase="2" duration="10" unit="second">
+    <!-- <arrivalphase phase="2" duration="10" unit="second">
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
 
@@ -25,13 +25,22 @@
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
 
-    <!-- <arrivalphase phase="4" duration="10" unit="second">
+    <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+
+    <arrivalphase phase="5" duration="10" unit="second">
+      <users arrivalrate="16" unit="second"></users>
+    </arrivalphase>
+
+    <arrivalphase phase="6" duration="10" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+
+    <arrivalphase phase="7" duration="10" unit="second">
+      <users arrivalrate="64" unit="second"></users>
     </arrivalphase> -->
 
-    <!-- <arrivalphase phase="5" duration="10" unit="second">
-      <users arrivalrate="16" unit="second"></users>
-    </arrivalphase> -->
   </load>
 
   <options>
@@ -44,7 +53,7 @@
   </options>
 
   <sessions>
-    <session name="participant-read" probability="80" type="ts_http">
+    <session name="participant-read" probability="70" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
@@ -209,7 +218,7 @@
       </setdynvars>
     </session>
 
-    <session name="participant-write" probability="20" type="ts_http">
+    <session name="participant-write" probability="7" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
@@ -305,6 +314,179 @@
         <var name="dump" />
       </setdynvars>
       
+    </session>
+
+
+    <session name="organizer_write" probability="3" type="ts_http">
+    <!-- homepage, log in, create activity, delete activity -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at activities -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- log in as organizer -->
+      <request>
+        <http url='/organizers/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- create a random organizer number -->
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="random_organizer_number" />
+      </setdynvars>
+
+      <!-- organizer is filling out the login information -->
+      <thinktime value="1" random="true"></thinktime>
+
+      <request subst="true">
+       <http
+       url='/organizers/sign_in'
+       version='1.1'
+       method='POST' 
+       contents='organizer%5Bemail%5D=org%%_random_organizer_number%%%40example.com&amp;organizer%5Bpassword%5D=12345678&amp;organizer%5Bremember_me%5D=0&amp;commit=Log+in'>
+       </http>
+      </request>
+
+      <!-- look at the homepage -->
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- visit the new acitivity form -->
+      <request subst="true">
+        <http url='/organizers/%%_random_organizer_number%%/activities/new' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- organizer is filling out the form -->
+      <thinktime value="5" random="true"></thinktime>
+
+      <setdynvars sourcetype="random_string" length="13">
+        <var name="random_activity_name" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="6">
+        <var name="random_activity_email" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="1000000000" end="9999999999">
+        <var name="random_activity_phone" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="20">
+         <var name="random_activity_address" />
+      </setdynvars>
+
+       <setdynvars sourcetype="random_string" length="130">
+         <var name="random_activity_description" />
+       </setdynvars>
+
+       <setdynvars sourcetype="eval" code='fun({Pid,DynVars})-> [[13, 10]] end.'>
+        <var name="nl" />
+      </setdynvars>
+
+      
+       <request subst="true">
+        <dyn_variable name="activity_delete_path" re="[Ll]ocation: (http://.*)\r"/>
+       
+        <http
+         url='/organizers/%%_random_organizer_number%%/activities'
+         version='1.1'
+         method='POST' 
+         content_type='multipart/form-data; boundary=----WebKitFormBoundaryykERCz1WHzH5GTTD'
+         contents='------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[name]"%%_nl%%%%_nl%%%%_random_activity_name%%%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[email]"%%_nl%%%%_nl%%%%_random_activity_email%%@example.com%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[phone]"%%_nl%%%%_nl%%%%_random_activity_phone%%%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[address]"%%_nl%%%%_nl%%%%_random_activity_address%%%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[description]"%%_nl%%%%_nl%%%%_random_activity_description%%%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="activity[tag_names]"%%_nl%%%%_nl%%Food%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------WebKitFormBoundaryykERCz1WHzH5GTTD--'>
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- delete activity -->
+      <request subst="true">
+        <http url='%%_activity_delete_path%%' version='1.1' method='DELETE'></http>
+      </request>
+
+      <!-- Uncomment the following to debug print your dynamic variables  --> 
+      
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+      
+    </session>
+
+
+
+    <!-- organizer read —> -->
+    <session name="organizer-read" probability="20" type="ts_http">
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at activities —> -->
+      <thinktime value="2" random="true"></thinktime>
+
+
+      <!-- log in as organizer —> -->
+      <request>
+        <http url='/organizers/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- create a random organizer number  -->
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="random_organizer_number" />
+      </setdynvars>
+
+      <!-- organizer is filling out the login information  -->
+      <thinktime value="1" random="true"></thinktime>
+
+      <request subst="true">
+       <http
+       url='/organizers/sign_in'
+       version='1.1'
+       method='POST' 
+       contents='organizer%5Bemail%5D=org%%_random_organizer_number%%%40example.com&amp;organizer%5Bpassword%5D=12345678&amp;organizer%5Bremember_me%5D=0&amp;commit=Log+in'>
+       </http>
+     </request>
+
+     <!-- look at the homepage  -->
+     <thinktime value="2" random="true"></thinktime>
+
+     <request subst="true">
+       <http url='/organizers/%%_random_organizer_number%%/profile' version='1.1' method='GET'></http>
+     </request>
+
+    <!-- wait for up to 2 seconds, organizer is looking at profile -->
+    <thinktime value="2" random="true"></thinktime>
+
+    <request subst="true">
+       <http url='/organizers/%%_random_organizer_number%%/activities' version='1.1' method='GET'></http>
+     </request>
+
+     <thinktime value="2" random="true"></thinktime>
+
+     <request subst="true">
+       <http url='/organizers/%%_random_organizer_number%%/summary' version='1.1' method='GET'></http>
+     </request>
+
+     <thinktime value="2" random="true"></thinktime>
+
+     <request subst="true">
+       <http url='/organizers/%%_random_organizer_number%%/ideas' version='1.1' method='GET'></http>
+     </request>
+
+     <thinktime value="2" random="true"></thinktime>
+
+     <request subst="true">
+       <http url='/organizers/sign_out' version='1.1' method='DELETE'></http>
+     </request>
+
+  
+
+     <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+     
     </session>
     
   </sessions>
