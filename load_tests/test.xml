@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-25-217-16.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-52-25-154-21.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
@@ -25,9 +25,9 @@
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
 
-    <arrivalphase phase="4" duration="10" unit="second">
+    <!-- <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="8" unit="second"></users>
-    </arrivalphase>
+    </arrivalphase> -->
 
     <!-- <arrivalphase phase="5" duration="10" unit="second">
       <users arrivalrate="16" unit="second"></users>
@@ -268,6 +268,8 @@
      </setdynvars>
 
      <request subst="true">
+       <dyn_variable name="created_idea_url" re="[Ll]ocation: (http://.*)\?idea_id=.*\r"/>
+       <dyn_variable name="created_idea_id" re="[Ll]ocation: http://.*\?idea_id=(.*)\r"/>
        <http
        url='/participants/%%_random_participant_number%%/ideas'
        version='1.1'
@@ -275,6 +277,25 @@
        contents='idea%5Btitle%5D=%%_random_idea_title%%&amp;idea%5Bdescription%5D=%%_random_idea_content%%&amp;idea%5Btag_names%5D=Fiction%2CSkating&amp;commit=Submit'>
        </http>
      </request>
+
+     <thinktime value="2" random="true"></thinktime>
+
+     <if var="created_idea_url" neq="">
+      <setdynvars sourcetype="random_string" length="130">
+       <var name="inside_delete_idea" />
+      </setdynvars>
+      <request subst="true">
+        <http url="%%_created_idea_url%%/%%_created_idea_id%%" version='1.1' method="DELETE">
+        </http>
+      </request>
+     </if>
+
+     <request>
+        <http 
+        url='/participants/sign_out'
+        version='1.1' method='DELETE'>
+        </http>
+      </request>
 
       <!-- Uncomment the following to debug print your dynamic variables  --> 
       
@@ -285,6 +306,7 @@
       </setdynvars>
       
     </session>
+    
   </sessions>
 </tsung>
 
