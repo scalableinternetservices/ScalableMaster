@@ -26,15 +26,7 @@
 <% cache(cache_key_for_activities_row(activity, 'homepage_activity')) do %>
     <div class="col-md-3">
       <div class="thumbnail">
-        <a href=
-          <% if participant_signed_in? %>
-            <%= "/activities/#{activity.id}"%>
-          <% elsif organizer_signed_in? %>
-            <%= "/activities/#{activity.id}"%>
-          <% else %>
-            <%= "/participants/sign_in" %>
-          <% end %>
-        >
+        <a href=<%= "/activities/#{activity.id}"%> >
             <%= image_tag(activity.avatar.url(:large)) %>
             <div class="caption text-center">
               <h4><%= activity.name%></h4>
