@@ -23,7 +23,7 @@
 <% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
 <div class="row" id="row_activity">
 <% @activities.each do |activity| %>
-<% cache(cache_key_for_activities_row(activity, request.original_fullpath())) do %>
+<% cache(cache_key_for_activities_row(activity, 'homepage_activity')) do %>
     <div class="col-md-3">
       <div class="thumbnail">
         <a href=
