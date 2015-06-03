@@ -33,7 +33,7 @@
     <div class="row">
     <% @activities.each do |activity|%>
 
-      <% cache(cache_key_for_activities_row(activity, 'organizers/summary') do %>
+      <% cache(cache_key_for_activities_row(activity, 'organizers/summary')) do %>
 
       <div class="col-md-3">
         <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
