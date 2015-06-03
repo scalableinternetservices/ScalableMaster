@@ -23,7 +23,7 @@
       <%= @organizer.email%>
     </h5>
   </div>
-  <% cache(cache_key_for_activities_all(@activities, "organizers/summary")) do %>
+  <% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
   
   <div class="summary-activity">
     <h5>&nbsp;</h5>
@@ -33,7 +33,7 @@
     <div class="row">
     <% @activities.each do |activity|%>
 
-      <% cache(cache_key_for_activities_row(activity, "participants/summary")) do %>
+      <% cache(cache_key_for_activities_row(activity, 'organizers/summary') do %>
 
       <div class="col-md-3">
         <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
@@ -55,7 +55,7 @@
   <% end %>
 
 
-  <% cache(cache_key_for_ideas_all(@ideas.limit(4), "organizers/summary")) do %>
+  <% cache(cache_key_for_ideas_all(@ideas.limit(4), request.original_fullpath())) do %>
 
   <div class="allidea">
     <h5>&nbsp;</h5>

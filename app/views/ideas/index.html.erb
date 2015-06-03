@@ -17,7 +17,7 @@
 </div>
 </div>
 
-<% cache(cache_key_for_ideas_all(@ideas, "ideas/index")) do %>
+<% cache(cache_key_for_ideas_all(@ideas, request.original_fullpath())) do %>
   <div class="row idea-body" >
     <div class="col-md-offset-2 col-md-8 timeborder">
     <br>
@@ -25,7 +25,7 @@
     <ul>
       <% @ideas.each do |idea| %>
 
-        <% cache(cache_key_for_ideas_row(idea, "ideas/index")) do %>
+        <% cache(cache_key_for_ideas_row(idea, request.original_fullpath())) do %>
         
           <li id="idea-<%= idea.id %>" class="ideas-entry">
             <div class="ideas-participant">

@@ -16,11 +16,14 @@
 <br>
 <div class="container">
 
-<h4 class="h4" style="margin-top:-20px;text-align:center;">ACTIVITY &nbsp &nbsp &nbsp<span class="glyphicon glyphicon-map-marker"></span>&nbsp <%= @city_name%></h4>
+<h4 class="h4" style="margin-top:-20px;text-align:center;">ACTIVITY &nbsp; &nbsp; &nbsp;<span class="glyphicon glyphicon-map-marker"></span>&nbsp; <%= @city_name%></h4>
 <br>
 <br>
+
+<% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
 <div class="row" id="row_activity">
 <% @activities.each do |activity| %>
+<% cache(cache_key_for_activities_row(activity, request.original_fullpath())) do %>
     <div class="col-md-3">
       <div class="thumbnail">
         <a href=
@@ -39,15 +42,16 @@
         </a>  
       </div>
     </div>
+  <% end %>
 <% end %>
 
 <div class="clear"></div>
 <br>
 <%= will_paginate(@activities) %>
 </div>
+<% end %>
 
-
-
+<% cache(cache_key_for_ideas_all(@ideas.limit(4), request.original_fullpath())) do %>
 <br>
 <div class="allidea">
   <h4 class="h4">IDEAS</h4>
@@ -111,7 +115,7 @@
       <% end %>
     </div>
     <% end %>
-
+<% end %>
 
   <div class="clear"></div>
   <br>
@@ -121,6 +125,7 @@
 
 </div>
 <br>
+
 <script type="text/javascript">
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()
