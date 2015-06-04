@@ -5,7 +5,7 @@ class Organizers::ActivitiesController < Organizers::BaseController
   before_action :set_tags, only: [:edit, :create, :new]
   before_action :set_activity, only: [ :edit, :update, :show, :destroy ]
   def index
-    @activities = @organizer.activities.all.paginate(page: params[:page], per_page: 8)
+    @activities = @organizer.activities.all
   end
 
   def edit

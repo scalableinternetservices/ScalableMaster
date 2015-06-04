@@ -62,12 +62,12 @@ class HomepageController < ApplicationController
       @participant = Participant.find(current_participant[:id])
       participant_tags_id = @participant.tags.select(:id)
       @ideas = Idea.joins(:tags).where('tags.id IN (?)', participant_tags_id).distinct.limit(4)
-      @activities = Activity.joins(:tags).where('tags.id IN (?) and city_name IN (?)', participant_tags_id, user_city_name).distinct.paginate(page: params[:page], per_page: 16)
+      @activities = Activity.joins(:tags).where('tags.id IN (?) and city_name IN (?)', participant_tags_id, user_city_name).distinct
       # @activities = @activities.where('city_name IN (?)', user_city_name)
     end
 
     if @activities.nil? || @activities.length == 0
-      @activities = Activity.all.paginate(page: params[:page], per_page: 16)
+      @activities = Activity.all
     end
 
     if @ideas.nil? || @ideas.length == 0

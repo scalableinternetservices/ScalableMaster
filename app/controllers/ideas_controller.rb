@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
 
   def index
     # byebug
-    @ideas = Idea.includes(:participant, :tags).order(:stars => :desc).paginate(page: params[:page], per_page: 9)
+    @ideas = Idea.includes(:participant, :tags).order(:stars => :desc)
 
     @idea_id = params[:idea_id]
 
