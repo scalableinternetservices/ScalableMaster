@@ -16,7 +16,7 @@ class OrganizersController < Organizers::BaseController
       @activities = @organizer.activities
     end
   
-    @ideas = Idea.joins(:tags).where('tags.id IN (?)', @organizer.tags.select(:id)).distinct
+    @ideas = Idea.joins(:tags).where('tags.id IN (?)', @organizer.tags.select(:id)).distinct.limit(4)
 
   end
 
