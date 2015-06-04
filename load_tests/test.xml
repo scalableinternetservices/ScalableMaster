@@ -9,37 +9,34 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-25-154-21.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-52-26-49-7.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
-    <arrivalphase phase="1" duration="10" unit="second">
+    <arrivalphase phase="1" duration="30" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
 
-    <!-- <arrivalphase phase="2" duration="10" unit="second">
+    <arrivalphase phase="2" duration="30" unit="second">
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
 
-    <arrivalphase phase="3" duration="10" unit="second">
+    <arrivalphase phase="3" duration="30" unit="second">
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
 
-    <arrivalphase phase="4" duration="10" unit="second">
+    <arrivalphase phase="4" duration="30" unit="second">
       <users arrivalrate="8" unit="second"></users>
     </arrivalphase>
 
-    <arrivalphase phase="5" duration="10" unit="second">
+    <!-- <arrivalphase phase="5" duration="30" unit="second">
       <users arrivalrate="16" unit="second"></users>
-    </arrivalphase>
-
-    <arrivalphase phase="6" duration="10" unit="second">
-      <users arrivalrate="32" unit="second"></users>
-    </arrivalphase>
-
-    <arrivalphase phase="7" duration="10" unit="second">
-      <users arrivalrate="64" unit="second"></users>
     </arrivalphase> -->
+
+    <!-- <arrivalphase phase="6" duration="30" unit="second">
+      <users arrivalrate="25" unit="second"></users>
+    </arrivalphase> -->
+
 
   </load>
 
@@ -64,7 +61,7 @@
         <http url='/ideas' version='1.1' method='GET'></http>
       </request>
 
-      <thinktime value="5" random="true"></thinktime>
+      <thinktime value="2" random="true"></thinktime>
 
       <!-- log in as participant -->
       <request>
@@ -103,7 +100,7 @@
         </http>
       </request>
 
-      <thinktime value="5" random="true"></thinktime>
+      <thinktime value="2" random="true"></thinktime>
 
       <!-- visit my profile -->
       <request subst="true">
@@ -149,7 +146,7 @@
         </http>
       </request>
 
-      <thinktime value="5" random="true"></thinktime>
+      <thinktime value="2" random="true"></thinktime>
 
       <!-- join activity -->
       <request subst="true">
@@ -266,7 +263,7 @@
      </request>
 
      <!-- participant is filling out the form -->
-     <thinktime value="5" random="true"></thinktime>
+     <thinktime value="2" random="true"></thinktime>
 
      <setdynvars sourcetype="random_string" length="13">
        <var name="random_idea_title" />
@@ -399,9 +396,11 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- delete activity -->
-      <request subst="true">
-        <http url='%%_activity_delete_path%%' version='1.1' method='DELETE'></http>
-      </request>
+      <if var="activity_delete_path" neq="">
+        <request subst="true">
+          <http url='%%_activity_delete_path%%' version='1.1' method='DELETE'></http>
+        </request>
+      </if>
 
       <!-- Uncomment the following to debug print your dynamic variables  --> 
       
