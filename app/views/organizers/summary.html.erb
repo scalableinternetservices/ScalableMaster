@@ -23,7 +23,7 @@
       <%= @organizer.email%>
     </h5>
   </div>
-  <% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
+  <% cache(cache_key_for_activities_all(@activities, 'participants/summary')) do %>
   
   <div class="summary-activity">
     <h5>&nbsp;</h5>

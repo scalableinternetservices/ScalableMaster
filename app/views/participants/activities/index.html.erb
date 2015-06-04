@@ -19,7 +19,7 @@
 
   <br>
 
-  <% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
+  <% cache(cache_key_for_activities_all(@activities, 'participants/activities')) do %>
 
   <!-- showing the activities of a participant -->
  <!--   cache(cache_key_for_activities(@activities, "activity")) do  -->
@@ -29,11 +29,11 @@
       <ul>
         <% @activities.each do |activity| %>
 
-          <% cache(cache_key_for_activities_row(activity, request.original_fullpath())) do %>
+          <% cache(cache_key_for_activities_row(activity, 'participants/activities')) do %>
 
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">
-              <a href=<%= "/participants/#{@participant.id}/activities/#{activity.id}"%>>
+              <a href=<%= "/activities/#{activity.id}"%>>
                 <div class="thumbnail">
                   <%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
                   <div class="caption text-center">
