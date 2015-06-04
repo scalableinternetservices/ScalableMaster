@@ -9,7 +9,7 @@
 </div>
 </div>
 
-<% cache(cache_key_for_ideas_all(@ideas, request.original_fullpath())) do %>
+<% cache(cache_key_for_ideas_all(@ideas, 'organizers/ideas')) do %>
 
 <div class="row idea-body">
   <div class="col-md-offset-2 col-md-8 timeborder">

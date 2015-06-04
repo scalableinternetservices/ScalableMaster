@@ -13,7 +13,7 @@
 
 <!-- showing the activities of an organizer -->
 
-<% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
+<% cache(cache_key_for_activities_all(@activities, 'organizers/activities')) do %>
 
 <div class="container">
   <div class="row">
