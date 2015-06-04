@@ -71,7 +71,7 @@ class HomepageController < ApplicationController
     end
 
     if @ideas.nil? || @ideas.length == 0
-      @ideas = Idea.all
+      @ideas = Idea.limit(4)
     end
 
   end

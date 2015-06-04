@@ -9,12 +9,14 @@ class OrganizersController < Organizers::BaseController
   end
 
   def summary
-    count = @organizer.activities.count
-    if(count > 10) 
-      @activities = @organizer.activities.limit(9)
-    else
-      @activities = @organizer.activities
-    end
+    # activities = @organizer.activities
+    # count = activities.length
+    # if(count > 10) 
+    #   @activities = @organizer.activities.limit(9)
+    # else
+    #   @activities = @organizer.activities
+    # end
+    @activities = @organizer.activities.limit(9)
   
     @ideas = Idea.joins(:tags).where('tags.id IN (?)', @organizer.tags.select(:id)).distinct.limit(4)
 

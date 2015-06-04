@@ -3,7 +3,7 @@ class Participants::IdeasController < Participants::BaseController
   before_action :set_tags, only: [:edit, :new]
 
   def index
-    @ideas = @participant.ideas.all.paginate(page: params[:page], per_page: 10)
+    @ideas = @participant.ideas.includes(:tags).paginate(page: params[:page], per_page: 10)
     
     @idea_id = params[:idea_id]
   end
