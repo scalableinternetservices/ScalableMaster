@@ -34,8 +34,8 @@ class DeviseCreateOrganizers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :organizers, :email,                unique: true
-    add_index :organizers, :reset_password_token, unique: true
+    # add_index :organizers, :email,                unique: true
+    # add_index :organizers, :reset_password_token, unique: true
     # add_index :organizers, :confirmation_token,   unique: true
     # add_index :organizers, :unlock_token,         unique: true
   end

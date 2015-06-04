@@ -35,23 +35,17 @@ ActiveRecord::Schema.define(version: 20150525045746) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
+  add_index "activities", ["organizer_id"], name: "fk_rails_93c86d0f48", using: :btree
 
   create_table "activities_participants", id: false, force: :cascade do |t|
     t.integer "activity_id",    limit: 4, null: false
     t.integer "participant_id", limit: 4, null: false
   end
 
-  add_index "activities_participants", ["activity_id"], name: "index_activities_participants_on_activity_id", using: :btree
-  add_index "activities_participants", ["participant_id"], name: "index_activities_participants_on_participant_id", using: :btree
-
   create_table "activities_tags", id: false, force: :cascade do |t|
     t.integer "activity_id", limit: 4, null: false
     t.integer "tag_id",      limit: 4, null: false
   end
-
-  add_index "activities_tags", ["activity_id"], name: "index_activities_tags_on_activity_id", using: :btree
-  add_index "activities_tags", ["tag_id"], name: "index_activities_tags_on_tag_id", using: :btree
 
   create_table "ideas", force: :cascade do |t|
     t.string   "title",          limit: 255
@@ -62,15 +56,12 @@ ActiveRecord::Schema.define(version: 20150525045746) do
     t.integer  "stars",          limit: 4,     default: 0
   end
 
-  add_index "ideas", ["participant_id"], name: "index_ideas_on_participant_id", using: :btree
+  add_index "ideas", ["participant_id"], name: "fk_rails_af2cd03006", using: :btree
 
   create_table "ideas_tags", id: false, force: :cascade do |t|
     t.integer "idea_id", limit: 4, null: false
     t.integer "tag_id",  limit: 4, null: false
   end
-
-  add_index "ideas_tags", ["idea_id"], name: "index_ideas_tags_on_idea_id", using: :btree
-  add_index "ideas_tags", ["tag_id"], name: "index_ideas_tags_on_tag_id", using: :btree
 
   create_table "organizers", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -99,16 +90,10 @@ ActiveRecord::Schema.define(version: 20150525045746) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "organizers", ["email"], name: "index_organizers_on_email", unique: true, using: :btree
-  add_index "organizers", ["reset_password_token"], name: "index_organizers_on_reset_password_token", unique: true, using: :btree
-
   create_table "organizers_tags", id: false, force: :cascade do |t|
     t.integer "organizer_id", limit: 4, null: false
     t.integer "tag_id",       limit: 4, null: false
   end
-
-  add_index "organizers_tags", ["organizer_id"], name: "index_organizers_tags_on_organizer_id", using: :btree
-  add_index "organizers_tags", ["tag_id"], name: "index_organizers_tags_on_tag_id", using: :btree
 
   create_table "participants", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -136,16 +121,10 @@ ActiveRecord::Schema.define(version: 20150525045746) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
-  add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true, using: :btree
-
   create_table "participants_tags", id: false, force: :cascade do |t|
     t.integer "participant_id", limit: 4, null: false
     t.integer "tag_id",         limit: 4, null: false
   end
-
-  add_index "participants_tags", ["participant_id"], name: "index_participants_tags_on_participant_id", using: :btree
-  add_index "participants_tags", ["tag_id"], name: "index_participants_tags_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
