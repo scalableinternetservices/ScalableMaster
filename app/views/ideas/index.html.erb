@@ -25,7 +25,7 @@
     <ul>
       <% @ideas.each do |idea| %>
 
-        <% cache(cache_key_for_ideas_row(idea, request.original_fullpath())) do %>
+        <% cache(cache_key_for_ideas_row(idea, 'ideas/index')) do %>
         
           <li id="idea-<%= idea.id %>" class="ideas-entry">
             <div class="ideas-participant">

@@ -61,6 +61,9 @@ Rails.application.routes.draw do
   patch '/ideas/:id' => 'ideas#update'
   put '/ideas/:id' => 'ideas#update'
 
+  # ---------- activities ----------
+  get '/activities/:id' => 'activities#show', as: :activity
+
 
   # ---------- Home page -----------
   # get '/homepage/:participant_id' => 'homepage#homepage_index'

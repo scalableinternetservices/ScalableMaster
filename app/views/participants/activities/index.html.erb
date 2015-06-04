@@ -29,7 +29,7 @@
       <ul>
         <% @activities.each do |activity| %>
 
-          <% cache(cache_key_for_activities_row(activity, 'participants/activities')) do %>
+          <% cache(cache_key_for_activities_row(activity, request.original_fullpath())) do %>
 
           <li id="activity-<%= activity.id %>">
             <div class="col-md-3">

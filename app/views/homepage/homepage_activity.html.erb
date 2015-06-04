@@ -20,21 +20,13 @@
 <br>
 <br>
 
-<% cache(cache_key_for_activities_all(@activities, request.original_fullpath())) do %>
+<% cache(cache_key_for_activities_all(@activities, 'homepage_activity')) do %>
 <div class="row" id="row_activity">
 <% @activities.each do |activity| %>
-<% cache(cache_key_for_activities_row(activity, request.original_fullpath())) do %>
+<% cache(cache_key_for_activities_row(activity, 'homepage_activity')) do %>
     <div class="col-md-3">
       <div class="thumbnail">
-        <a href=
-          <% if participant_signed_in? %>
-            <%= "/participants/#{current_participant.id}/activities/#{activity.id}"%>
-          <% elsif organizer_signed_in? %>
-            <%= "/organizers/#{current_organizer.id}/activities/#{activity.id}"%>
-          <% else %>
-            <%= "/participants/sign_in" %>
-          <% end %>
-        >
+        <a href=<%= "/activities/#{activity.id}"%> >
             <%= image_tag(activity.avatar.url(:large)) %>
             <div class="caption text-center">
               <h4><%= activity.name%></h4>
@@ -51,7 +43,7 @@
 </div>
 <% end %>
 
-<% cache(cache_key_for_ideas_all(@ideas.limit(4), request.original_fullpath())) do %>
+<% cache(cache_key_for_ideas_all(@ideas.limit(4), 'homepage_activity')) do %>
 <br>
 <div class="allidea">
   <h4 class="h4">IDEAS</h4>

@@ -22,7 +22,7 @@
       <% cache(cache_key_for_activities_row(activity, 'organizers/activities')) do %>
 
     	<div class="col-md-3">
-        <a href=<%= "/organizers/#{@organizer.id}/activities/#{activity.id}" %> >
+        <a href=<%= "/activities/#{activity.id}" %> >
     		  <div class="thumbnail">
       	  	<%= image_tag(activity.avatar.url(:large)) if activity.avatar? %>
         	  <div class="caption text-center">
