@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false #here
   config.action_controller.perform_caching = true #here!!!!
 
-  config.cache_store = :dalli_store
+  # config.cache_store = :dalli_store
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
